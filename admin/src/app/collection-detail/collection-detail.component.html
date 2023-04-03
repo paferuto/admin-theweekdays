@@ -1,0 +1,48 @@
+<body>
+
+  <!-- ======= Header ======= -->
+
+
+  <!-- ======= Sidebar ======= -->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Collection</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item" [routerLink]="['/collection']">Collection</li>
+          <li class="breadcrumb-item active" >Collection name</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <div class="shadow-sm p-3 mb-5 bg-body rounded">
+      <h3>Add a collection</h3>
+      <form>
+        <div>
+          <label for="name" class="form-label">Name</label>
+          <input class="form-control" type="text" placeholder="Insert collection name" aria-label="default input example">
+        </div>
+        <div>
+          <label for="name" class="form-label">Product</label>
+          <input class="form-control" type="text" placeholder="Insert collection product" aria-label="default input example">
+        </div>
+        <div>
+          <label for="detail" class="form-label">Detail</label>
+          <ckeditor [editor]="Editor"></ckeditor>
+        </div>
+        <div class="mb-3">
+          <label for="formFileMultiple" class="form-label">Choose image(s)</label>
+          <input class="form-control" type="file" id="formFileMultiple" multiple>
+        </div>
+        <div style="width: fit-content; margin: auto;"><button for="submit" class="btn btn-success"
+            style="margin: 10px;">Submit</button></div>
+      </form>
+    </div>
+  </main><!-- End #main -->
+  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i>
+  </a> -->
+</body>
+

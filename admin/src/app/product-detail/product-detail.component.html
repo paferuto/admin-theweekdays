@@ -1,0 +1,42 @@
+<body>
+
+  <!-- ======= Header ======= -->
+
+
+  <!-- ======= Sidebar ======= -->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Product</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item" [routerLink]="['/product']">Product</li>
+          <li class="breadcrumb-item active">Name</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <div class="shadow-sm p-3 mb-5 bg-body rounded">
+      <h3>Update product</h3>
+      <form>
+        <div>
+          <label for="name" class="form-label">Product</label>
+          <input class="form-control" type="text" placeholder="Customer name" aria-label="default input example"
+            value="Customer">
+        </div>
+        <!-- Bên dưới sẽ là các trường binding với giá trị của customer, hiện chưa biết cấu trúc nên em/mình xin để trống chỗ này-->
+        <h1>Bên dưới sẽ là các mục có binding với giá trị của product được trả về theo ID và có thể sửa được, hiện chưa
+          biết cấu trúc nên em/mình xin để trống chỗ này</h1>
+        <div style="width: fit-content; margin: auto;">
+          <button for="submit" class="btn btn-success" style="margin: 10px;">Change</button> <!--Nút gọi hàm update-->
+          <button for="submit" class="btn btn-success" style="margin: 10px;">Clear changes</button><!--Nút gọi hàm xóa các thay đổi và reload trang-->
+        </div>
+      </form>
+    </div>
+  </main><!-- End #main -->
+
+  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i>
+  </a> -->
+</body>

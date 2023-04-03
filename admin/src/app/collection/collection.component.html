@@ -1,0 +1,83 @@
+<body>
+
+  <!-- ======= Header ======= -->
+
+
+  <!-- ======= Sidebar ======= -->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Collection</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Collection</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <div>
+      <button type="button" class="btn btn-success" [routerLink]="['/collection/new-collection']">Collection name</button>
+    </div>
+    <div class="shadow-sm p-3 mb-5 bg-body rounded">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Created date</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Collection 1</td>
+            <td>2021-05-01</td>
+            <td>Active</td>
+            <td>
+              <button type="button" class="btn btn-primary" [routerLink]="['/collection/detail']">Edit</button>
+              <button type="button" class="btn btn-danger">Delete</button>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Collection 1</td>
+            <td>2021-05-01</td>
+            <td>Active</td>
+            <td>
+              <button type="button" class="btn btn-primary"  [routerLink]="['/collection/detail']">Edit</button>
+              <button type="button" class="btn btn-danger">Delete</button>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Collection 1</td>
+            <td>2021-05-01</td>
+            <td>Active</td>
+            <td>
+              <button type="button" class="btn btn-primary"  [routerLink]="['/collection/detail']">Edit</button>
+              <button type="button" class="btn btn-danger">Delete</button>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Collection 1</td>
+            <td>2021-05-01</td>
+            <td>Active</td>
+            <td>
+              <button type="button" class="btn btn-primary" [routerLink]="['/collection/detail']">Edit</button>
+              <button type="button" class="btn btn-danger">Delete</button>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+
+
+
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+</body>
+

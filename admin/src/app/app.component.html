@@ -1,0 +1,62 @@
+<body>
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">The Weekdays</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div>
+
+  </header><!-- End Header -->
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar col-3">
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item" [routerLink]="['/']">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Dashboard</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+      </li>
+      <li class="nav-item" [routerLink]="['/category']">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Category</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+      </li>
+
+      <li class="nav-item" [routerLink]="['/product']">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Product</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+      </li>
+
+      <li class="nav-item" [routerLink]="['/customer']">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Customer</span><i
+            class="bi bi-chevron-down ms-auto"></i>
+        </a>
+      </li>
+
+      <li class="nav-item" [routerLink]="['/order']">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Order</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+      </li>
+
+      <li class="nav-item" [routerLink]="['/collection']">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Collection</span><i
+            class="bi bi-chevron-down ms-auto"></i>
+        </a>
+      </li>
+
+      <li class="nav-item" [routerLink]="['/coupon']">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Coupon</span><i
+            class="bi bi-chevron-down ms-auto"></i>
+        </a>
+      </li>
+    </ul>
+  </aside>
+  <router-outlet class="col"></router-outlet>
+</body>

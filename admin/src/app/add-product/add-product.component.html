@@ -1,0 +1,89 @@
+<body>
+
+  <!-- ======= Header ======= -->
+
+
+  <!-- ======= Sidebar ======= -->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Product</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item" [routerLink]="['/product']">Product</li>
+          <li class="breadcrumb-item active">Add new product</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <div style="width: 100%;">
+      <section>
+        <div class="row">
+          <div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Add product</h5>
+
+                <!-- General Form Elements -->
+                <form>
+                  <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Product name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Category</label>
+                    <div class="col-sm-10">
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>select a category</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="inputNumber" class="col-sm-2 col-form-label">Number of available products</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputNumber" class="col-sm-2 col-form-label">Thumbnail</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" type="file" id="formFile">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Product description</label>
+                    <div class="col-sm-10">
+                      <textarea class="form-control" style="height: 100px"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-10" style="width: fit-content; margin: auto;">
+                      <button type="submit" class="btn btn-success" style="width: 100px;">Add</button>
+                    </div>
+                  </div>
+
+                </form><!-- End General Form Elements -->
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+</body>
