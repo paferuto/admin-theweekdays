@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent {
+  divClass='disappear';
+  constructor() { }
+  showDiv(){
+    if (this.divClass=='appear'){
+      this.divClass='disappear';
+    }
+    else this.divClass='appear';
+  }
 
 }

@@ -1,0 +1,8 @@
+.appear{
+  display: inline;
+  color: rgb(0, 102, 255);
+}
+
+.disappear{
+  display: none;
+}
