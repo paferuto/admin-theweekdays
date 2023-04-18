@@ -26,9 +26,152 @@
           <input class="form-control" type="text" placeholder="Customer name" aria-label="default input example"
             value="Customer">
         </div>
-        <!-- Bên dưới sẽ là các trường binding với giá trị của customer, hiện chưa biết cấu trúc nên em/mình xin để trống chỗ này-->
-        <h1>Bên dưới sẽ là các mục có binding với giá trị của product được trả về theo ID và có thể sửa được, hiện chưa
-          biết cấu trúc nên em/mình xin để trống chỗ này</h1>
+        <form>
+          <div class="row mb-3">
+            <label for="inputText" class="col-sm-2 col-form-label">Product name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="name" required>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Category</label>
+            <div class="col-sm-10">
+              <select class="form-select" aria-label="Default select example">
+                <option selected>select a category</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputText" class="col-sm-2 col-form-label">Excerpt</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" required>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputText" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" style="height: 200px;" required></textarea>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="inputNumber" class="col-sm-2 col-form-label">Thumbnail</label>
+            <div class="col-sm-10">
+              <input class="form-control" type="file" id="formFile">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputNumber" class="col-sm-2 col-form-label">Image 1</label>
+            <div class="col-sm-10">
+              <input class="form-control" type="file" id="formFile">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputNumber" class="col-sm-2 col-form-label">Image 2</label>
+            <div class="col-sm-10">
+              <input class="form-control" type="file" id="formFile">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputNumber" class="col-sm-2 col-form-label">Image 3</label>
+            <div class="col-sm-10">
+              <input class="form-control" type="file" id="formFile">
+            </div>
+          </div>
+          <div>
+            <div class="row mb-3">
+              <label for="inputText" class="col-sm-2 col-form-label">Price</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" required>
+              </div>
+            </div>
+          </div>
+          <div class="{{divClass}}">
+            <div class="row mb-3">
+              <label for="inputText" class="col-sm-2 col-form-label">Original price</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" required>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <input type="checkbox" id="chkSale" (click)="showDiv()"> Product is on sale
+            </div>
+            <div class="col">
+              <input type="checkbox" id="chkStock">
+              Product is in stock
+            </div>
+          </div>
+          <div>
+            <div class="row mb-3">
+              <label for="inputText" class="col-sm-2 col-form-label" required>Min quantity</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="row mb-3">
+              <label for="inputText" class="col-sm-2 col-form-label" required>Max quantity</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="mb-3">
+              <label>Variants</label>
+              <div>
+                <table class="table table-hover" style="width: fit-content; margin: auto;">
+                  <thead>
+                    <tr>
+                      <th>Size</th>
+                      <th>Quantity</th>
+                      <th>Active</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>S</td>
+                      <td><input type="number"></td>
+                      <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                      <td>M</td>
+                      <td><input type="number"></td>
+                      <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                      <td>L</td>
+                      <td><input type="number"></td>
+                      <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                      <td>XL</td>
+                      <td><input type="number"></td>
+                      <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                      <td>XXL</td>
+                      <td><input type="number"></td>
+                      <td><input type="checkbox"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-10" style="width: fit-content; margin: auto;">
+              <button type="submit" class="btn btn-success" style="width: 100px;">Add</button>
+            </div>
+          </div>
+
+        </form><!-- End General Form Elements -->
         <div style="width: fit-content; margin: auto;">
           <button for="submit" class="btn btn-success" style="margin: 10px;">Change</button> <!--Nút gọi hàm update-->
           <button for="submit" class="btn btn-success" style="margin: 10px;">Clear changes</button><!--Nút gọi hàm xóa các thay đổi và reload trang-->

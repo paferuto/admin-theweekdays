@@ -17,11 +17,15 @@
       </nav>
     </div><!-- End Page Title -->
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
+      <div style="width: fit-content; margin: auto;">
+        <button class="btn btn-success" [routerLink]="['/category/new']">New category</button>
+      </div>
       <table class="table table-striped">
         <thead>
           <tr>
             <th>ID</th>
             <th>Category</th>
+            <th>Image</th>
             <th>Product</th>
             <th></th>
           </tr>
@@ -30,40 +34,11 @@
           <tr>
             <td>1</td>
             <td>Áo sơ mi</td>
+            <td><img src=""></td>
             <td>
               <p class="fw-light">100 products</p>
             </td>
-            <td><button class="btn btn-light">Modify</button>
-              <button class="btn btn-dark">Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Áo sơ mi</td>
-            <td>
-              <p class="fw-light">100 products</p>
-            </td>
-            <td><button class="btn btn-light">Modify</button>
-              <button class="btn btn-dark">Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Áo sơ mi</td>
-            <td>
-              <p class="fw-light">100 products</p>
-            </td>
-            <td><button class="btn btn-light">Modify</button>
-              <button class="btn btn-dark">Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Áo sơ mi</td>
-            <td>
-              <p class="fw-light">100 products</p>
-            </td>
-            <td><button class="btn btn-light">Modify</button>
+            <td><button class="btn btn-light" [routerLink]="['/category/update/id']">Modify</button>
               <button class="btn btn-dark">Delete</button>
             </td>
           </tr>

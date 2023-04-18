@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent {
-
+  divClass='disappear';
+  constructor() { }
+  showDiv(){
+    if (this.divClass=='appear'){
+      this.divClass='disappear';
+    }
+    else this.divClass='appear';
+  }
 }

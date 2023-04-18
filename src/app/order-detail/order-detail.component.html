@@ -21,24 +21,44 @@
       <h3>Order ID1 details</h3>
       <table>
         <tr>
-          <th>Customer ID </th>
+          <th style="width: 200px;">Customer ID </th>
           <td>1</td>
-        </tr>
-        <tr style="padding:10px;">
-          <th style="padding-right: 10px;">Customer name </th>
-          <td>Nguyen Van A</td>
         </tr>
         <tr>
           <th>Order date </th>
           <td>2021-05-05</td>
         </tr>
         <tr>
-          <th>Money (VND) </th>
+          <th>Total</th>
           <td>1000000</td>
         </tr>
         <tr>
+          <th>Payment method</th>
+          <td>Momo <span class="badge text-bg-success">Paid</span></td>
+        </tr>
+        <tr>
           <th>Status </th>
-          <td>Waiting</td>
+          <td>
+            <div class="list-group"> <!-- Dùng để cập nhật trạng thái đơn hàng, thứ tự mới nhất từ trên xuống dưới -->
+              <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                  <p class="mb-1">Delivered</p>
+                  <small>3 days ago</small>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <p class="mb-1">Shipping</p>
+                  <small class="text-body-secondary">3 days ago</small>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <p class="mb-1">Processing</p>
+                  <small class="text-body-secondary">3 days ago</small>
+                </div>
+              </a>
+            </div></td>
         </tr>
       </table>
       <table class="table table-hover">

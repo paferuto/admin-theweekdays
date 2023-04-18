@@ -19,6 +19,8 @@ import { UpdateCouponComponent } from './update-coupon/update-coupon.component';
 import { CollectionDetailComponent } from './collection-detail/collection-detail.component';
 import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { UpdateCategoryComponent } from './update-category/update-category.component';
+import { NewCategoryComponent } from './new-category/new-category.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     UpdateCouponComponent,
     CollectionDetailComponent,
     CustomerDetailComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    UpdateCategoryComponent,
+    NewCategoryComponent
   ],
   imports: [
     BrowserModule,

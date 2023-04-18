@@ -15,10 +15,14 @@ import { CreateCollectionComponent } from './create-collection/create-collection
 import { CollectionDetailComponent } from './collection-detail/collection-detail.component';
 import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { UpdateCategoryComponent } from './update-category/update-category.component';
+import { NewCategoryComponent } from './new-category/new-category.component';
 
 const routes: Routes = [
   { path: "", component: AdminDashboardComponent },
   { path: "category", component: AdminCategoryComponent },
+  { path: "category/update/id", component: UpdateCategoryComponent }, //Khi đã có API thì viết lại đoạn này thành category/update/:id
+  { path: "category/new", component: NewCategoryComponent },
   { path: "coupon", component: AdminCouponComponent },
   { path: "order", component: AdminOrderComponent },
   { path: "collection", component: CollectionComponent },
