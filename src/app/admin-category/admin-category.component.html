@@ -15,7 +15,9 @@
           <li class="breadcrumb-item active">Category</li>
         </ol>
       </nav>
-    </div><!-- End Page Title -->
+    </div>
+    <!-- End Page Title -->
+
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
       <div style="width: fit-content; margin: auto;">
         <button class="btn btn-success" [routerLink]="['/category/new']">New category</button>
@@ -31,23 +33,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Áo sơ mi</td>
-            <td><img src=""></td>
+          <tr *ngFor="let cate of categories">
+            <td>{{shortenObjectId(cate._id)}}</td>
+            <td>{{cate.name}}</td>
+            <td><img src="{cate.image}"></td>
             <td>
-              <p class="fw-light">100 products</p>
+              <p class="fw-light">{{cate.count}} products</p>
             </td>
-            <td><button class="btn btn-light" [routerLink]="['/category/update/id']">Modify</button>
+            <td><button class="btn btn-light" [routerLink]="['/category/update/',cate._id]">Modify</button>
               <button class="btn btn-dark">Delete</button>
             </td>
           </tr>
         </tbody>
-
       </table>
-
     </div>
-
 
 
   </main><!-- End #main -->
