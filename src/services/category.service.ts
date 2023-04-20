@@ -5,70 +5,57 @@ import { Observable, catchError, map, retry, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class CategoryService {
 
   constructor(private _http: HttpClient) { }
 
-  // get all products
-  getProducts(): Observable<any> {
+  // get all categories
+  getCategories(): Observable<any> {
     const headers = new HttpHeaders().set("Content-Type", "text/plain;charset=utf-8")
     const requestOptions: Object = {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>("/v1/products", requestOptions).pipe(
+    return this._http.get<any>("/v1/category", requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
   }
 
-  // get product by product object id
-  getProductById(id: string): Observable<any> {
+  // get category by category object id
+  getCategoryById(id: string): Observable<any> {
     const headers = new HttpHeaders().set("Content-Type", "text/plain;charset=utf-8")
     const requestOptions: Object = {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>(`/v1/products/${id}`, requestOptions).pipe(
+    return this._http.get<any>(`/v1/category/${id}`, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
   }
 
-  // post product
-  postProduct(product: any): Observable<any> {
+  // post category
+  postCategory(category: any): Observable<any> {
     const headers = new HttpHeaders().set("Content-Type", "application/json")
     const requestOptions: Object = {
       headers: headers,
       responseType: "text"
     }
-    return this._http.post<any>("/v1/products", JSON.stringify(product), requestOptions).pipe(
+    return this._http.post<any>("/v1/category", JSON.stringify(category), requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
   }
 
-  // update a product by product object id
-  updateProduct(id: string, product: any): Observable<any> {
+  // update a category by category object id
+  updateCategory(id: string, category: any): Observable<any> {
     const header = new HttpHeaders().set("Content-Type", "application/json")
     const requestOptions: Object = {
       headers: header,
       responseType: "text"
     }
-    return this._http.put<any>(`/v1/products/${id}`, JSON.stringify(product), requestOptions).pipe(
-      map(res => JSON.parse(res)),
-      retry(3),
-      catchError(this.handleError))
-  }
-
-  // delete a product by product object id
-  deleteProduct(id: string): Observable<any> {
-    const header = new HttpHeaders().set("Content-Type", "application/json")
-    const requestOptions: Object = {
-      headers: header,
-      responseType: "text"
-    }
-    return this._http.delete<any>(`/v1/products/${id}`, requestOptions).pipe(
+    return this._http.put<any>(`/v1/category/${id}`, JSON.stringify(category), requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
