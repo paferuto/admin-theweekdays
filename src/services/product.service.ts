@@ -23,7 +23,7 @@ export class ProductService {
   }
 
   // get product by product object id
-  getProductById(id: number): Observable<any> {
+  getProductById(id: string): Observable<any> {
     const headers = new HttpHeaders().set("Content-Type", "text/plain;charset=utf-8")
     const requestOptions: Object = {
       headers: headers,
@@ -49,7 +49,7 @@ export class ProductService {
   }
 
   // update a product by product object id
-  updateProduct(id: number, product: any): Observable<any> {
+  updateProduct(id: string, product: any): Observable<any> {
     const header = new HttpHeaders().set("Content-Type", "application/json")
     const requestOptions: Object = {
       headers: header,
@@ -62,7 +62,7 @@ export class ProductService {
   }
 
   // delete a product by product object id
-  deleteProduct(id: number): Observable<any> {
+  deleteProduct(id: string): Observable<any> {
     const header = new HttpHeaders().set("Content-Type", "application/json")
     const requestOptions: Object = {
       headers: header,
