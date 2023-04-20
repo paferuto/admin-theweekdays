@@ -1,0 +1,9 @@
+[
+  {
+    "context": ["/v1"],
+    "target": "https://api.theweekdays.live",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+]
