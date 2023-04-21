@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/services/category.service';
+import { FormatService } from 'src/services/format.service';
 
 @Component({
   selector: 'app-admin-category',
@@ -13,7 +14,7 @@ export class AdminCategoryComponent {
   errMessage: string = '';
   type = ['Quần', 'Áo'];
 
-  constructor(private _service: CategoryService, private _router: Router) {
+  constructor(private _service: CategoryService, private _router: Router, public _format: FormatService) {
     this.getCategories();
   }
 
@@ -21,14 +22,9 @@ export class AdminCategoryComponent {
   getCategories() {
     this._service.getCategories().subscribe(
       {
-        next: (data) => { this.categories = data, console.log(this.categories); },
+        next: (data) => { this.categories = data },
         error: (err) => { this.errMessage = err }
       }
     )
-  }
-  
-  // shorten the object id
-  shortenObjectId(id: string) {
-    return id.substring(0, 5) + '...' + id.substring(id.length - 5, id.length);
   }
 }

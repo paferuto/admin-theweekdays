@@ -1,39 +1,47 @@
 <body>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Category</h1>
+      <h1>{{_format.vi.category}}</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item" [routerLink]="['/category']">Category</li>
-          <li class="breadcrumb-item active">Update category</li>
+          <li class="breadcrumb-item" [routerLink]="['/']"><u>{{_format.vi.home}}</u></li>
+          <li class="breadcrumb-item" [routerLink]="['/category']">{{_format.vi.category}}</li>
+          <li class="breadcrumb-item active">{{_format.vi.update_category}}</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
-      <form>
+      <form (ngForm)="modifyCategory()">
         <div class="mb-3 row">
-          <label for="name" class="col-sm-2 col-form-label">Name</label>
+          <label for="name" class="col-sm-2 col-form-label">{{_format.vi.name}}</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" id="name" name="name">
+            <input class="form-control" type="text" id="name" name="name" [ngModel]="category.name">
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="name" class="col-sm-2 col-form-label">Type</label>
+          <label for="name" class="col-sm-2 col-form-label">{{_format.vi.type}}</label>
           <div class="col-sm-10">
-            <select id="type" name="type" class="form-control">
-              <option value="quần">Quần</option>
-              <option value="áo">Áo</option>
+            <select id="type" name="type" class="form-control" required [(ngModel)]="category.type">
+              <option value="{{selectedCategory.type}}" selected disabled>{{selectedCategory.type}} ({{_format.vi.default}})</option>
+              <option *ngFor="let type of types">{{ type }}</option>
             </select>
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="name" class="col-sm-2 col-form-label">Image</label>
+          <label for="name" class="col-sm-2 col-form-label">{{_format.vi.image}}</label>
           <div class="col-sm-10">
-            <input class="form-control" type="file" id="image" name="image">
+            <input class="form-control" type="file" id="image" name="image" [(ngModel)]="category.image" (change)="onFileSelected($event, category)" />
           </div>
         </div>
-        <input type="submit" class="form-control btn btn-success" value="Thêm danh mục">
+        <div class="mb-3 row">
+          <label for="name" class="col-sm-2 col-form-label">{{_format.vi.preview}}</label>
+          <div class="col-sm-10 bg-light rounded">
+            <div class="card m-4" style="width: 18rem;">
+              <img src="{{category.image}}" alt="Category Image" class="card-img-top" >
+            </div>
+          </div>
+        </div>
+        <button class="form-control btn btn-success" (click)="modifyCategory()">{{_format.vi.add_category}}</button>
       </form>
     </div>
   </main>
