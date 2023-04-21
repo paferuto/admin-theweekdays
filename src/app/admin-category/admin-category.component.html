@@ -11,7 +11,7 @@
       <h1>{{_format.vi.category}}</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">{{_format.vi.home}}</a></li>
+          <li class="breadcrumb-item" style="cursor: pointer;" [routerLink]="['/']">{{_format.vi.home}}</li>
           <li class="breadcrumb-item active">{{_format.vi.category}}</li>
         </ol>
       </nav>
@@ -36,7 +36,7 @@
           <tr *ngFor="let cate of categories">
             <td>{{_format.shortenObjectId(cate._id)}}</td>
             <td>{{cate.name}}</td>
-            <td><img src="{{cate.image}}" style="width: 18rem;"></td>
+            <td><img src="{{cate.image}}" style="width: 10rem;"></td>
             <td>
               <p class="fw-light">{{cate.count}} {{_format.vi.product}}</p>
             </td>

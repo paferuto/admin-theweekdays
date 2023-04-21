@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: "", component: AdminDashboardComponent },
   { path: "category", component: AdminCategoryComponent },
   { path: "category/update/:id", component: UpdateCategoryComponent }, //Khi đã có API thì viết lại đoạn này thành category/update/:id
-  { path: "category/new", component: NewCategoryComponent },
+  { path: "category/new", component: UpdateCategoryComponent },
   { path: "coupon", component: AdminCouponComponent },
   { path: "order", component: AdminOrderComponent },
   { path: "collection", component: CollectionComponent },
