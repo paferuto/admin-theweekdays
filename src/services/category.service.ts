@@ -61,6 +61,19 @@ export class CategoryService {
       catchError(this.handleError))
   }
 
+  // update count of category by category object id
+  updateCategoryCount(id: string): Observable<any> {
+    const header = new HttpHeaders().set("Content-Type", "application/json")
+    const requestOptions: Object = {
+      headers: header,
+      responseType: "text"
+    }
+    return this._http.put<any>(`/v1/category/updatecount/${id}`, null, requestOptions).pipe(
+      map(res => JSON.parse(res)),
+      retry(3),
+      catchError(this.handleError))
+  }
+
   // handle error
   handleError(error: HttpErrorResponse) {
     return throwError(() => new Error(error.message))

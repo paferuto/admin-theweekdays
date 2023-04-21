@@ -4,9 +4,9 @@
       <h1>{{_format.vi.category}}</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item" [routerLink]="['/']"><u>{{_format.vi.home}}</u></li>
-          <li class="breadcrumb-item" [routerLink]="['/category']">{{_format.vi.category}}</li>
-          <li class="breadcrumb-item active">{{_format.vi.update_category}}</li>
+          <li class="breadcrumb-item" [routerLink]="['/']" style="cursor: pointer;">{{_format.vi.home}}</li>
+          <li class="breadcrumb-item" [routerLink]="['/category']" style="cursor: pointer;">{{_format.vi.category}}</li>
+          <li class="breadcrumb-item active">{{ui.title}}</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -15,7 +15,7 @@
         <div class="mb-3 row">
           <label for="name" class="col-sm-2 col-form-label">{{_format.vi.name}}</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" id="name" name="name" [ngModel]="category.name">
+            <input class="form-control" type="text" id="name" name="name" [(ngModel)]="category.name">
           </div>
         </div>
         <div class="mb-3 row">
@@ -41,7 +41,7 @@
             </div>
           </div>
         </div>
-        <button class="form-control btn btn-success" (click)="modifyCategory()">{{_format.vi.add_category}}</button>
+        <button class="form-control btn btn-success" (click)="onButtonClicked()">{{ui.buttonTitle}}</button>
       </form>
     </div>
   </main>
