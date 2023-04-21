@@ -48,8 +48,8 @@ export class CategoryService {
       catchError(this.handleError))
   }
 
-  // update a category by category object id
-  updateCategory(id: string, category: any): Observable<any> {
+  // modify a category by category object id
+  modifyCategory(id: string, category: any): Observable<any> {
     const header = new HttpHeaders().set("Content-Type", "application/json")
     const requestOptions: Object = {
       headers: header,
