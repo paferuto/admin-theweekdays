@@ -74,6 +74,19 @@ export class CategoryService {
       catchError(this.handleError))
   }
 
+  // delete category by category object id
+  deleteCategory(id: string): Observable<any> {
+    const header = new HttpHeaders().set("Content-Type", "application/json")
+    const requestOptions: Object = {
+      headers: header,
+      responseType: "text"
+    }
+    return this._http.delete<any>(`/v1/category/${id}`, requestOptions).pipe(
+      map(res => JSON.parse(res)),
+      retry(3),
+      catchError(this.handleError))
+  }
+
   // handle error
   handleError(error: HttpErrorResponse) {
     return throwError(() => new Error(error.message))
