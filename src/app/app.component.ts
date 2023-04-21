@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormatService } from 'src/services/format.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'admin';
+
+  constructor(public _format: FormatService) {}
 }
