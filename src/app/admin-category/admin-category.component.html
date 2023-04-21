@@ -8,11 +8,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Category</h1>
+      <h1>{{_format.vi.category}}</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Category</li>
+          <li class="breadcrumb-item"><a href="index.html">{{_format.vi.home}}</a></li>
+          <li class="breadcrumb-item active">{{_format.vi.category}}</li>
         </ol>
       </nav>
     </div>
@@ -20,28 +20,28 @@
 
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
       <div style="width: fit-content; margin: auto;">
-        <button class="btn btn-success" [routerLink]="['/category/new']">New category</button>
+        <button class="btn btn-success" [routerLink]="['/category/new']">{{_format.vi.add_category}}</button>
       </div>
       <table class="table table-striped">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Category</th>
-            <th>Image</th>
-            <th>Product</th>
+            <th>{{_format.vi.category}}</th>
+            <th>{{_format.vi.image}}</th>
+            <th>{{_format.vi.product}}</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let cate of categories">
-            <td>{{shortenObjectId(cate._id)}}</td>
+            <td>{{_format.shortenObjectId(cate._id)}}</td>
             <td>{{cate.name}}</td>
-            <td><img src="{cate.image}"></td>
+            <td><img src="{{cate.image}}" style="width: 18rem;"></td>
             <td>
-              <p class="fw-light">{{cate.count}} products</p>
+              <p class="fw-light">{{cate.count}} {{_format.vi.product}}</p>
             </td>
-            <td><button class="btn btn-light" [routerLink]="['/category/update/',cate._id]">Modify</button>
-              <button class="btn btn-dark">Delete</button>
+            <td><button class="btn btn-light" [routerLink]="['/category/update/',cate._id]">{{_format.vi.modify}}</button>
+              <button class="btn btn-dark">{{_format.vi.delete}}</button>
             </td>
           </tr>
         </tbody>
