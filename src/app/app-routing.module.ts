@@ -35,7 +35,7 @@ const routes: Routes = [
   { path:"collection/new-collection", component:CreateCollectionComponent},
   { path: "collection/detail", component: CollectionDetailComponent }, //Khi đã có API thì viết lại đoạn này thành collection/:id
   { path:"customer/id", component:CustomerDetailComponent}, //Khi đã có API thì viết lại đoạn này thành customer/:id
-  { path:"product/id", component:ProductDetailComponent} //Khi đã có API thì viết lại thành product/:id
+  { path:"product/:id", component:ProductDetailComponent} //Khi đã có API thì viết lại thành product/:id
 ];
 
 @NgModule({

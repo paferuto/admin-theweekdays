@@ -31,114 +31,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr style="width: fit-content;">
-            <td>TP1</td>
-            <td>Cát phục</td>
-            <td><img src='data:image/jpeg;base64,{{imagePath}}' style="width: 100px; height: 100px; object-fit: cover;"/></td>
-            <td>20000000</td>
-            <td style="width: fit-content;">
-              <button class="btn btn-primary"  style="margin: 5px;"  [routerLink]="['/product/id']">Edit</button>
-              <button class="btn btn-danger"  style="margin: 5px;">Delete</button>
-              <button class="btn btn-success"  style="margin: 5px;">Preview</button>
-            </td>
-          </tr>
-          <tr>
-            <td>TP1</td>
-            <td>Cát phục</td>
-            <td><img src='data:image/jpeg;base64,{{imagePath}}' style="width: 100px; height: 100px; object-fit: cover;"/></td>
-            <td>20000000</td>
+          <tr *ngFor="let p of product_list">
+            <td>{{p.product_id}}</td>
+            <td>{{p.name}}</td>
+            <td><img src="{{p.image}}" alt="" style="width: 100px;"></td>
+            <td>{{p.price}}</td>
             <td>
-              <button class="btn btn-primary"  style="margin: 5px;" [routerLink]="['/product/id']">Edit</button>
-              <button class="btn btn-danger"  style="margin: 5px;">Delete</button>
-              <button class="btn btn-success"  style="margin: 5px;">Preview</button>
-            </td>
-          </tr>
-          <tr>
-            <td>TP1</td>
-            <td>Cát phục</td>
-            <td><img src='data:image/jpeg;base64,{{imagePath}}' style="width: 100px; height: 100px; object-fit: cover;"/></td>
-            <td>20000000</td>
-            <td>
-              <button class="btn btn-primary"  style="margin: 5px;" [routerLink]="['/product/id']">Edit</button>
-              <button class="btn btn-danger"  style="margin: 5px;">Delete</button>
-              <button class="btn btn-success"  style="margin: 5px;">Preview</button>
-            </td>
-          </tr>
-          <tr>
-            <td>TP1</td>
-            <td>Cát phục</td>
-            <td><img src='data:image/jpeg;base64,{{imagePath}}' style="width: 100px; height: 100px; object-fit: cover;"/></td>
-            <td>20000000</td>
-            <td>
-              <button class="btn btn-primary"  style="margin: 5px;" [routerLink]="['/product/id']">Edit</button>
-              <button class="btn btn-danger"  style="margin: 5px;">Delete</button>
-              <button class="btn btn-success"  style="margin: 5px;">Preview</button>
-            </td>
-          </tr>
-          <tr>
-            <td>TP1</td>
-            <td>Cát phục</td>
-            <td><img src='data:image/jpeg;base64,{{imagePath}}' style="width: 100px; height: 100px; object-fit: cover;"/></td>
-            <td>20000000</td>
-            <td>
-              <button class="btn btn-primary"  style="margin: 5px;" [routerLink]="['/product/id']">Edit</button>
-              <button class="btn btn-danger"  style="margin: 5px;">Delete</button>
-              <button class="btn btn-success"  style="margin: 5px;">Preview</button>
-            </td>
-          </tr>
-          <tr>
-            <td>TP1</td>
-            <td>Cát phục</td>
-            <td><img src='data:image/jpeg;base64,{{imagePath}}' style="width: 100px; height: 100px; object-fit: cover;"/></td>
-            <td>20000000</td>
-            <td>
-              <button class="btn btn-primary"  style="margin: 5px;" [routerLink]="['/product/id']">Edit</button>
-              <button class="btn btn-danger"  style="margin: 5px;">Delete</button>
-              <button class="btn btn-success"  style="margin: 5px;">Preview</button>
-            </td>
-          </tr>
-          <tr>
-            <td>TP1</td>
-            <td>Cát phục</td>
-            <td><img src='data:image/jpeg;base64,{{imagePath}}' style="width: 100px; height: 100px; object-fit: cover;"/></td>
-            <td>20000000</td>
-            <td>
-              <button class="btn btn-primary"  style="margin: 5px;" [routerLink]="['/product/id']">Edit</button>
-              <button class="btn btn-danger"  style="margin: 5px;">Delete</button>
-              <button class="btn btn-success"  style="margin: 5px;">Preview</button>
-            </td>
-          </tr>
-          <tr>
-            <td>TP1</td>
-            <td>Cát phục</td>
-            <td><img src='data:image/jpeg;base64,{{imagePath}}' style="width: 100px; height: 100px; object-fit: cover;"/></td>
-            <td>20000000</td>
-            <td>
-              <button class="btn btn-primary"  style="margin: 5px;" [routerLink]="['/product/id']">Edit</button>
-              <button class="btn btn-danger"  style="margin: 5px;">Delete</button>
-              <button class="btn btn-success"  style="margin: 5px;">Preview</button>
-            </td>
-          </tr>
-          <tr>
-            <td>TP1</td>
-            <td>Cát phục</td>
-            <td><img src='data:image/jpeg;base64,{{imagePath}}' style="width: 100px; height: 100px; object-fit: cover;"/></td>
-            <td>20000000</td>
-            <td>
-              <button class="btn btn-primary"  style="margin: 5px;" [routerLink]="['/product/id']">Edit</button>
-              <button class="btn btn-danger"  style="margin: 5px;">Delete</button>
-              <button class="btn btn-success"  style="margin: 5px;">Preview</button>
-            </td>
-          </tr>
-          <tr>
-            <td>TP1</td>
-            <td>Cát phục</td>
-            <td><img src='data:image/jpeg;base64,{{imagePath}}' style="width: 100px; height: 100px; object-fit: cover;"/></td>
-            <td>20000000</td>
-            <td>
-              <button class="btn btn-primary"  style="margin: 5px;" [routerLink]="['/product/id']">Edit</button>
-              <button class="btn btn-danger"  style="margin: 5px;">Delete</button>
-              <button class="btn btn-success"  style="margin: 5px;">Preview</button>
+              <button class="btn btn-success" [routerLink]="['/product/',p._id]">Modify</button>
+              <button class="btn btn-danger">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -150,19 +50,20 @@
 
   </main><!-- End #main -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
 </body>
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
-  </footer><!-- End Footer -->
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+  <div class="copyright">
+    &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+  </div>
+  <div class="credits">
+    <!-- All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+  </div>
+</footer><!-- End Footer -->
