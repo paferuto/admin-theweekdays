@@ -6,6 +6,35 @@ import { Injectable } from '@angular/core';
 export class FormatService {
 
   constructor() { }
+  // ========================  UI LANGUAGE  =========================
+  public vi = {
+    home: 'Trang chủ',
+    category: 'Danh mục',
+    product: 'Sản phẩm',
+    customer: 'Khách hàng',
+    order: 'Đơn hàng',
+    collection: 'Bộ sưu tập',
+    coupon: 'Mã giảm giá',
+    logout: 'Đăng xuất',
+    id: 'ID',
+    name: 'Tên',
+    type: 'Loại',
+    image: 'Hình ảnh',
+    preview: 'Xem trước',
+    add_category: 'Thêm danh mục',
+    update_category: 'Cập nhật danh mục',
+    modify: 'Sửa',
+    delete: 'Xóa',
+    default: 'Mặc định',
+    require_fill_all: 'Vui lòng nhập đầy đủ thông tin',
+    success_modify: 'Sửa thành công',
+  };
+
+  public en = {
+    home: 'Home',
+    category: 'Category',
+    product: 'Product',
+  };
 
   // ========================  FOR ALL OBJECTS  =========================
   // shorten the object id
@@ -23,4 +52,5 @@ export class FormatService {
   couponTypeFormat(is_percentage: boolean, value: number) {
     return is_percentage ? value + '%' : value + 'đ';
   }
+
 }
