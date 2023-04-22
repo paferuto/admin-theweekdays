@@ -1,17 +1,10 @@
 <body>
-
-  <!-- ======= Header ======= -->
-
-
-  <!-- ======= Sidebar ======= -->
-
   <main id="main" class="main">
-
     <div class="pagetitle">
       <h1>Coupon</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item" [routerLink]="['/']"><u>Home</u></li>
           <li class="breadcrumb-item" [routerLink]="['/coupon']">Coupon</li>
           <li class="breadcrumb-item active">Update</li>
         </ol>
@@ -20,47 +13,90 @@
 
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
       <h3>Update coupon</h3>
-      <form>
-        <div>
-          <label for="name" class="form-label">Name</label>
-          <input class="form-control" type="text" placeholder="Insert coupon name" aria-label="default input example">
+      <form (ngForm)="updateCoupon()">
+        <div class="mb-3 row">
+          <label for="name" class="col-sm-2 col-form-label">{{_format.vi.name}}</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" id="name" name="name" [ngModel]="coupon.title">
+          </div>
         </div>
-        <div>
-          <label for="code" class="form-label">Code</label>
-          <input class="form-control" type="text" placeholder="Insert code" aria-label="default input example">
+
+        <div class="mb-3 row">
+          <label for="name" class="col-sm-2 col-form-label">
+            {{_format.vi.coupon}}
+          </label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" id="coupon" name="coupon" [ngModel]="coupon.coupon_code">
+          </div>
         </div>
-        <div>
-          <label for="status" class="form-label">Status</label>
-          <input class="form-control" type="text" placeholder="Status" aria-label="default input example">
+
+
+        <div class="mb-3 row">
+          <label for="name" class="col-sm-2 col-form-label">{{_format.vi.is_active}}</label>
+          <div class="col-sm-10">
+            <select id="is_active" name="is_active" class="form-control" required [(ngModel)]="coupon.is_active">
+              <option value="" selected disabled>-- Chọn trạng thái --</option>
+              <option value="true" [selected]="coupon.is_active === 'true'">Hiệu lực</option>
+              <option value="false" [selected]="coupon.is_active === 'false'">Không hiệu lực</option>
+            </select>
+            
+          </div>
         </div>
-        <div>
-          <label for="amount" class="form-label">Quantity</label>
-          <input class="form-control" type="number" placeholder="0" aria-label="default input example">
+
+        <div class="mb-3 row">
+          <label for="name" class="col-sm-2 col-form-label">
+            {{_format.vi.used}}
+          </label>
+          <div class="col-sm-10">
+            <input class="form-control" type="number" id="used" name="used" [ngModel]="coupon.quantity.used" required
+              disabled>
+          </div>
         </div>
-        <div>
-          <label for="discount" class="form-label">Discount</label>
-          <input class="form-control" type="number" placeholder="0%" aria-label="default input example">
+        
+        <div class="mb-3 row">
+          <label for="name" class="col-sm-2 col-form-label">
+            {{_format.vi.all}}
+          </label>
+          <div class="col-sm-10">
+            <input class="form-control" type="number" id="all" name="all" [ngModel]="coupon.quantity.all" required
+              disabled>
+          </div>
         </div>
+
+        <div class="mb-3 row">
+          <label for="discount" class="col-sm-2 col-form-label">
+            {{_format.vi.discount}}
+          </label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" id="discount" name="discount" [ngModel]="coupon.value">
+          </div>
+        </div>
+
+
         <div class="row">
           <div class="col">
-            <div>
-              <label for="start" class="form-label">Start from</label>
-              <input class="form-control" type="date" aria-label="default input example">
-            </div>
+            <label for="date" class="form-label">
+              {{_format.vi.valid_from}}
+            </label>
+
+            <input class="form-control" type="date" id="valid_from" name="valid_from"
+              [ngModel]="coupon.valid_from | date:'yyyy-MM-dd'" (ngModelChange)="coupon.valid_from = $event">
           </div>
           <div class="col">
-            <div>
-              <label for="end" class="form-label">End date</label>
-              <input class="form-control" type="date" aria-label="default input example">
-            </div>
+            <label for="date" class="form-label">
+              {{_format.vi.valid_to}}
+            </label>
+            <input class="form-control" type="date" id="valid_to" name="valid_to"
+              [ngModel]="coupon.valid_to | date:'yyyy-MM-dd'" (ngModelChange)="coupon.valid_to = $event">
           </div>
         </div>
-        <div style="width: fit-content; margin: auto;"><button for="submit" class="btn btn-success"
-            style="margin: 10px;">Submit</button></div>
+        <div>
+        <button class="mt-3 form-control btn btn-success" (click)="updateCoupon()">{{_format.vi.add_coupon}}</button>
+        </div>
       </form>
+
     </div>
   </main><!-- End #main -->
-
   <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i>
   </a> -->
 </body>

@@ -34,6 +34,13 @@ export class FormatService {
     // message
     require_fill_all: 'Vui lòng nhập đầy đủ thông tin',
     success_modify: 'Sửa thành công',
+    is_active: 'Tình trạng',
+    used: 'Đã dùng',
+    all: 'Tổng',
+    discount: 'Giảm giá',
+    valid_from: 'Từ ngày',
+    valid_to: 'Đến ngày',
+    add_coupon: 'Thêm mã giảm giá',
     confirm_delete: 'Bạn có chắc chắn muốn xóa không?',
     success_delete: 'Xóa thành công',
     fail_delete: 'Xóa thất bại',
@@ -57,12 +64,29 @@ export class FormatService {
   // ========================  FOR COUPON  =========================
   // coupon active status
   couponActiveStatus(status: boolean) {
-    return status ? 'Còn hiệu lực' : 'Hết hiệu lực';
+    return status ? 'Hiệu lực' : 'Không hiệu lực';
   }
 
   // coupon type format
   couponTypeFormat(is_percentage: boolean, value: number) {
-    return is_percentage ? value + '%' : value + 'đ';
+   if ( is_percentage ) {
+     return `${value}%`;
+   } else {
+      return this.formatCurrency(value);
+    }
   }
 
+  // format currency
+  formatCurrency(value: number) {
+    return value.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
 }
+
+//date format dd/mm/yyyy from ISOstring
+formatDate(date: string) {
+
+  const d = new Date(date);
+  const day = d.getDate();
+  const month = d.getMonth() + 1;
+  const year = d.getFullYear();
+  return `${day}/${month}/${year}`;
+}}
