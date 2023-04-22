@@ -16,7 +16,7 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
-
+   
 
 
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
@@ -24,86 +24,37 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Code</th>
-            <th>Status</th>
-            <th>Quantity</th>
-            <th>Discount</th>
-            <th>Active from</th>
-            <th>Active to</th>
-            <th></th>
+            <th class="col-md-1">ID</th>
+            <th class="col-md-2">{{_format.vi.name}}</th>
+            <th class="col-md-2">{{_format.vi.coupon}}</th>
+            <th class="col-md-2">{{_format.vi.is_active}}</th>
+            <th class="col-md-2">{{_format.vi.used}}</th>
+            <th class="col-md-0">{{_format.vi.all}}</th>
+            <th class="col-md-1">{{_format.vi.discount}}</th>
+            <th class="col-md-1">{{_format.vi.valid_from}}</th>
+            <th class="col-md-1">{{_format.vi.valid_to}}</th>
+            <th class="col-md-2"></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>CP1</td>
-            <td>Quà tặng cập nhật phiên bản</td>
-            <td>GENSHINGIFT</td>
-            <td>Active</td>
-            <td>300</td>
-            <td>-30%</td>
-            <td>2021-05-01</td>
-            <td>2021-05-31</td>
-            <td>
-              <button type="button" class="btn btn-primary" [routerLink]="['/coupon/update']">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
+          <tr *ngFor="let c of coupons">
+            <td class="col-md-1">{{_format.shortenObjectId(c._id)}}</td>
+            <td class="col-md-2">{{c.title}}</td>
+            <td class="col-md-2">{{c.coupon_code}}</td>
+            <td class="col-md-2">{{_format.couponActiveStatus(c.is_active)}}</td>
+            <td class="col-md-2">{{c.quantity.used}}</td>
+            <td class="col-md-0">{{c.quantity.all}}</td>
+            <td class="col-md-1">{{_format.couponTypeFormat(c.is_percentage, c.value)}}</td>
+            <td class="col-md-1">{{_format.formatDate(c.valid_from)}}</td>
+            <td class="col-md-1">{{_format.formatDate(c.valid_to)}}</td>
+            <td class="col-md-2 container">
+              <button type="submit" class="btn btn-primary" [routerLink]="['/coupon/update/', c._id]" >Edit</button>
+              <button type="button" class="btn btn-danger ">Delete</button>
+            </td>
           </tr>
-          <tr>
-            <td>CP1</td>
-            <td>Quà tặng cập nhật phiên bản</td>
-            <td>GENSHINGIFT</td>
-            <td>Active</td>
-            <td>300</td>
-            <td>-30%</td>
-            <td>2021-05-01</td>
-            <td>2021-05-31</td>
-            <td>
-              <button type="button" class="btn btn-primary" [routerLink]="['/coupon/update']">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
-          </tr>
-          <tr>
-            <td>CP1</td>
-            <td>Quà tặng cập nhật phiên bản</td>
-            <td>GENSHINGIFT</td>
-            <td>Active</td>
-            <td>300</td>
-            <td>-30%</td>
-            <td>2021-05-01</td>
-            <td>2021-05-31</td>
-            <td>
-              <button type="button" class="btn btn-primary" [routerLink]="['/coupon/update']">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
-          </tr>
-          <tr>
-            <td>CP1</td>
-            <td>Quà tặng cập nhật phiên bản</td>
-            <td>GENSHINGIFT</td>
-            <td>Active</td>
-            <td>300</td>
-            <td>-30%</td>
-            <td>2021-05-01</td>
-            <td>2021-05-31</td>
-            <td>
-              <button type="button" class="btn btn-primary" [routerLink]="['/coupon/update']">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
-          </tr>
-          <tr>
-            <td>CP1</td>
-            <td>Quà tặng cập nhật phiên bản</td>
-            <td>GENSHINGIFT</td>
-            <td>Active</td>
-            <td>300</td>
-            <td>-30%</td>
-            <td>2021-05-01</td>
-            <td>2021-05-31</td>
-            <td>
-              <button type="button" class="btn btn-primary" [routerLink]="['/coupon/update']">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
-          </tr>
-
         </tbody>
       </table>
+      
     </div>
 
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
