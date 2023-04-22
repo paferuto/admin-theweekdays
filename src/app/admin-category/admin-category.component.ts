@@ -29,4 +29,17 @@ export class AdminCategoryComponent {
       }
     )
   }
+
+  // delete a category by category object id
+  deleteCategory(id: string) {
+    if (!confirm(this._format.vi.confirm_delete)) {
+      return;
+    }
+    this._service.deleteCategory(id).subscribe(
+      {
+        next: (data) => { this.getCategories(); alert(this._format.vi.success_delete)},
+        error: (err) => { this.errMessage = err; alert(this._format.vi.fail_delete) }
+      }
+    )
+  }
 }

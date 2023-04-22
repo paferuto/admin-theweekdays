@@ -41,7 +41,7 @@
               <p class="fw-light">{{cate.count}} {{_format.vi.product}}</p>
             </td>
             <td><button class="btn btn-light" [routerLink]="['/category/update/',cate._id]">{{_format.vi.modify}}</button>
-              <button class="btn btn-dark">{{_format.vi.delete}}</button>
+              <button class="btn btn-dark" (click)="deleteCategory(cate._id)" >{{_format.vi.delete}}</button>
             </td>
           </tr>
         </tbody>
