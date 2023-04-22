@@ -15,51 +15,51 @@
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item" [routerLink]="['/']">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Dashboard</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-journal-text"></i><span>{{_format.vi.home}}</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
       </li>
       <li class="nav-item" [routerLink]="['/category']">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Category</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-journal-text"></i><span>{{_format.vi.category}}</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
       </li>
 
       <li class="nav-item" [routerLink]="['/product']">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Product</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-layout-text-window-reverse"></i><span>{{_format.vi.product}}</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
       </li>
 
       <li class="nav-item" [routerLink]="['/customer']">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Customer</span><i
+          <i class="bi bi-layout-text-window-reverse"></i><span>{{_format.vi.customer}}</span><i
             class="bi bi-chevron-down ms-auto"></i>
         </a>
       </li>
 
       <li class="nav-item" [routerLink]="['/order']">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Order</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-layout-text-window-reverse"></i><span>{{_format.vi.order}}</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
       </li>
 
       <li class="nav-item" [routerLink]="['/collection']">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Collection</span><i
+          <i class="bi bi-layout-text-window-reverse"></i><span>{{_format.vi.collection}}</span><i
             class="bi bi-chevron-down ms-auto"></i>
         </a>
       </li>
 
       <li class="nav-item" [routerLink]="['/coupon']">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Coupon</span><i
+          <i class="bi bi-layout-text-window-reverse"></i><span>{{_format.vi.coupon}}</span><i
             class="bi bi-chevron-down ms-auto"></i>
         </a>
       </li>
 
       <li class="nav-item" [routerLink]="['/logout']">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span style="color: red;">Log out</span><i
+          <i class="bi bi-layout-text-window-reverse"></i><span style="color: red;">{{_format.vi.logout}}</span><i
             class="bi bi-chevron-down ms-auto"></i>
         </a>
       </li>
