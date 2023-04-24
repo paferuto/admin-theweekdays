@@ -22,28 +22,58 @@ export class FormatService {
     id: 'ID',
     name: 'Tên',
     type: 'Loại',
+    size: 'Kích thước',
+    quantity: 'Số lượng',
     image: 'Hình ảnh',
     preview: 'Xem trước',
-
-    // button
-    add_category: 'Thêm danh mục',
-    update_category: 'Cập nhật danh mục',
-    modify: 'Sửa',
-    delete: 'Xóa',
-
-    // message
-    require_fill_all: 'Vui lòng nhập đầy đủ thông tin',
-    success_modify: 'Sửa thành công',
+    excerpt: 'Mô tả ngắn',
+    description: 'Mô tả',
+    price: 'Giá bán',
+    original_price: 'Giá gốc',
+    on_sale: 'Đang giảm giá',
+    min_qty: 'Số lượng tối thiểu',
+    max_qty: 'Số lượng tối đa',
+    variants: 'Biến thể',
+    variant: 'Biến thể',
+    variant_name: 'Tên biến thể',
+    variant_value: 'Giá trị biến thể',
     is_active: 'Tình trạng',
     used: 'Đã dùng',
     all: 'Tổng',
     discount: 'Giảm giá',
     valid_from: 'Từ ngày',
     valid_to: 'Đến ngày',
+    product_is_on_sale: 'Sản phẩm đang giảm giá',
+    product_is_in_stock: 'Sản phẩm được mở bán',
+
+    // button
+    add: 'Thêm',
+    modify: 'Sửa',
+    delete: 'Xóa',
+    cancel: 'Hủy',
+    add_category: 'Thêm danh mục',
+    update_category: 'Cập nhật danh mục',
+    add_product: 'Thêm sản phẩm',
+    update_product: 'Cập nhật sản phẩm',
     add_coupon: 'Thêm mã giảm giá',
+    update_coupon: 'Cập nhật mã giảm giá',
+
+    // confirmation
+    confirm_add_product: 'Bạn có chắc chắn muốn thêm sản phẩm này không?',
     confirm_delete: 'Bạn có chắc chắn muốn xóa không?',
+
+    // message
+    require_fill_all: 'Vui lòng nhập đầy đủ thông tin',
+    require_fill_image: 'Vui lòng tải ảnh lên',
+    validate_add_product_price: 'Giá bán phải thấp hơn giá gốc trong trường hợp sản phẩm đang giảm giá',
+    validate_add_product_quantity: 'Số lượng tối thiểu phải nhỏ hơn số lượng tối đa',
+    validate_add_product_id: 'Mã sản phẩm đã tồn tại',
+    success_modify: 'Sửa thành công',
+    fail_modify: 'Sửa thất bại',
     success_delete: 'Xóa thành công',
     fail_delete: 'Xóa thất bại',
+    success_add: 'Thêm thành công',
+    fail_add: 'Thêm thất bại',
 
     // others
     default: 'Mặc định',
