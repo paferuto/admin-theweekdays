@@ -20,6 +20,9 @@
 
 
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
+      <div style="width: fit-content; margin: auto;">
+        <button class="btn btn-success" [routerLink]="['/coupon/new']">{{_format.vi.add_coupon}}</button>
+      </div>
       <h3>Coupon list</h3>
       <table class="table table-hover">
         <thead>
@@ -57,30 +60,30 @@
 
     </div>
 
-    <div class="shadow-sm p-3 mb-5 bg-body rounded">
+    <!-- <div class="shadow-sm p-3 mb-5 bg-body rounded">
       <h3>Thêm mã giảm giá</h3>
       <form>
         <div class="mb-3 row">
           <label for="name" class="col-sm-2 col-form-label">{{_format.vi.name}}</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" id="name" name="name" #name="ngModel" [(ngModel)]="newCoupon.title">
+            <input class="form-control" type="text" id="name" name="name" #name="ngModel" [(ngModel)]="newCoupon.title" [value]="newCoupon.title" >
           </div>
         </div>
 
         <div class="mb-3 row">
-          <label for="name" class="col-sm-2 col-form-label">
+          <label for="coupon" class="col-sm-2 col-form-label">
             {{_format.vi.coupon}}
           </label>
           <div class="col-sm-10">
             <input class="form-control" type="text" id="coupon" name="coupon" #name="ngModel"
-              [(ngModel)]="newCoupon.coupon_code">
+              [(ngModel)]="newCoupon.coupon_code" [value]="newCoupon.coupon_code">
           </div>
         </div>
 
         <div class="mb-3 row">
           <label for="name" class="col-sm-2 col-form-label">{{_format.vi.is_active}}</label>
           <div class="col-sm-10">
-            <select id="is_active" name="is_active" class="form-control" #name="ngModel" required
+            <select id="is_active" name="is_active" class="form-select" #name="ngModel" 
               [(ngModel)]="newCoupon.is_active">
               <option value={{coupon.is_active}} selected disabled>{{_format.couponActiveStatus(coupon.is_active)}}
                 ({{_format.vi.default}})</option>
@@ -91,30 +94,31 @@
         </div>
 
         <div class="mb-3 row">
-          <label for="name" class="col-sm-2 col-form-label">
+          <label for="quantity" class="col-sm-2 col-form-label">
             {{_format.vi.all}}
           </label>
           <div class="col-sm-10">
             <input class="form-control" type="number" id="all" name="all" #name="ngModel"
-              [(ngModel)]="newCoupon.quantity.all" require min="1">
+              [(ngModel)]="newCoupon.quantity.all"  min="1" [value]="newCoupon.quantity.all">
           </div>
         </div>
 
         <div class="mb-3 row">
-          <label for="discount" class="col-sm-2 col-form-label">
+          <label for="value" class="col-sm-2 col-form-label">
             {{_format.vi.discount}}
           </label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" id="value" name="value">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="is_percentage" name="is_percentage" #name="ngModel"
-                [(ngModel)]="newCoupon.value">
-              <label class="form-check-label" for="is_percentage">
-                Phần trăm (%)
-              </label>
-            </div>
+            <input class="form-control" type="number" id="value" name="value" #name="ngModel"
+              [(ngModel)]="newCoupon.value"  min="1" [value]="newCoupon.value">
+              <div class="col">
+                <input type="checkbox" id="is_percentage" name="is_percentage" [(ngModel)]="newCoupon.is_percentage" [checked]="newCoupon.is_percentage" >
+                  Phần trăm
+              </div>
           </div>
         </div>
+
+     
+
 
         <div class="mb-3 row">
           <label for="membership" class="col-sm-2 col-form-label">
@@ -122,7 +126,9 @@
           </label>
           <div class="col-sm-10">
             <input class="form-control" id="membership" name="membership" #name="ngModel"
-              [(ngModel)]="newCoupon.membership" min="1" type="number">
+              [(ngModel)]="newCoupon.membership" 
+              min="1" type="number"
+              [value]="newCoupon.membership">
           </div>
         </div>
 
@@ -132,7 +138,8 @@
           </label>
           <div class="col-sm-10">
             <input class="form-control" id="min_order" name="min_order" #name="ngModel"
-              [(ngModel)]="newCoupon.min_order" min="1" type="number">
+              [(ngModel)]="newCoupon.min_order" min="1" type="number"
+              [value]="newCoupon.min_order">
           </div>
         </div>
         <div class="mb-3 row">
@@ -141,7 +148,8 @@
           </label>
           <div class="col-sm-10">
             <input class="form-control" id="max_discount" name="max_discount" #name="ngModel"
-              [(ngModel)]="newCoupon.max_discount" min="1" type="number">
+              [(ngModel)]="newCoupon.max_discount" min="1" type="number"
+              [value]="newCoupon.max_discount">
           </div>
         </div>
 
@@ -152,22 +160,27 @@
               {{_format.vi.valid_from}}
             </label>
 
-            <input class="form-control" type="date" id="valid_from" name="valid_from" #name="ngModel"
-              [ngModel]="newCoupon.valid_from">
+            <input class="form-control" type="date" id="valid_from" name="valid_from" 
+              [(ngModel)]="newCoupon.valid_from"
+              [value]="newCoupon.valid_from" useValueAsDate
+             >
           </div>
           <div class="col">
             <label for="date" class="form-label">
               {{_format.vi.valid_to}}
             </label>
-            <input class="form-control" type="date" id="valid_to" name="valid_to" #name="ngModel"
-              placeholder="yyyy-mm-dd" pattern="\d\d\d\d-\d\d-\d\d" [ngModel]="newCoupon.valid_to">
+            <input class="form-control" type="date" id="valid_to" name="valid_to" 
+              placeholder="yyyy-mm-dd" pattern="\d\d\d\d-\d\d-\d\d" [(ngModel)]="newCoupon.valid_to"
+              [value]="newCoupon.valid_to"
+              useValueAsDate>
           </div>
         </div>
 
         <div style="width: fit-content; margin: auto;"><button for="submit" class="btn btn-success"
-            style="margin: 10px;" (click)="postCoupon()">{{_format.vi.add_coupon}}</button></div>
+            style="margin: 10px;" (click)="addCoupon()">{{_format.vi.add_coupon}}</button></div>
+            
       </form>
-    </div>
+    </div> -->
   </main><!-- End #main -->
 
   <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i>

@@ -23,6 +23,7 @@ import { CustomerDetailComponent } from './customer-detail/customer-detail.compo
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
 import { NewCategoryComponent } from './new-category/new-category.component';
+import { NewCouponComponent } from './new-coupon/new-coupon.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { NewCategoryComponent } from './new-category/new-category.component';
     CustomerDetailComponent,
     ProductDetailComponent,
     UpdateCategoryComponent,
-    NewCategoryComponent
+    NewCategoryComponent,
+    NewCouponComponent
   ],
   imports: [
     BrowserModule,
