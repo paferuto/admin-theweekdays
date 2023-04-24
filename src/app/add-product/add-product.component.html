@@ -1,204 +1,202 @@
+<p>{{errMessage}}</p>
+
 <body>
 
   <!-- ======= Header ======= -->
 
 
   <!-- ======= Sidebar ======= -->
+
   <main id="main" class="main">
 
     <div class="pagetitle">
+      <p>{{errMessage}}</p>
       <h1>Product</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
           <li class="breadcrumb-item" [routerLink]="['/product']">Product</li>
-          <li class="breadcrumb-item active">Add new product</li>
+          <li class="breadcrumb-item active">Name</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
-    <div style="width: 100%;">
-      <section>
-        <div class="row">
-          <div>
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Add product</h5>
 
-                <!-- General Form Elements -->
-                <form>
-                  <div class="row mb-3">
-                    <label for="inputText" class="col-sm-2 col-form-label">Product name</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" name="name" required>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Category</label>
-                    <div class="col-sm-10">
-                      <select class="form-select" aria-label="Default select example">
-                        <option selected>select a category</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="inputText" class="col-sm-2 col-form-label">Excerpt</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" required>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="inputText" class="col-sm-2 col-form-label">Description</label>
-                    <div class="col-sm-10">
-                      <textarea class="form-control" style="height: 200px;" required></textarea>
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="inputNumber" class="col-sm-2 col-form-label">Thumbnail</label>
-                    <div class="col-sm-10">
-                      <input class="form-control" type="file" id="formFile">
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="inputNumber" class="col-sm-2 col-form-label">Image 1</label>
-                    <div class="col-sm-10">
-                      <input class="form-control" type="file" id="formFile">
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="inputNumber" class="col-sm-2 col-form-label">Image 2</label>
-                    <div class="col-sm-10">
-                      <input class="form-control" type="file" id="formFile">
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="inputNumber" class="col-sm-2 col-form-label">Image 3</label>
-                    <div class="col-sm-10">
-                      <input class="form-control" type="file" id="formFile">
-                    </div>
-                  </div>
-                  <div>
-                    <div class="row mb-3">
-                      <label for="inputText" class="col-sm-2 col-form-label">Price</label>
-                      <div class="col-sm-10">
-                        <input type="number" class="form-control" required>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="{{divClass}}">
-                    <div class="row mb-3">
-                      <label for="inputText" class="col-sm-2 col-form-label">Original price</label>
-                      <div class="col-sm-10">
-                        <input type="number" class="form-control" required>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <div class="col">
-                      <input type="checkbox" id="chkSale" (click)="showDiv()"> Product is on sale
-                    </div>
-                    <div class="col">
-                      <input type="checkbox" id="chkStock">
-                      Product is in stock
-                    </div>
-                  </div>
-                  <div>
-                    <div class="row mb-3">
-                      <label for="inputText" class="col-sm-2 col-form-label" required>Min quantity</label>
-                      <div class="col-sm-10">
-                        <input type="number" class="form-control">
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="row mb-3">
-                      <label for="inputText" class="col-sm-2 col-form-label" required>Max quantity</label>
-                      <div class="col-sm-10">
-                        <input type="number" class="form-control">
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="mb-3">
-                      <label>Variants</label>
-                      <div>
-                        <table class="table table-hover" style="width: fit-content; margin: auto;">
-                          <thead>
-                            <tr>
-                              <th>Size</th>
-                              <th>Quantity</th>
-                              <th>Active</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>S</td>
-                              <td><input type="number"></td>
-                              <td><input type="checkbox"></td>
-                            </tr>
-                            <tr>
-                              <td>M</td>
-                              <td><input type="number"></td>
-                              <td><input type="checkbox"></td>
-                            </tr>
-                            <tr>
-                              <td>L</td>
-                              <td><input type="number"></td>
-                              <td><input type="checkbox"></td>
-                            </tr>
-                            <tr>
-                              <td>XL</td>
-                              <td><input type="number"></td>
-                              <td><input type="checkbox"></td>
-                            </tr>
-                            <tr>
-                              <td>XXL</td>
-                              <td><input type="number"></td>
-                              <td><input type="checkbox"></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-10" style="width: fit-content; margin: auto;">
-                      <button type="submit" class="btn btn-success" style="width: 100px;">Add</button>
-                    </div>
-                  </div>
-
-                </form><!-- End General Form Elements -->
-
-              </div>
-            </div>
-
+    <div class="shadow-sm p-3 mb-5 bg-body rounded">
+      <h3>Update product {{product.product_id}}</h3>
+      <form>
+        <div class="row mb-3">
+          <label for="inputText" class="col-sm-2 col-form-label">Product name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="name" required [(ngModel)]="product.name"
+              [value]="product.name">
           </div>
         </div>
-      </section>
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label">Category</label>
+          <div class="col-sm-10">
+            <select class="form-select" aria-label="Default select example" name="category"
+              [(ngModel)]="product.category">
+              <option *ngFor="let cate of categories" [value]="cate._id">{{ cate.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="inputText" class="col-sm-2 col-form-label">Excerpt</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" required name="excerpt" [(ngModel)]="product.excerpt"
+              [value]="product.excerpt">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="inputText" class="col-sm-2 col-form-label">Description</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" style="height: 200px;" name="description" required
+              [(ngModel)]="product.description" [value]="product.description"></textarea>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="inputNumber" class="col-sm-2 col-form-label">Image</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="file" id="formFile" name="pic1" (change)="onFileSelected($event)">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="inputNumber" class="col-sm-2 col-form-label">Image</label>
+          <div class="col-sm-2" *ngFor="let i of product.image; let index = index" [(ngModel)]="product.image">
+            <div>
+              <div class="row mb-3">
+                <button (click)="deleteImage(index)" class="position-absolute top-1 end-1 btn btn-danger"
+                  style="width: fit-content; height: fit-content;"><i class="fas fa-times"></i></button>
+                <img src="{{i}}" class="col sm-2" alt="" width="100px" height="100px" style="object-fit: cover;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="row mb-3">
+            <label for="inputText" class="col-sm-2 col-form-label">Original price</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" name="original_price" required
+                [(ngModel)]="product.original_price" [value]="product.original_price">
+            </div>
+          </div>
+        </div>
+        <div class="{{divClass}}">
+          <div class="row mb-3">
+            <label for="inputText" class="col-sm-2 col-form-label">Price</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" required [(ngModel)]="product.price" name="price">
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <input type="checkbox" id="chkSale" name="onsale" [(ngModel)]="product.on_sale" [checked]="product.on_sale"
+              (change)="showDiv()">
+            Product is on sale
+          </div>
+          <div class="col">
+            <input type="checkbox" id="chkStock" name="in_stock" [(ngModel)]="product.in_stock"
+              [checked]="product.in_stock">
+            Product is in stock
+          </div>
+        </div>
+        <div>
+          <div class="row mb-3">
+            <label for="inputText" class="col-sm-2 col-form-label" required>Min quantity</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" [(ngModel)]="product.min_qty" [value]="product.min_qty"
+                name="min_qty">
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="row mb-3">
+            <label for="inputText" class="col-sm-2 col-form-label" required>Max quantity</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" [value]="product.max_qty" [(ngModel)]="product.max_qty"
+                name="max_qty">
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="mb-3">
+            <label>Variants</label>
+            <div>
+              <table class="table table-hover" style="width: fit-content; margin: auto;">
+                <thead>
+                  <tr>
+                    <th>Size</th>
+                    <th>Quantity</th>
+                    <th>Active</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>S</td>
+                    <td><input name="s_qty" type="number" [(ngModel)]="product.variants[0].available_quantity"
+                        [value]="product.variants[1].available_quantity"></td>
+                    <td><input name="s_stock" type="checkbox" [(ngModel)]="product.variants[0].in_stock"
+                        [checked]="product.variants[1].in_stock"></td>
+                  </tr>
+                  <tr>
+                    <td>M</td>
+                    <td><input name="M_qty" type="number" [(ngModel)]="product.variants[1].available_quantity"
+                        [value]="product.variants[1].available_quantity"></td>
+                    <td><input name="M_stock" type="checkbox" [(ngModel)]="product.variants[1].in_stock"
+                        [checked]="product.variants[1].in_stock"></td>
+                  </tr>
+                  <tr>
+                    <td>L</td>
+                    <td><input name="L_qty" type="number" [(ngModel)]="product.variants[2].available_quantity"
+                        [value]="product.variants[2].available_quantity"></td>
+                    <td><input name="L_stock" type="checkbox" [(ngModel)]="product.variants[2].in_stock"
+                        [checked]="product.variants[2].in_stock"></td>
+                  </tr>
+                  <tr>
+                    <td>XL</td>
+                    <td><input name="XL_qty" type="number" [(ngModel)]="product.variants[3].available_quantity"
+                        [value]="product.variants[3].available_quantity"></td>
+                    <td><input name="XL_stock" type="checkbox" [(ngModel)]="product.variants[3].in_stock"
+                        [checked]="product.variants[3].in_stock"></td>
+                  </tr>
+                  <tr>
+                    <td>XXL</td>
+                    <td><input name="XXL_qty" type="number" [(ngModel)]="product.variants[4].available_quantity"
+                        [value]="product.variants[4].available_quantity"></td>
+                    <td><input name="XXL_stock" type="checkbox" [(ngModel)]="product.variants[4].in_stock"
+                        [checked]="product.variants[4].in_stock"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div style="width: fit-content; margin: auto;">
+          <button for="submit" class="btn btn-success" style="margin: 10px;" (click)="confirmUpdate()">Change</button>
+          <!--Nút gọi hàm update-->
+          <button for="submit" class="btn btn-success" style="margin: 10px;">Clear
+            changes</button><!--Nút gọi hàm xóa các thay đổi và reload trang-->
+        </div>
+
+      </form><!-- End General Form Elements -->
+
     </div>
-
-
-
   </main><!-- End #main -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
-  </footer><!-- End Footer -->
-
+  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i>
+  </a> -->
 </body>
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+  <div class="copyright">
+    &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+  </div>
+  <div class="credits">
+    <!-- All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+  </div>
+</footer><!-- End Footer -->
