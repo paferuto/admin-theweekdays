@@ -3,6 +3,7 @@ import { Product } from '../product';
 import { ProductService } from 'src/services/product.service';
 import { CategoryService } from 'src/services/category.service';
 import { ActivatedRoute } from '@angular/router';
+import { Category } from '../category';
 
 @Component({
   selector: '[app-add-product]',
@@ -13,7 +14,7 @@ export class AddProductComponent  implements OnInit {
   product: Product = new Product();
   errMessage: any;
   divClass: any;
-  categories: any;
+  categories = new Array<Category>;
   constructor(private route: ActivatedRoute, private _service: ProductService, private category_service: CategoryService) { }
 
   ngOnInit(): void {

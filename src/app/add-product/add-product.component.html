@@ -16,7 +16,7 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
           <li class="breadcrumb-item" [routerLink]="['/product']">Product</li>
-          <li class="breadcrumb-item active">Name</li>
+          <li class="breadcrumb-item active">New product</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -24,6 +24,13 @@
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
       <h3>Update product {{product.product_id}}</h3>
       <form>
+        <div class="row mb-3">
+          <label for="inputText" class="col-sm-2 col-form-label">Product ID</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="id" required [(ngModel)]="product.product_id"
+              [value]="product.product_id">
+          </div>
+        </div>
         <div class="row mb-3">
           <label for="inputText" class="col-sm-2 col-form-label">Product name</label>
           <div class="col-sm-10">
@@ -76,7 +83,7 @@
           <div class="row mb-3">
             <label for="inputText" class="col-sm-2 col-form-label">Original price</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" name="original_price" required
+              <input type="number" min="1" class="form-control" name="original_price" required
                 [(ngModel)]="product.original_price" [value]="product.original_price">
             </div>
           </div>
@@ -85,7 +92,7 @@
           <div class="row mb-3">
             <label for="inputText" class="col-sm-2 col-form-label">Price</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" required [(ngModel)]="product.price" name="price">
+              <input type="number" min="1" class="form-control" required [(ngModel)]="product.price" name="price">
             </div>
           </div>
         </div>
@@ -105,7 +112,7 @@
           <div class="row mb-3">
             <label for="inputText" class="col-sm-2 col-form-label" required>Min quantity</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" [(ngModel)]="product.min_qty" [value]="product.min_qty"
+              <input type="number" min="1" class="form-control" [(ngModel)]="product.min_qty" [value]="product.min_qty"
                 name="min_qty">
             </div>
           </div>
@@ -114,7 +121,7 @@
           <div class="row mb-3">
             <label for="inputText" class="col-sm-2 col-form-label" required>Max quantity</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" [value]="product.max_qty" [(ngModel)]="product.max_qty"
+              <input type="number" min="1" class="form-control" [value]="product.max_qty" [(ngModel)]="product.max_qty"
                 name="max_qty">
             </div>
           </div>
@@ -134,35 +141,35 @@
                 <tbody>
                   <tr>
                     <td>S</td>
-                    <td><input name="s_qty" type="number" [(ngModel)]="product.variants[0].available_quantity"
+                    <td><input name="s_qty" type="number" min="0" [(ngModel)]="product.variants[0].available_quantity"
                         [value]="product.variants[1].available_quantity"></td>
                     <td><input name="s_stock" type="checkbox" [(ngModel)]="product.variants[0].in_stock"
                         [checked]="product.variants[1].in_stock"></td>
                   </tr>
                   <tr>
                     <td>M</td>
-                    <td><input name="M_qty" type="number" [(ngModel)]="product.variants[1].available_quantity"
+                    <td><input name="M_qty" type="number" min="0" [(ngModel)]="product.variants[1].available_quantity"
                         [value]="product.variants[1].available_quantity"></td>
                     <td><input name="M_stock" type="checkbox" [(ngModel)]="product.variants[1].in_stock"
                         [checked]="product.variants[1].in_stock"></td>
                   </tr>
                   <tr>
                     <td>L</td>
-                    <td><input name="L_qty" type="number" [(ngModel)]="product.variants[2].available_quantity"
+                    <td><input name="L_qty" type="number" min="0" [(ngModel)]="product.variants[2].available_quantity"
                         [value]="product.variants[2].available_quantity"></td>
                     <td><input name="L_stock" type="checkbox" [(ngModel)]="product.variants[2].in_stock"
                         [checked]="product.variants[2].in_stock"></td>
                   </tr>
                   <tr>
                     <td>XL</td>
-                    <td><input name="XL_qty" type="number" [(ngModel)]="product.variants[3].available_quantity"
+                    <td><input name="XL_qty" type="number" min="0" [(ngModel)]="product.variants[3].available_quantity"
                         [value]="product.variants[3].available_quantity"></td>
                     <td><input name="XL_stock" type="checkbox" [(ngModel)]="product.variants[3].in_stock"
                         [checked]="product.variants[3].in_stock"></td>
                   </tr>
                   <tr>
                     <td>XXL</td>
-                    <td><input name="XXL_qty" type="number" [(ngModel)]="product.variants[4].available_quantity"
+                    <td><input name="XXL_qty" type="number" min="0" [(ngModel)]="product.variants[4].available_quantity"
                         [value]="product.variants[4].available_quantity"></td>
                     <td><input name="XXL_stock" type="checkbox" [(ngModel)]="product.variants[4].in_stock"
                         [checked]="product.variants[4].in_stock"></td>
