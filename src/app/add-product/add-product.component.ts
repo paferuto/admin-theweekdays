@@ -4,7 +4,9 @@ import { ProductService } from 'src/services/product.service';
 import { CategoryService } from 'src/services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '../category';
-import { FormatService } from 'src/services/format.service';
+import { FormatService } from 'src/services/format.service';import { Title } from '@angular/platform-browser';
+
+
 
 @Component({
   selector: '[app-add-product]',
@@ -19,9 +21,10 @@ export class AddProductComponent implements OnInit {
   divClass: string = ''; // show or hide sale price input
   categories = new Array<Category>; // list of all categories
 
-  constructor(private router: Router, private _service: ProductService, private category_service: CategoryService, public _format: FormatService) {
+  constructor(private router: Router, private _service: ProductService, private category_service: CategoryService, public _format: FormatService, private _title: Title ) {
     // router to navigate to product list page after adding a product
     // _format to format display
+    this._title.setTitle(this._format.vi.create_product);
   }
 
   reset() {

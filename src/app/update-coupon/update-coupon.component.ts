@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FormatService } from 'src/services/format.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: '[app-update-coupon]',
@@ -21,7 +22,8 @@ export class UpdateCouponComponent {
     this.coupon = coupon;
   }
 
-  constructor(private _service: CouponService, private _router: Router, private _activerouter: ActivatedRoute, public _format: FormatService) {
+  constructor(private _service: CouponService, private _router: Router, private _activerouter: ActivatedRoute, public _format: FormatService, private _title: Title) {
+    this._title.setTitle(this._format.vi.update_coupon);
     if (this._activerouter.snapshot.params['id']) {
       this.id = this._activerouter.snapshot.params['id'];
       this._service.getCouponById(this.id).subscribe(
@@ -63,18 +65,15 @@ export class UpdateCouponComponent {
   }
 
   updateCoupon() {
+    this.coupon.is_active = this.coupon.is_active == 'true';
     this._service.updateCoupon(this.id, this.coupon).subscribe({
-      next: (data) => {
-        this.errMessage = this._format.vi.success_modify;
-        // snackbar for 0.5s and redirect to category page
+      next: (data) => { this.coupon = data
         setTimeout(() => {
           this._router.navigate(['/coupon']);
         }, 500);
+        console.log(this.coupon);
       },
-      error: (err) => { this.errMessage = err },
+      error: (err) => { this.errMessage = err }
     })
   }
-  
-
-  
 }

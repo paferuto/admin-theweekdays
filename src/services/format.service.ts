@@ -17,6 +17,12 @@ export class FormatService {
     collection: 'Bộ sưu tập',
     coupon: 'Mã giảm giá',
     logout: 'Đăng xuất',
+    detail_product: 'Chi tiết sản phẩm',
+    detail_order: 'Chi tiết đơn hàng',
+    detail_customer: 'Chi tiết khách hàng',
+    create_collection: 'Thêm sưu tập',
+    detail_collection: 'Chi tiết sưu tập',
+    create_product: 'Thêm sản phẩm',
 
     // attribute
     id: 'ID',
@@ -57,6 +63,7 @@ export class FormatService {
     update_product: 'Cập nhật sản phẩm',
     add_coupon: 'Thêm mã giảm giá',
     update_coupon: 'Cập nhật mã giảm giá',
+  
 
     // confirmation
     confirm_add_product: 'Bạn có chắc chắn muốn thêm sản phẩm này không?',
@@ -72,8 +79,14 @@ export class FormatService {
     fail_modify: 'Sửa thất bại',
     success_delete: 'Xóa thành công',
     fail_delete: 'Xóa thất bại',
+
     success_add: 'Thêm thành công',
     fail_add: 'Thêm thất bại',
+
+    membership: 'Thành viên',
+    min_order: 'Đơn hàng tối thiểu',
+    max_discount: 'Giảm tối đa',
+
 
     // others
     default: 'Mặc định',
@@ -99,9 +112,9 @@ export class FormatService {
 
   // coupon type format
   couponTypeFormat(is_percentage: boolean, value: number) {
-   if ( is_percentage ) {
-     return `${value}%`;
-   } else {
+    if (is_percentage) {
+      return `${value}%`;
+    } else {
       return this.formatCurrency(value);
     }
   }
@@ -109,14 +122,15 @@ export class FormatService {
   // format currency
   formatCurrency(value: number) {
     return value.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+  }
+
+  //date format dd/mm/yyyy from ISOstring
+  formatDate(date: string) {
+
+    const d = new Date(date);
+    const day = d.getDate();
+    const month = d.getMonth() + 1;
+    const year = d.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
 }
-
-//date format dd/mm/yyyy from ISOstring
-formatDate(date: string) {
-
-  const d = new Date(date);
-  const day = d.getDate();
-  const month = d.getMonth() + 1;
-  const year = d.getFullYear();
-  return `${day}/${month}/${year}`;
-}}
