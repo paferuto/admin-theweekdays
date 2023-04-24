@@ -73,7 +73,6 @@ export class ProductService {
       retry(3),
       catchError(this.handleError))
   }
-
   // handle error
   handleError(error: HttpErrorResponse) {
     return throwError(() => new Error(error.message))

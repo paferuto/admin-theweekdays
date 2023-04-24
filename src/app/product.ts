@@ -13,7 +13,7 @@ export class Product {
     public min_qty: number= 0,
     public max_qty: number =0,
     public image: Array<string> = [],
-    public category: string = "",
+    public category: string = "64429a57f9b439efa26ecaa4",
     public variants: Array<variant> = []
   ) { }
 }

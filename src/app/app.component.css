@@ -9,6 +9,8 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
 :root {
   scroll-behavior: smooth;
 }
