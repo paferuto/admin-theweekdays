@@ -4,9 +4,8 @@ import { ProductService } from 'src/services/product.service';
 import { CategoryService } from 'src/services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '../category';
-import { FormatService } from 'src/services/format.service';import { Title } from '@angular/platform-browser';
-
-
+import { FormatService } from 'src/services/format.service'; import { Title } from '@angular/platform-browser';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: '[app-add-product]',
@@ -21,7 +20,7 @@ export class AddProductComponent implements OnInit {
   divClass: string = ''; // show or hide sale price input
   categories = new Array<Category>; // list of all categories
 
-  constructor(private router: Router, private _service: ProductService, private category_service: CategoryService, public _format: FormatService, private _title: Title ) {
+  constructor(private router: Router, private _service: ProductService, private category_service: CategoryService, public _format: FormatService, private _title: Title, private toastr: ToastrService) {
     // router to navigate to product list page after adding a product
     // _format to format display
     this._title.setTitle(this._format.vi.create_product);
@@ -66,6 +65,7 @@ export class AddProductComponent implements OnInit {
 
   onchangeProductIDCheck() {
     // check if product id is unique
+    this.product.product_id = this.product.product_id.toUpperCase();
     if (this.products_id_list.includes(this.product.product_id)) {
       return true;
     } else {
@@ -76,19 +76,22 @@ export class AddProductComponent implements OnInit {
   confirmCreate() {
     // check if product id is unique
     if (this.onchangeProductIDCheck()) {
-      alert(this._format.vi.validate_add_product_id);
+      // alert(this._format.vi.validate_add_product_id);
+      this.toastr.error(this._format.vi.validate_add_product_id);
       return;
     }
 
     // check if all required fields are filled
     if (this.product.product_id == "" || this.product.name == "" || this.product.excerpt == "" || this.product.description == "" || this.product.original_price == 0) {
-      alert(this._format.vi.require_fill_all);
+      // alert(this._format.vi.require_fill_all);
+      this.toastr.error(this._format.vi.require_fill_all);
       return;
     }
 
     // check if image is uploaded
     if (this.product.image.length == 0) {
-      alert(this._format.vi.require_fill_image);
+      // alert(this._format.vi.require_fill_image);
+      this.toastr.error(this._format.vi.require_fill_image);
       return;
     }
 
@@ -96,15 +99,17 @@ export class AddProductComponent implements OnInit {
     if (this.product.on_sale == false) {
       this.product.price = this.product.original_price;
     } else
-    // check if sale price is greater than original price
-    if (this.product.price >= this.product.original_price) {
-      alert(this._format.vi.validate_add_product_price);
-      return;
-    }
+      // check if sale price is greater than original price
+      if (this.product.price >= this.product.original_price) {
+        // alert(this._format.vi.validate_add_product_price);
+        this.product.price = this.product.original_price;
+        return;
+      }
 
     // check if min_qty and max_qty are filled and suitable
     if (this.product.min_qty >= this.product.max_qty) {
-      alert(this._format.vi.validate_add_product_quantity);
+      // alert(this._format.vi.validate_add_product_quantity);
+      this.toastr.error(this._format.vi.validate_add_product_quantity);
       return;
     }
 
@@ -118,7 +123,7 @@ export class AddProductComponent implements OnInit {
     // add product to database
     this._service.postProduct(this.product).subscribe({
       next: (data) => {
-        alert(this._format.vi.success_add);
+        this.toastr.success(this._format.vi.success_add);
         this.router.navigate(['/product']);
       },
       error: (err) => { this.errMessage = err; alert(this._format.vi.fail_add); }

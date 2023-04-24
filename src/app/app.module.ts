@@ -23,6 +23,7 @@ import { CustomerDetailComponent } from './customer-detail/customer-detail.compo
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
 import { NewCategoryComponent } from './new-category/new-category.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,14 @@ import { NewCategoryComponent } from './new-category/new-category.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CKEditorModule
+    CKEditorModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-top-right',
+      progressBar: true,
+      preventDuplicates: true,
+      closeButton: true,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
