@@ -67,25 +67,15 @@ export class ProductDetailComponent implements OnInit {
   }
 
   confirmUpdate() {
-    if (this.product.name == "" || this.product.excerpt == "" || this.product.description == "") {
-      alert("Please fill in all the required fields");
+    if (this.product.name == "" ||
+    this.product.product_id == "" ||
+    this.product.original_price == 0 ||
+    this.product.price == 0 ||
+    this.product.min_qty > this.product.max_qty ||
+    this.product.excerpt == "" ||
+    this.product.description == "") {
+      alert("Data is missing or invalid. Please check again.");
       return;
-    }
-    if (this.product.price > this.product.original_price) {
-      alert("Sale price cannot be higher than original price");
-      return;
-    }
-    if (this.product.min_qty > this.product.max_qty) {
-      alert("Minimum quantity cannot be higher than maximum quantity");
-      return;
-    }
-    if (this.product.on_sale == false) {
-      this.product.price = this.product.original_price;
-    }
-    for (let i = 0; i < this.product.variants.length; i++) {
-      if (this.product.variants[i].in_stock == false) {
-        this.product.variants[i].available_quantity = 0;
-      }
     }
     if (confirm("Are you sure you want to update this product?")) {
       this.updateProduct();
