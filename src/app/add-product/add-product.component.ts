@@ -61,6 +61,16 @@ export class AddProductComponent  implements OnInit {
   }
 
   addProduct() {
+    if (this.product.name == "" ||
+    this.product.product_id == "" ||
+    this.product.original_price == 0 ||
+    this.product.price == 0 ||
+    this.product.min_qty > this.product.max_qty ||
+    this.product.excerpt == "" ||
+    this.product.description == "") {
+      alert("Data is missing or invalid. Please check again.");
+      return;
+    }
     this._service.postProduct(this.product).subscribe({
       next: (data) => {
         alert("Product added successfully");

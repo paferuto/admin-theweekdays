@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/services/product.service';
 import { Product } from '../product';
 import { CategoryService } from 'src/services/category.service';
@@ -16,7 +16,7 @@ export class ProductDetailComponent implements OnInit {
   divClass: any;
   category: any;
   categories: any;
-  constructor(private route: ActivatedRoute, private _service: ProductService, private category_service: CategoryService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private _service: ProductService, private category_service: CategoryService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -67,29 +67,21 @@ export class ProductDetailComponent implements OnInit {
   }
 
   confirmUpdate() {
-    if (this.product.name == "" || this.product.excerpt == "" || this.product.description == "") {
-      alert("Please fill in all the required fields");
+    if (this.product.name == "" ||
+    this.product.product_id == "" ||
+    this.product.original_price == 0 ||
+    this.product.price == 0 ||
+    this.product.min_qty > this.product.max_qty ||
+    this.product.excerpt == "" ||
+    this.product.description == "") {
+      alert("Data is missing or invalid. Please check again.");
       return;
-    }
-    if (this.product.price > this.product.original_price) {
-      alert("Sale price cannot be higher than original price");
-      return;
-    }
-    if (this.product.min_qty > this.product.max_qty) {
-      alert("Minimum quantity cannot be higher than maximum quantity");
-      return;
-    }
-    if (this.product.on_sale == false) {
-      this.product.price = this.product.original_price;
-    }
-    for (let i = 0; i < this.product.variants.length; i++) {
-      if (this.product.variants[i].in_stock == false) {
-        this.product.variants[i].available_quantity = 0;
-      }
     }
     if (confirm("Are you sure you want to update this product?")) {
       this.updateProduct();
+      // navigate to product list
     }
+    this.goToProductList();
   }
   updateProduct() {
     this._service.updateProduct(this.id, this.product).subscribe({
@@ -99,6 +91,10 @@ export class ProductDetailComponent implements OnInit {
       },
       error: (err) => { this.errMessage = err }
     });
+  }
+
+  goToProductList() {
+    this.router.navigate(['/product']);
   }
 
   onFileSelected(event: any) {
@@ -117,4 +113,9 @@ export class ProductDetailComponent implements OnInit {
     this.product.image.splice(index, 1);
   }
 
+  confirmClearChanges() {
+    if (confirm("Are you sure you want to clear all changes?")) {
+      this.ngOnInit();
+    }
+  }
 }

@@ -38,7 +38,7 @@
             <td>{{p.price}}</td>
             <td>
               <button class="btn btn-success" [routerLink]="['/product/',p._id]">Modify</button>
-              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-danger" (click)="confirmDelete(p._id)">Delete</button>
             </td>
           </tr>
         </tbody>
