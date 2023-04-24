@@ -16,7 +16,7 @@ import { CollectionDetailComponent } from './collection-detail/collection-detail
 import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
-import { NewCategoryComponent } from './new-category/new-category.component';
+import { NewCouponComponent } from './new-coupon/new-coupon.component';
 const routes: Routes = [
   { path: "", component: AdminDashboardComponent },
   { path: "category", component: AdminCategoryComponent },
@@ -35,6 +35,7 @@ const routes: Routes = [
   { path: "collection/detail", component: CollectionDetailComponent }, //Khi đã có API thì viết lại đoạn này thành collection/:id
   { path:"customer/id", component:CustomerDetailComponent}, //Khi đã có API thì viết lại đoạn này thành customer/:id
   { path:"product/:id", component:ProductDetailComponent}, //Khi đã có API thì viết lại thành product/:id
+  { path:"coupon/new", component:NewCouponComponent}
 ];
 
 @NgModule({
