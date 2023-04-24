@@ -24,6 +24,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { UpdateCategoryComponent } from './update-category/update-category.component';
 import { NewCategoryComponent } from './new-category/new-category.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NewCouponComponent } from './new-coupon/new-coupon.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ToastrModule } from 'ngx-toastr';
     CustomerDetailComponent,
     ProductDetailComponent,
     UpdateCategoryComponent,
-    NewCategoryComponent
+    NewCategoryComponent,
+    NewCouponComponent
   ],
   imports: [
     BrowserModule,
