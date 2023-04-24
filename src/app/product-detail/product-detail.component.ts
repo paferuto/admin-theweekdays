@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/services/product.service';
 import { Product } from '../product';
 import { CategoryService } from 'src/services/category.service';
@@ -16,7 +16,7 @@ export class ProductDetailComponent implements OnInit {
   divClass: any;
   category: any;
   categories: any;
-  constructor(private route: ActivatedRoute, private _service: ProductService, private category_service: CategoryService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private _service: ProductService, private category_service: CategoryService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -89,7 +89,9 @@ export class ProductDetailComponent implements OnInit {
     }
     if (confirm("Are you sure you want to update this product?")) {
       this.updateProduct();
+      // navigate to product list
     }
+    this.goToProductList();
   }
   updateProduct() {
     this._service.updateProduct(this.id, this.product).subscribe({
@@ -99,6 +101,10 @@ export class ProductDetailComponent implements OnInit {
       },
       error: (err) => { this.errMessage = err }
     });
+  }
+
+  goToProductList() {
+    this.router.navigate(['/product']);
   }
 
   onFileSelected(event: any) {
@@ -117,4 +123,9 @@ export class ProductDetailComponent implements OnInit {
     this.product.image.splice(index, 1);
   }
 
+  confirmClearChanges() {
+    if (confirm("Are you sure you want to clear all changes?")) {
+      this.ngOnInit();
+    }
+  }
 }
