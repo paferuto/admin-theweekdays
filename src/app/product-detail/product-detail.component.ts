@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/services/product.service';
 import { Product } from '../product';
 import { CategoryService } from 'src/services/category.service';
+import { FormatService } from 'src/services/format.service';
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: '[app-product-detail]',
@@ -16,7 +19,9 @@ export class ProductDetailComponent implements OnInit {
   divClass: any;
   category: any;
   categories: any;
-  constructor(private route: ActivatedRoute, private router: Router, private _service: ProductService, private category_service: CategoryService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private _service: ProductService, private category_service: CategoryService, private _title: Title, public _format: FormatService) {
+    this._title.setTitle(this._format.vi.detail_product);
+   }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
