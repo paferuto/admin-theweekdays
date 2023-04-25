@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { CollectionService } from 'src/services/collection.service';
 import { Collection } from '../collection';
 import { Location } from '@angular/common';
+import { Title } from '@angular/platform-browser';
+import { FormatService } from 'src/services/format.service';
+
 
 @Component({
   selector: 'app-collection',
@@ -9,8 +12,11 @@ import { Location } from '@angular/common';
   styleUrls: ['./collection.component.css']
 })
 export class CollectionComponent {
+
   collections = new Array<Collection>();
-  constructor(private _service: CollectionService) {
+  
+  constructor(private _service: CollectionService, private _title: Title, public _format: FormatService) {
+    this._title.setTitle(this._format.vi.collection);
     this._service.getCollections().subscribe(
       (data: any) => {
         this.collections = data;
@@ -48,5 +54,4 @@ export class CollectionComponent {
       }
     );
   }
-
 }

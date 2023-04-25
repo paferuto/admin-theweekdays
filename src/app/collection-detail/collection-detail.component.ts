@@ -3,19 +3,24 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Collection, Lookbook } from '../collection';
 import { CollectionService } from 'src/services/collection.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { FormatService } from 'src/services/format.service';
+
 @Component({
   selector: 'app-collection-detail',
   templateUrl: './collection-detail.component.html',
   styleUrls: ['./collection-detail.component.css']
 })
 export class CollectionDetailComponent {
+
   id: any;
   collection: Collection = new Collection();
   public Editor: any = ClassicEditor;
   lookbook = new Lookbook();
   products: any;
-  constructor(private _service: CollectionService, private route: ActivatedRoute, private router: Router, public _format: FormatService) {
+
+  constructor(private _service: CollectionService, private route: ActivatedRoute, private router: Router, private _title: Title, public _format: FormatService) {
+    this._title.setTitle(this._format.vi.detail_collection);
     this.id = this.route.snapshot.paramMap.get('id');
     this._service.getCollectionById(this.id).subscribe(
       (data: any) => {

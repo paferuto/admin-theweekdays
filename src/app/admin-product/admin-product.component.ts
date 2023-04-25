@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from 'src/services/product.service';
+import { Title } from '@angular/platform-browser';
+import { FormatService } from 'src/services/format.service';
 
 
 @Component({
@@ -10,7 +12,8 @@ import { ProductService } from 'src/services/product.service';
 })
 export class AdminProductComponent {
   product_list: any;
-  constructor(private _service: ProductService) {
+  constructor(private _service: ProductService, public _format: FormatService, private _title: Title) {
+    this._title.setTitle(this._format.vi.product);
     this._service.getProducts().subscribe(
       (data: any) => {
         this.product_list = data;

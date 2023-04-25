@@ -17,7 +17,7 @@
         <div class="mb-3 row">
           <label for="name" class="col-sm-2 col-form-label">{{_format.vi.name}}</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" id="name" name="name" [ngModel]="coupon.title">
+            <input class="form-control" type="text" id="name" name="name" [(ngModel)]="coupon.title">
           </div>
         </div>
 
@@ -26,7 +26,7 @@
             {{_format.vi.coupon}}
           </label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" id="coupon" name="coupon" [ngModel]="coupon.coupon_code">
+            <input class="form-control" type="text" id="coupon" name="coupon" [(ngModel)]="coupon.coupon_code">
           </div>
         </div>
 
@@ -35,9 +35,9 @@
           <label for="name" class="col-sm-2 col-form-label">{{_format.vi.is_active}}</label>
           <div class="col-sm-10">
             <select id="is_active" name="is_active" class="form-control" required [(ngModel)]="coupon.is_active">
-              <option value="" selected disabled>-- Chọn trạng thái --</option>
-              <option value="true" [selected]="coupon.is_active === 'true'">Hiệu lực</option>
-              <option value="false" [selected]="coupon.is_active === 'false'">Không hiệu lực</option>
+              <option value={{selectedCoupon.is_active}} selected disabled>{{_format.couponActiveStatus(selectedCoupon.is_active)}} ({{_format.vi.default}})</option>
+              <option value=true >Hiệu lực</option>
+              <option value=false >Không hiệu lực</option>
             </select>
             
           </div>
@@ -48,7 +48,7 @@
             {{_format.vi.used}}
           </label>
           <div class="col-sm-10">
-            <input class="form-control" type="number" id="used" name="used" [ngModel]="coupon.quantity.used" required
+            <input class="form-control" type="number" id="used" name="used" [(ngModel)]="coupon.quantity.used" required
               disabled>
           </div>
         </div>
@@ -58,7 +58,7 @@
             {{_format.vi.all}}
           </label>
           <div class="col-sm-10">
-            <input class="form-control" type="number" id="all" name="all" [ngModel]="coupon.quantity.all" required
+            <input class="form-control" type="number" id="all" name="all" [(ngModel)]="coupon.quantity.all" required
               disabled>
           </div>
         </div>
@@ -68,7 +68,7 @@
             {{_format.vi.discount}}
           </label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" id="discount" name="discount" [ngModel]="coupon.value">
+            <input class="form-control" type="text" id="discount" name="discount" [(ngModel)]="coupon.value">
           </div>
         </div>
 
@@ -86,12 +86,12 @@
             <label for="date" class="form-label">
               {{_format.vi.valid_to}}
             </label>
-            <input class="form-control" type="date" id="valid_to" name="valid_to"
-              [ngModel]="coupon.valid_to | date:'yyyy-MM-dd'" (ngModelChange)="coupon.valid_to = $event">
+            <input class="form-control" type="date" id="valid_to" name="valid_to" placeholder="yyyy-mm-dd" pattern="\d\d\d\d-\d\d-\d\d"
+                [ngModel]="coupon.valid_to" (ngModelChange)="coupon.valid_to = $event">
           </div>
         </div>
         <div>
-        <button class="mt-3 form-control btn btn-success" (click)="updateCoupon()">{{_format.vi.add_coupon}}</button>
+        <button class="mt-3 form-control btn btn-success" (click)="updateCoupon()">{{_format.vi.update_coupon}}</button>
         </div>
       </form>
 

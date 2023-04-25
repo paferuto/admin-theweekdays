@@ -2,30 +2,59 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from 'src/services/product.service';
 import { CategoryService } from 'src/services/category.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '../category';
+import { FormatService } from 'src/services/format.service'; import { Title } from '@angular/platform-browser';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: '[app-add-product]',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
-export class AddProductComponent  implements OnInit {
-  product: Product = new Product();
-  errMessage: any;
-  divClass: any;
-  categories = new Array<Category>;
-  constructor(private route: ActivatedRoute, private _service: ProductService, private category_service: CategoryService) { }
+
+export class AddProductComponent implements OnInit {
+  product: Product = new Product(); // new product data
+  products_id_list: any = []; // list of all products id
+  errMessage: string = '';
+  divClass: string = ''; // show or hide sale price input
+  categories = new Array<Category>; // list of all categories
+
+  constructor(private router: Router, private _service: ProductService, private category_service: CategoryService, public _format: FormatService, private _title: Title, private toastr: ToastrService) {
+    // router to navigate to product list page after adding a product
+    // _format to format display
+    this._title.setTitle(this._format.vi.create_product);
+  }
+
+  reset() {
+    this.product = new Product();
+    this.errMessage = '';
+    this.showDiv();
+  }
 
   ngOnInit(): void {
+    // get list of all categories
     this.category_service.getCategories().subscribe({
       next: (data) => {
         this.categories = data;
       },
       error: (err) => { this.errMessage = err }
     });
-  }
 
+    // get list of all products
+    this._service.getProducts().subscribe({
+      next: (data) => {
+        this.products_id_list = data.map((product: any) => {
+          return product.product_id;
+        });
+        console.log(this.products_id_list);
+      },
+      error: (err) => { this.errMessage = err }
+    });
+
+    // set to show sale price input
+    this.showDiv();
+  }
 
   showDiv() {
     if (this.product.on_sale == true) {
@@ -34,49 +63,70 @@ export class AddProductComponent  implements OnInit {
     else this.divClass = 'disappear';
   }
 
-  confirmUpdate() {
-    if (this.product.name == "" || this.product.excerpt == "" || this.product.description == "") {
-      alert("Please fill in all the required fields");
+  onchangeProductIDCheck() {
+    // check if product id is unique
+    this.product.product_id = this.product.product_id.toUpperCase();
+    if (this.products_id_list.includes(this.product.product_id)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  confirmCreate() {
+    // check if product id is unique
+    if (this.onchangeProductIDCheck()) {
+      // alert(this._format.vi.validate_add_product_id);
+      this.toastr.error(this._format.vi.validate_add_product_id);
       return;
     }
-    if (this.product.price > this.product.original_price) {
-      alert("Sale price cannot be higher than original price");
+
+    // check if all required fields are filled
+    if (this.product.product_id == "" || this.product.name == "" || this.product.excerpt == "" || this.product.description == "" || this.product.original_price == 0) {
+      // alert(this._format.vi.require_fill_all);
+      this.toastr.error(this._format.vi.require_fill_all);
       return;
     }
-    if (this.product.min_qty > this.product.max_qty) {
-      alert("Minimum quantity cannot be higher than maximum quantity");
+
+    // check if image is uploaded
+    if (this.product.image.length == 0) {
+      // alert(this._format.vi.require_fill_image);
+      this.toastr.error(this._format.vi.require_fill_image);
       return;
     }
+
+    // check if product on sale or not
     if (this.product.on_sale == false) {
       this.product.price = this.product.original_price;
-    }
-    for (let i = 0; i < this.product.variants.length; i++) {
-      if (this.product.variants[i].in_stock == false) {
-        this.product.variants[i].available_quantity = 0;
+    } else
+      // check if sale price is greater than original price
+      if (this.product.price >= this.product.original_price) {
+        // alert(this._format.vi.validate_add_product_price);
+        this.product.price = this.product.original_price;
+        return;
       }
+
+    // check if min_qty and max_qty are filled and suitable
+    if (this.product.min_qty >= this.product.max_qty) {
+      // alert(this._format.vi.validate_add_product_quantity);
+      this.toastr.error(this._format.vi.validate_add_product_quantity);
+      return;
     }
-    if (confirm("Are you sure you want to add this product?")) {
+
+    // final confirmation
+    if (confirm(this._format.vi.confirm_add_product)) {
       this.addProduct();
     }
   }
 
   addProduct() {
-    if (this.product.name == "" ||
-    this.product.product_id == "" ||
-    this.product.original_price == 0 ||
-    this.product.price == 0 ||
-    this.product.min_qty > this.product.max_qty ||
-    this.product.excerpt == "" ||
-    this.product.description == "") {
-      alert("Data is missing or invalid. Please check again.");
-      return;
-    }
+    // add product to database
     this._service.postProduct(this.product).subscribe({
       next: (data) => {
-        alert("Product added successfully");
-        this.product = new Product();
+        this.toastr.success(this._format.vi.success_add);
+        this.router.navigate(['/product']);
       },
-      error: (err) => { this.errMessage = err }
+      error: (err) => { this.errMessage = err; alert(this._format.vi.fail_add); }
     });
   }
 
@@ -95,5 +145,4 @@ export class AddProductComponent  implements OnInit {
   deleteImage(index: number) {
     this.product.image.splice(index, 1);
   }
-
 }
