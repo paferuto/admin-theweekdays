@@ -32,10 +32,9 @@
           <input class="form-control" type="text" placeholder="{{_format.vi.enter_id}}"
             aria-label="default input example" name="video" [(ngModel)]="collection.videoId"
             [value]="collection.videoId">
-          <iframe width="900" height="506" src="https://www.youtube.com/embed/qerVyrLKzA0"
-            title="【Vietsub】Yoru ni Kakeru「夜に駆ける」YOASOBI" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
+          <iframe width="900" height="506"
+            src="https://www.youtube.com/embed/DsuugH1Pbjk?rel=0?version=3&autoplay=1&controls=0&&showinfo=0&loop=1&disablekb=1&iv_load_policy=3"
+            title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe>
         </div>
         <br>
         <div>
@@ -71,7 +70,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New lookbook</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{_format.vi.add}} lookbook</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -97,7 +96,7 @@
           </div>
         </div>
         <div style="width: fit-content; margin: auto;"><button for="submit" class="btn btn-success"
-            style="margin: 10px;" (click)="updateCollection()">Submit</button></div>
+            style="margin: 10px;" (click)="updateCollection()">{{_format.vi.update_collection}}</button></div>
       </form>
     </div>
   </main><!-- End #main -->

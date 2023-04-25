@@ -54,6 +54,7 @@ export class FormatService {
     membership: ' Điểm thành viên',
     min_order: 'Đơn hàng tối thiểu',
     max_discount: 'Giảm tối đa',
+    createdDate: 'Ngày tạo',
 
     // button
     add_category: 'Thêm danh mục',
@@ -67,6 +68,7 @@ export class FormatService {
     update_product: 'Cập nhật sản phẩm',
     add_coupon: 'Thêm mã giảm giá',
     update_coupon: 'Cập nhật mã giảm giá',
+    update_collection: 'Cập nhật bộ sưu tập',
 
     // confirmation
     confirm_add_product: 'Bạn có chắc chắn muốn thêm sản phẩm này không?',
@@ -90,7 +92,7 @@ export class FormatService {
     enter_name: 'Nhập tên',
     enter_id: 'Nhập ID sản phẩm.',
     product_id_syntax: 'Cú pháp: "ID1, ID2, ID3, ..."',
-
+    enter_video_id: 'Nhập ID video',
     success_add: 'Thêm thành công',
     fail_add: 'Thêm thất bại',
 
@@ -103,6 +105,11 @@ export class FormatService {
     validate_max_discount: 'Vui lòng nhập số lượng giảm tối đa',
     validate_valid_from: 'Vui lòng chọn ngày bắt đầu',
     validate_valid_to: 'Vui lòng chọn ngày kết thúc',
+    validate_product_id: 'Vui lòng nhập ID sản phẩm',
+    ID_invalid: 'ID không hợp lệ',
+    validate_collection_name: 'Vui lòng nhập tên bộ sưu tập',
+    validate_description: 'Vui lòng nhập mô tả',
+    validate_lookbook: 'Vui lòng thêm lookbook cho bộ sưu tập',
 
     // others
     default: 'Mặc định',

@@ -76,6 +76,8 @@ export class CollectionService {
 
   // post collection
   postCollection(collection: any): Observable<any> {
+    collection.createdDate = new Date()
+    collection.modifiedDate = new Date()
     const headers = new HttpHeaders().set("Content-Type", "application/json")
     const requestOptions: Object = {
       headers: headers,

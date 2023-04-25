@@ -8,54 +8,111 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Collection</h1>
+      <h1>{{_format.vi.collection}}</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item" [routerLink]="['/collection']">Collection</li>
-          <li class="breadcrumb-item active" >New collection</li>
+          <li class="breadcrumb-item"><a href="index.html">{{_format.vi.home}}</a></li>
+          <li class="breadcrumb-item" [routerLink]="['/collection']">{{_format.vi.collection}}</li>
+          <li class="breadcrumb-item active">{{_format.vi.add}}</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
-      <h3>Add a collection</h3>
+      <h3></h3>
       <form>
         <div>
-          <label for="name" class="form-label">Name</label>
-          <input class="form-control" type="text" placeholder="Insert collection name" aria-label="default input example">
+          <label for="name" class="form-label">{{_format.vi.name}}</label>
+          <input class="form-control" type="text" placeholder="{{_format.vi.enter_name}}"
+            aria-label="default input example" name="name" [(ngModel)]="collection.name" [value]="collection.name">
         </div>
+        <br>
         <div>
-          <label for="name" class="form-label">Product</label>
-          <input class="form-control" type="text" placeholder="Insert collection product" aria-label="default input example">
+          <label for="name" class="form-label">Video</label>
+          <input class="form-control" type="text" placeholder="{{_format.vi.enter_video_id}}"
+            aria-label="default input example" name="video" [(ngModel)]="collection.videoId"
+            [value]="collection.videoId">
+          <iframe width="900" height="506" src="https://www.youtube.com/embed/DsuugH1Pbjk"
+            title="" frameborder="0"
+            allow=""
+            allowfullscreen></iframe>
         </div>
+        <br>
         <div>
-          <label for="detail" class="form-label">Detail</label>
-          <ckeditor [editor]="Editor"></ckeditor>
+          <label for="name" class="form-label">{{_format.vi.image}}</label>
+          <input class="form-control" type="file" id="formFile" name="pic" (change)="onThumbnailSelected($event)">
+          <img src="{{collection.image}}" alt="" width="400px" height="300px" style="object-fit: cover">
         </div>
-        <div class="mb-3">
-          <label for="formFileMultiple" class="form-label">Choose image(s)</label>
-          <input class="form-control" type="file" id="formFileMultiple" multiple>
+        <br>
+        <div>
+          <label for="detail" class="form-label">{{_format.vi.description}}</label>
+          <ckeditor [editor]="Editor" (change)="onContentChange($event)" name="collection">{{collection.description}}</ckeditor>
+        </div>
+        <br>
+        <!-- Modal nhập thông tin lookbook -->
+        <div style="width: fit-content; margin: auto;">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-whatever="@mdo">{{_format.vi.add}} lookbook</button>
+        </div>
+        <br>
+        <div class="row mb-3">
+          <div class="col-sm-2" *ngFor="let l of collection.lookbook, let index = index" name="lookbook">
+            <div>
+              <div class="row mb-3">
+                <button (click)="deleteLookbook(index)" class="position-absolute top-1 end-1 btn btn-danger"
+                  style="width: fit-content; height: fit-content;"><i class="fas fa-times"></i></button>
+                <img src="{{l.image}}" class="col sm-2" alt="" width="100px" height="150px" style="object-fit: cover;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New lookbook</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">{{_format.vi.image}}:</label>
+                    <input class="form-control" type="file" id="formFile" name="pic" (change)="onFileSelected($event)">
+                  </div>
+                  <br>
+                  <div class="mb-3">
+                    <label for="message-text" class="col-form-label">{{_format.vi.product}}:</label>
+                    <input class="form-control" id="message-text"
+                      placeholder="{{_format.vi.enter_id}} {{_format.vi.product_id_syntax}}" ngDefaultControl
+                      name="product" [(ngModel)]="products">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{_format.vi.close}}</button>
+                <button type="button" class="btn btn-primary" (click)="addLookbook()">{{_format.vi.add}}</button>
+              </div>
+            </div>
+          </div>
         </div>
         <div style="width: fit-content; margin: auto;"><button for="submit" class="btn btn-success"
-            style="margin: 10px;">Submit</button></div>
+            style="margin: 10px;" (click)="postCollection()">{{_format.vi.add}}</button></div>
       </form>
     </div>
   </main><!-- End #main -->
   <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i>
   </a> -->
 </body>
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
-  </footer><!-- End Footer -->
-
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+  <div class="copyright">
+    &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+  </div>
+  <div class="credits">
+    <!-- All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+  </div>
+</footer><!-- End Footer -->

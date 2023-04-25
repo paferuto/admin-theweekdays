@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CollectionService } from 'src/services/collection.service';
 import { Collection } from '../collection';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { FormatService } from 'src/services/format.service';
 
@@ -14,8 +14,8 @@ import { FormatService } from 'src/services/format.service';
 export class CollectionComponent {
 
   collections = new Array<Collection>();
-  
-  constructor(private _service: CollectionService, private _title: Title, public _format: FormatService) {
+
+  constructor(private router: Router, private _service: CollectionService, private _title: Title, public _format: FormatService) {
     this._title.setTitle(this._format.vi.collection);
     this._service.getCollections().subscribe(
       (data: any) => {
@@ -43,6 +43,7 @@ export class CollectionComponent {
         this._service.getCollections().subscribe(
           (data: any) => {
             this.collections = data;
+            this.router.navigate(['/collection']);
           },
           (error) => {
             console.log(error);
@@ -53,5 +54,6 @@ export class CollectionComponent {
         console.log(error);
       }
     );
+
   }
 }
