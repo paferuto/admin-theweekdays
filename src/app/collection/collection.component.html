@@ -23,49 +23,18 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Name</th>
             <th>Created date</th>
-            <th>Status</th>
+            <th>Image</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Collection 1</td>
-            <td>2021-05-01</td>
-            <td>Active</td>
-            <td>
-              <button type="button" class="btn btn-primary" [routerLink]="['/collection/detail']">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Collection 1</td>
-            <td>2021-05-01</td>
-            <td>Active</td>
-            <td>
-              <button type="button" class="btn btn-primary"  [routerLink]="['/collection/detail']">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Collection 1</td>
-            <td>2021-05-01</td>
-            <td>Active</td>
-            <td>
-              <button type="button" class="btn btn-primary"  [routerLink]="['/collection/detail']">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Collection 1</td>
-            <td>2021-05-01</td>
-            <td>Active</td>
-            <td>
-              <button type="button" class="btn btn-primary" [routerLink]="['/collection/detail']">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
+          <tr *ngFor="let c of collections" [routerLink]="['/collection/',c._id]">
+            <td>{{c.name}}</td>
+            <td>{{c.createdDate}}</td>
+            <td><img src="{{c.image}}"></td>
+            <td><button class="btn btn-danger" (click)="confirmDelete(c._id)"><i class="fas fa-times"></i></button></td>
           </tr>
         </tbody>
 
