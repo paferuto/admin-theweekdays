@@ -25,7 +25,6 @@ export class Coupon {
     public _id: any = null,
     public coupon_code: string = '',
     public title: string = '',
-    public description: string = '',
     public is_percentage: boolean = false,
     public value: number = 0,
     public is_active: boolean = true,
