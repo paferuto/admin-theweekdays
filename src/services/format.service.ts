@@ -32,6 +32,19 @@ export class FormatService {
     quantity: 'Số lượng',
     image: 'Hình ảnh',
     preview: 'Xem trước',
+    description: 'Mô tả',
+
+    // button
+    add_category: 'Thêm danh mục',
+    update_category: 'Cập nhật danh mục',
+    modify: 'Sửa',
+    delete: 'Xóa',
+    add: "Thêm",
+    close: 'Đóng',
+
+    // message
+    require_fill_all: 'Vui lòng nhập đầy đủ thông tin',
+    success_modify: 'Sửa thành công',
     excerpt: 'Mô tả ngắn',
     description: 'Mô tả',
     price: 'Giá bán',
@@ -43,6 +56,7 @@ export class FormatService {
     variant: 'Biến thể',
     variant_name: 'Tên biến thể',
     variant_value: 'Giá trị biến thể',
+
     is_active: 'Tình trạng',
     used: 'Đã dùng',
     all: 'Tổng',
@@ -63,7 +77,7 @@ export class FormatService {
     update_product: 'Cập nhật sản phẩm',
     add_coupon: 'Thêm mã giảm giá',
     update_coupon: 'Cập nhật mã giảm giá',
-  
+
 
     // confirmation
     confirm_add_product: 'Bạn có chắc chắn muốn thêm sản phẩm này không?',
@@ -79,6 +93,13 @@ export class FormatService {
     fail_modify: 'Sửa thất bại',
     success_delete: 'Xóa thành công',
     fail_delete: 'Xóa thất bại',
+    confirm_add: 'Bạn có chắc chắn muốn thêm không?',
+    confirm_update: 'Bạn có chắc chắn muốn cập nhật không?',
+
+    // placeholder
+    enter_name: 'Nhập tên',
+    enter_id: 'Nhập ID sản phẩm.',
+    product_id_syntax: 'Cú pháp: "ID1, ID2, ID3, ..."',
 
     success_add: 'Thêm thành công',
     fail_add: 'Thêm thất bại',
@@ -126,7 +147,6 @@ export class FormatService {
 
   //date format dd/mm/yyyy from ISOstring
   formatDate(date: string) {
-
     const d = new Date(date);
     const day = d.getDate();
     const month = d.getMonth() + 1;
