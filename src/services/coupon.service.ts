@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, retry, throwError } from 'rxjs';
+import { Coupon } from 'src/app/coupon';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class CouponService {
       responseType: "text"
     }
     return this._http.get<any>("/v1/coupon", requestOptions).pipe(
-      map(res => JSON.parse(res)),
+      map(res => JSON.parse(res) as Coupon[]),
       retry(3),
       catchError(this.handleError))
   }
@@ -30,12 +31,12 @@ export class CouponService {
       responseType: "text"
     }
     return this._http.get<any>(`/v1/coupon/${id}`, requestOptions).pipe(
-      map(res => JSON.parse(res)),
+      map(res => JSON.parse(res) as Coupon),
       retry(3),
       catchError(this.handleError))
   }
 
-  // get coupin by coupon code
+  // get coupon by coupon code
   getCouponByCode(code: string): Observable<any> {
     const headers = new HttpHeaders().set("Content-Type", "text/plain;charset=utf-8")
     const requestOptions: Object = {
@@ -43,7 +44,7 @@ export class CouponService {
       responseType: "text"
     }
     return this._http.get<any>(`/v1/coupon/code/${code}`, requestOptions).pipe(
-      map(res => JSON.parse(res)),
+      map(res => JSON.parse(res) as Coupon),
       retry(3),
       catchError(this.handleError))
   }

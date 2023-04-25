@@ -8,46 +8,42 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Product</h1>
+      <h1>{{_format.vi.product}}</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Product</li>
+          <li style="cursor: pointer" class="breadcrumb-item" [routerLink]="['/']" ><u>{{_format.vi.home}}</u></li>
+          <li class="breadcrumb-item active">{{_format.vi.product}}</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
     <div style="width: fit-content; margin: auto;">
-      <button class="btn btn-primary" style="margin: 5px;" [routerLink]="['/product/add']">Add</button>
+      <button class="btn btn-primary" style="margin: 5px;" [routerLink]="['/product/add']">{{_format.vi.add_product}}</button>
     </div>
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
       <table class="table table-hover" style="width: 100%;">
         <thead>
           <tr style="width: fit-content;">
-            <td>ID</td>
-            <td style="width: 300px;">Name</td>
-            <td>Image</td>
-            <td>Price (VND)</td>
+            <td>{{_format.vi.id}}</td>
+            <td style="width: 300px;">{{_format.vi.name}} {{_format.vi.product.toLowerCase()}}</td>
+            <td>{{_format.vi.image}}</td>
+            <td>{{_format.vi.price}}</td>
             <td>*</td>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let p of product_list">
+          <tr *ngFor="let p of product_list" [routerLink]="['/product/',p._id]">
             <td>{{p.product_id}}</td>
             <td>{{p.name}}</td>
             <td><img src="{{p.image}}" alt="" style="width: 100px;"></td>
-            <td>{{p.price}}</td>
+            <td>{{_format.formatCurrency(p.price)}}</td>
             <td>
-              <button class="btn btn-success" [routerLink]="['/product/',p._id]">Modify</button>
-              <button class="btn btn-danger" (click)="confirmDelete(p._id)">Delete</button>
+              <button class="btn btn-success" [routerLink]="['/product/',p._id]">{{_format.vi.modify}}</button>
+              <button class="btn btn-danger m-2" (click)="confirmDelete(p._id)">{{_format.vi.delete}}</button>
             </td>
           </tr>
         </tbody>
-
       </table>
     </div>
-
-
-
   </main><!-- End #main -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
