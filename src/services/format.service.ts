@@ -33,20 +33,7 @@ export class FormatService {
     image: 'Hình ảnh',
     preview: 'Xem trước',
     description: 'Mô tả',
-
-    // button
-    add_category: 'Thêm danh mục',
-    update_category: 'Cập nhật danh mục',
-    modify: 'Sửa',
-    delete: 'Xóa',
-    add: "Thêm",
-    close: 'Đóng',
-
-    // message
-    require_fill_all: 'Vui lòng nhập đầy đủ thông tin',
-    success_modify: 'Sửa thành công',
     excerpt: 'Mô tả ngắn',
-    description: 'Mô tả',
     price: 'Giá bán',
     original_price: 'Giá gốc',
     on_sale: 'Đang giảm giá',
@@ -56,7 +43,6 @@ export class FormatService {
     variant: 'Biến thể',
     variant_name: 'Tên biến thể',
     variant_value: 'Giá trị biến thể',
-
     is_active: 'Tình trạng',
     used: 'Đã dùng',
     all: 'Tổng',
@@ -67,17 +53,17 @@ export class FormatService {
     product_is_in_stock: 'Sản phẩm được mở bán',
 
     // button
-    add: 'Thêm',
-    modify: 'Sửa',
-    delete: 'Xóa',
-    cancel: 'Hủy',
     add_category: 'Thêm danh mục',
     update_category: 'Cập nhật danh mục',
+    modify: 'Sửa',
+    delete: 'Xóa',
+    add: "Thêm",
+    close: 'Đóng',
+    cancel: 'Hủy',
     add_product: 'Thêm sản phẩm',
     update_product: 'Cập nhật sản phẩm',
     add_coupon: 'Thêm mã giảm giá',
     update_coupon: 'Cập nhật mã giảm giá',
-
 
     // confirmation
     confirm_add_product: 'Bạn có chắc chắn muốn thêm sản phẩm này không?',
