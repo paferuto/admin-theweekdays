@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: "order/detail", component: OrderDetailComponent }, //Khi đã có API thì viết lại đoạn này thành order/:id
   { path: "coupon/update/:id", component: UpdateCouponComponent }, //Khi đã có API thì viết lại đoạn này thành coupon/:id
   { path:"collection/new-collection", component:CreateCollectionComponent},
-  { path: "collection/detail", component: CollectionDetailComponent }, //Khi đã có API thì viết lại đoạn này thành collection/:id
+  { path: "collection/:id", component: CollectionDetailComponent }, //Khi đã có API thì viết lại đoạn này thành collection/:id
   { path:"customer/id", component:CustomerDetailComponent}, //Khi đã có API thì viết lại đoạn này thành customer/:id
   { path:"product/:id", component:ProductDetailComponent}, //Khi đã có API thì viết lại thành product/:id
 ];

@@ -24,12 +24,15 @@ export class FormatService {
     type: 'Loại',
     image: 'Hình ảnh',
     preview: 'Xem trước',
+    description: 'Mô tả',
 
     // button
     add_category: 'Thêm danh mục',
     update_category: 'Cập nhật danh mục',
     modify: 'Sửa',
     delete: 'Xóa',
+    add:"Thêm",
+    close: 'Đóng',
 
     // message
     require_fill_all: 'Vui lòng nhập đầy đủ thông tin',
@@ -44,6 +47,13 @@ export class FormatService {
     confirm_delete: 'Bạn có chắc chắn muốn xóa không?',
     success_delete: 'Xóa thành công',
     fail_delete: 'Xóa thất bại',
+    confirm_add: 'Bạn có chắc chắn muốn thêm không?',
+    confirm_update: 'Bạn có chắc chắn muốn cập nhật không?',
+
+    // placeholder
+    enter_name: 'Nhập tên',
+    enter_id: 'Nhập ID sản phẩm.',
+    product_id_syntax: 'Cú pháp: "ID1, ID2, ID3, ..."',
 
     // others
     default: 'Mặc định',
