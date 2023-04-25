@@ -25,7 +25,7 @@ export class AdminProductComponent {
   }
 
   confirmDelete(id: any) {
-    if (confirm('Are you sure you want to delete this product?')) {
+    if (confirm(this._format.vi.confirm_delete)) {
       this.deleteProduct(id);
     }
   }
@@ -33,7 +33,6 @@ export class AdminProductComponent {
   deleteProduct(id: any) {
     this._service.deleteProduct(id).subscribe(
       (data: any) => {
-        console.log(data);
         this._service.getProducts().subscribe(
           (data: any) => {
             this.product_list = data;

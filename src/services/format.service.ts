@@ -54,6 +54,8 @@ export class FormatService {
     membership: ' Điểm thành viên',
     min_order: 'Đơn hàng tối thiểu',
     max_discount: 'Giảm tối đa',
+    percentage: 'Phần trăm',
+    list_coupon: 'Danh sách mã giảm giá',
 
     // button
     add_category: 'Thêm danh mục',
@@ -72,6 +74,8 @@ export class FormatService {
     confirm_add_product: 'Bạn có chắc chắn muốn thêm sản phẩm này không?',
     confirm_delete: 'Bạn có chắc chắn muốn xóa không?',
     confirm_add_coupon: 'Bạn có chắc chắn muốn thêm mã giảm giá này không?',
+    confirm_add: 'Bạn có chắc chắn muốn thêm không?',
+    confirm_update: 'Bạn có chắc chắn muốn cập nhật không?',
 
     // message
     require_fill_all: 'Vui lòng nhập đầy đủ thông tin',
@@ -79,30 +83,27 @@ export class FormatService {
     validate_add_product_price: 'Giá bán phải thấp hơn giá gốc trong trường hợp sản phẩm đang giảm giá',
     validate_add_product_quantity: 'Số lượng tối thiểu phải nhỏ hơn số lượng tối đa',
     validate_add_product_id: 'Mã sản phẩm đã tồn tại',
+    validate_value_percentage: 'Giá trị giảm giá phải nằm trong khoảng 0 - 100',
+    validate_title: 'Vui lòng nhập tên Mã sản phẩm',
+    validate_code: 'Vui lòng nhập Mã sản phẩm',
+    validate_coupon_value: 'Vui lòng nhập giá trị Giảm giá của mã',
+    validate_quantity: 'Vui lòng nhập số lượng Mã giảm giá',
+    validate_membership: 'Vui lòng chọn điểm thành viên',
+    validate_min_order: 'Vui lòng nhập đơn hàng tối thiểu',
+    validate_max_discount: 'Vui lòng nhập giá trị giảm giá tối đa',
+    validate_valid_from: 'Vui lòng chọn ngày bắt đầu',
+    validate_valid_to: 'Vui lòng chọn ngày kết thúc',
     success_modify: 'Sửa thành công',
     fail_modify: 'Sửa thất bại',
     success_delete: 'Xóa thành công',
     fail_delete: 'Xóa thất bại',
-    confirm_add: 'Bạn có chắc chắn muốn thêm không?',
-    confirm_update: 'Bạn có chắc chắn muốn cập nhật không?',
+    success_add: 'Thêm thành công',
+    fail_add: 'Thêm thất bại',
 
     // placeholder
     enter_name: 'Nhập tên',
     enter_id: 'Nhập ID sản phẩm.',
     product_id_syntax: 'Cú pháp: "ID1, ID2, ID3, ..."',
-
-    success_add: 'Thêm thành công',
-    fail_add: 'Thêm thất bại',
-
-    validate_title: 'Vui lòng nhập tên Mã sản phẩm',
-    validate_code: 'Vui lòng nhập Mã sản phẩm',
-    validate_value: 'Vui lòng nhập giá trị Mã giảm giá',
-    validate_quantity: 'Vui lòng nhập số lượng Mã giảm giá',
-    validate_membership: 'Vui lòng chọn điểm thành viên',
-    validate_min_order: 'Vui lòng nhập đơn hàng tối thiểu',
-    validate_max_discount: 'Vui lòng nhập số lượng giảm tối đa',
-    validate_valid_from: 'Vui lòng chọn ngày bắt đầu',
-    validate_valid_to: 'Vui lòng chọn ngày kết thúc',
 
     // others
     default: 'Mặc định',
@@ -115,6 +116,11 @@ export class FormatService {
   };
 
   // ========================  FOR ALL OBJECTS  =========================
+  // style button for active status
+  styleButtonActiveStatus(status: boolean) {
+    return status ? 'btn btn-success disabled rounded-5' : 'btn btn-danger disabled rounded-5';
+  }
+
   // shorten the object id
   shortenObjectId(id: string) {
     return id.substring(0, 5) + '...' + id.substring(id.length - 5, id.length);
