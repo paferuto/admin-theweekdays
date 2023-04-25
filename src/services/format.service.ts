@@ -32,8 +32,8 @@ export class FormatService {
     quantity: 'Số lượng',
     image: 'Hình ảnh',
     preview: 'Xem trước',
-    excerpt: 'Mô tả ngắn',
     description: 'Mô tả',
+    excerpt: 'Mô tả ngắn',
     price: 'Giá bán',
     original_price: 'Giá gốc',
     on_sale: 'Đang giảm giá',
@@ -53,17 +53,17 @@ export class FormatService {
     product_is_in_stock: 'Sản phẩm được mở bán',
 
     // button
-    add: 'Thêm',
-    modify: 'Sửa',
-    delete: 'Xóa',
-    cancel: 'Hủy',
     add_category: 'Thêm danh mục',
     update_category: 'Cập nhật danh mục',
+    modify: 'Sửa',
+    delete: 'Xóa',
+    add: "Thêm",
+    close: 'Đóng',
+    cancel: 'Hủy',
     add_product: 'Thêm sản phẩm',
     update_product: 'Cập nhật sản phẩm',
     add_coupon: 'Thêm mã giảm giá',
     update_coupon: 'Cập nhật mã giảm giá',
-  
 
     // confirmation
     confirm_add_product: 'Bạn có chắc chắn muốn thêm sản phẩm này không?',
@@ -79,6 +79,13 @@ export class FormatService {
     fail_modify: 'Sửa thất bại',
     success_delete: 'Xóa thành công',
     fail_delete: 'Xóa thất bại',
+    confirm_add: 'Bạn có chắc chắn muốn thêm không?',
+    confirm_update: 'Bạn có chắc chắn muốn cập nhật không?',
+
+    // placeholder
+    enter_name: 'Nhập tên',
+    enter_id: 'Nhập ID sản phẩm.',
+    product_id_syntax: 'Cú pháp: "ID1, ID2, ID3, ..."',
 
     success_add: 'Thêm thành công',
     fail_add: 'Thêm thất bại',
@@ -126,7 +133,6 @@ export class FormatService {
 
   //date format dd/mm/yyyy from ISOstring
   formatDate(date: string) {
-
     const d = new Date(date);
     const day = d.getDate();
     const month = d.getMonth() + 1;
