@@ -51,6 +51,9 @@ export class FormatService {
     valid_to: 'Đến ngày',
     product_is_on_sale: 'Sản phẩm đang giảm giá',
     product_is_in_stock: 'Sản phẩm được mở bán',
+    membership: ' Điểm thành viên',
+    min_order: 'Đơn hàng tối thiểu',
+    max_discount: 'Giảm tối đa',
 
     // button
     add_category: 'Thêm danh mục',
@@ -68,6 +71,7 @@ export class FormatService {
     // confirmation
     confirm_add_product: 'Bạn có chắc chắn muốn thêm sản phẩm này không?',
     confirm_delete: 'Bạn có chắc chắn muốn xóa không?',
+    confirm_add_coupon: 'Bạn có chắc chắn muốn thêm mã giảm giá này không?',
 
     // message
     require_fill_all: 'Vui lòng nhập đầy đủ thông tin',
@@ -90,10 +94,15 @@ export class FormatService {
     success_add: 'Thêm thành công',
     fail_add: 'Thêm thất bại',
 
-    membership: 'Thành viên',
-    min_order: 'Đơn hàng tối thiểu',
-    max_discount: 'Giảm tối đa',
-
+    validate_title: 'Vui lòng nhập tên Mã sản phẩm',
+    validate_code: 'Vui lòng nhập Mã sản phẩm',
+    validate_value: 'Vui lòng nhập giá trị Mã giảm giá',
+    validate_quantity: 'Vui lòng nhập số lượng Mã giảm giá',
+    validate_membership: 'Vui lòng chọn điểm thành viên',
+    validate_min_order: 'Vui lòng nhập đơn hàng tối thiểu',
+    validate_max_discount: 'Vui lòng nhập số lượng giảm tối đa',
+    validate_valid_from: 'Vui lòng chọn ngày bắt đầu',
+    validate_valid_to: 'Vui lòng chọn ngày kết thúc',
 
     // others
     default: 'Mặc định',
