@@ -15,16 +15,38 @@ import { ToastrService } from 'ngx-toastr';
 export class NewCouponComponent {
   newCoupon = new Coupon();
   errMessage: string = '';
+  coupon_code_list: string[] = []; // list of all coupon code
 
   constructor(private _service: CouponService, private _router: Router, public _format: FormatService, private _title: Title, private toastr: ToastrService) {
     this._title.setTitle(this._format.vi.add_coupon);
+    this._service.getCoupons().subscribe(
+      {
+        next: (data) => {
+          this.coupon_code_list = data.map((coupon: any) => {
+            return coupon.coupon_code;
+          });
+        },
+        error: (err) => {
+          this.errMessage = err;
+          this.toastr.error(err);
+        }
+      }
+    );
   }
 
   isPercentage() {
     if (this.newCoupon.is_percentage == false) {
-       this.newCoupon.max_discount = this.newCoupon.value;
+      this.newCoupon.max_discount = this.newCoupon.value;
     }
     return true;
+  }
+
+  onchangeCouponIDCheck() {
+    this.newCoupon.coupon_code = this.newCoupon.coupon_code.toUpperCase();
+    if (this.coupon_code_list && this.coupon_code_list.includes(this.newCoupon.coupon_code)) {
+      return true;
+    }
+    return false;
   }
 
   confirmCreate() {
@@ -39,6 +61,12 @@ export class NewCouponComponent {
       //alert
       this.toastr.error(this._format.vi.validate_code);
       return;
+    } else {
+      if (this.onchangeCouponIDCheck()) {
+        //alert
+        this.toastr.error(this._format.vi.validate_coupon_code_exist);
+        return;
+      }
     }
 
     // check if quantity all is empty
@@ -97,6 +125,13 @@ export class NewCouponComponent {
     if (this.newCoupon.valid_to == null) {
       //alert
       this.toastr.error(this._format.vi.validate_valid_to);
+      return;
+    }
+
+    // check if valid from is greater than valid to
+    if (new Date(this.newCoupon.valid_from) > new Date(this.newCoupon.valid_to)) {
+      //alert
+      this.toastr.error(this._format.vi.validate_valid_from_greater_than_valid_to);
       return;
     }
 

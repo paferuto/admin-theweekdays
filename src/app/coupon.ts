@@ -21,16 +21,16 @@ export class Coupon {
   // min_order: number ;
   // max_discount: number
 
-  constructor( 
+  constructor(
     public _id: any = null,
     public coupon_code: string = '',
     public title: string = '',
     public is_percentage: boolean = false,
     public value: number = 0,
     public is_active: boolean = true,
-    public created_at = new Date(),
-    public valid_from = new Date(),
-    public valid_to= new  Date(),
+    public created_at: string = new Date().toISOString(),
+    public valid_from: string = new Date().toISOString(),
+    public valid_to: string = new Date().toISOString(),
     public membership: number = 0,
     public quantity: CouponQuantity = new CouponQuantity(),
     public min_order: number = 0,

@@ -38,7 +38,8 @@
           </label>
           <div class="col-sm-10">
             <input class="form-control" type="text" id="coupon" name="coupon" #name="ngModel"
-              [(ngModel)]="newCoupon.coupon_code" [value]="newCoupon.coupon_code">
+              style="text-transform:uppercase" [(ngModel)]="newCoupon.coupon_code" [value]="newCoupon.coupon_code">
+            <div class="text-danger" *ngIf="onchangeCouponIDCheck()">{{_format.vi.validate_coupon_code_exist}}</div>
           </div>
         </div>
 
@@ -74,8 +75,8 @@
             <input class="form-control" type="number" id="value" name="value" #name="ngModel"
               [(ngModel)]="newCoupon.value" min="1" [value]="newCoupon.value">
             <div class="col">
-              <input type="checkbox" id="is_percentage" name="is_percentage"
-                [(ngModel)]="newCoupon.is_percentage" [checked]="newCoupon.is_percentage">
+              <input type="checkbox" id="is_percentage" name="is_percentage" [(ngModel)]="newCoupon.is_percentage"
+                [checked]="newCoupon.is_percentage">
               {{_format.vi.percentage}}
             </div>
           </div>
