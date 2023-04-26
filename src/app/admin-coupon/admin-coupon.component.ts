@@ -11,7 +11,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./admin-coupon.component.css']
 })
 export class AdminCouponComponent {
-  coupon: any = [];
+  coupon: Array<Coupon> = [];
   errMessage: string = '';
   newCoupon = new Coupon();
 
@@ -27,7 +27,7 @@ export class AdminCouponComponent {
     this._router.navigate(['edit', id])
   }
 
-addCoupon() {
+  addCoupon() {
     this._service.postCoupon(this.newCoupon).subscribe({
       next: (data) => {
         this.coupon.push(data);

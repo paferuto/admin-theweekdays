@@ -17,8 +17,6 @@
       </nav>
     </div><!-- End Page Title -->
 
-
-
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
       <div style="width: fit-content; margin: auto;">
         <button class="btn btn-success" [routerLink]="['/coupon/new']">{{_format.vi.add_coupon}}</button>
@@ -27,9 +25,9 @@
       <table class="table table-hover">
         <thead class="bg-dark text-white text-center">
           <tr>
-            <th class="col-md-1">ID</th>
-            <th class="col-md-2">{{_format.vi.name}}</th>
+            <!-- <th class="col-md-1">{{_format.vi.id}}</th> -->
             <th class="col-md-2">{{_format.vi.coupon}}</th>
+            <th class="col-md-2">{{_format.vi.name}}</th>
             <th class="col-md-2">{{_format.vi.is_active}}</th>
             <th class="col-md-2">{{_format.vi.used}}</th>
             <th class="col-md-0">{{_format.vi.all}}</th>
@@ -40,10 +38,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let c of coupon" [routerLink]="['/coupon/update/', c._id]">
-            <td class="col-md-1">{{_format.shortenObjectId(c._id)}}</td>
-            <td class="col-md-2">{{c.title}}</td>
+          <tr *ngFor="let c of coupon" [routerLink]="['/coupon/update/', c._id]" style="cursor: pointer;" class="text-center">
+            <!-- <td class="col-md-1">{{_format.shortenObjectId(c._id)}}</td> -->
             <td class="col-md-2">{{c.coupon_code}}</td>
+            <td class="col-md-2">{{c.title}}</td>
             <td class="col-md-2 text-center">
               <button [class]="_format.styleButtonActiveStatus(c.is_active)">{{_format.couponActiveStatus(c.is_active)}}</button>
               </td>

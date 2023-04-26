@@ -72,8 +72,9 @@ export class FormatService {
 
     // confirmation
     confirm_add_product: 'Bạn có chắc chắn muốn thêm sản phẩm này không?',
-    confirm_delete: 'Bạn có chắc chắn muốn xóa không?',
     confirm_add_coupon: 'Bạn có chắc chắn muốn thêm mã giảm giá này không?',
+    confirm_update_coupon: 'Bạn có chắc chắn muốn cập nhật mã giảm giá này không?',
+    confirm_delete: 'Bạn có chắc chắn muốn xóa không?',
     confirm_add: 'Bạn có chắc chắn muốn thêm không?',
     confirm_update: 'Bạn có chắc chắn muốn cập nhật không?',
 
@@ -93,6 +94,8 @@ export class FormatService {
     validate_max_discount: 'Vui lòng nhập giá trị giảm giá tối đa',
     validate_valid_from: 'Vui lòng chọn ngày bắt đầu',
     validate_valid_to: 'Vui lòng chọn ngày kết thúc',
+    validate_coupon_code_exist: 'Mã giảm giá đã tồn tại',
+    validate_valid_from_greater_than_valid_to: 'Ngày bắt đầu phải nhỏ hơn ngày kết thúc',
     success_modify: 'Sửa thành công',
     fail_modify: 'Sửa thất bại',
     success_delete: 'Xóa thành công',
