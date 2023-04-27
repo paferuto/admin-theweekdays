@@ -35,6 +35,41 @@ export class ProductService {
       catchError(this.handleError))
   }
 
+  //filter products by min and max price
+  filterProductsByPrice(min: number, max: number, productList: any): Observable<any> {
+    let filteredProducts = productList.filter((product: any) => product.price >= min && product.price <= max)
+    return new Observable<any>((observer) => {
+      observer.next(filteredProducts)
+      observer.complete()
+    })
+  }
+
+  // search products by name
+  searchProductsByName(name: string): Observable<any> {
+    const headers = new HttpHeaders().set("Content-Type", "text/plain;charset=utf-8")
+    const requestOptions: Object = {
+      headers: headers,
+      responseType: "text"
+    }
+    return this._http.get<any>(`/v1/products/?search=${name}`, requestOptions).pipe(
+      map(res => JSON.parse(res)),
+      retry(3),
+      catchError(this.handleError))
+  }
+
+  // pagination
+  getProductsByPage(page: number): Observable<any> {
+    const headers = new HttpHeaders().set("Content-Type", "text/plain;charset=utf-8")
+    const requestOptions: Object = {
+      headers: headers,
+      responseType: "text"
+    }
+    return this._http.get<any>(`/v1/products/?page=${page}`, requestOptions).pipe(
+      map(res => JSON.parse(res)),
+      retry(3),
+      catchError(this.handleError))
+  }
+
   // post product
   postProduct(product: any): Observable<any> {
     const headers = new HttpHeaders().set("Content-Type", "application/json")
