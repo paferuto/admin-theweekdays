@@ -21,7 +21,7 @@
     </div>
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
       <table class="table table-hover" style="width: 100%;">
-        <thead>
+        <thead class="table-dark">
           <tr style="width: fit-content;">
             <td>{{_format.vi.id}}</td>
             <td style="width: 300px;">{{_format.vi.name}} {{_format.vi.product.toLowerCase()}}</td>
@@ -43,6 +43,15 @@
           </tr>
         </tbody>
       </table>
+      <nav aria-label="Page navigation example" style="width: fit-content; margin: auto;">
+        <ul class="pagination">
+          <!-- create number of page equal to page -->
+          <li class="page-item"><a class="page-link" (click)="previousPage()"><<</a></li> <!-- Chuyển về trang trước-->
+          <li class="page-item" *ngFor="let p of page" [class.active]="p==current_page">
+            <a class="page-link" (click)="changePage(p)">{{p}}</a></li>
+            <li class="page-item"><a class="page-link" (click)="nextPage()">>></a></li> <!-- Chuyển về trang trước-->
+        </ul>
+      </nav>
     </div>
   </main><!-- End #main -->
 
