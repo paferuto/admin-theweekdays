@@ -12,14 +12,22 @@ import { FormatService } from 'src/services/format.service';
   styleUrls: ['./collection.component.css']
 })
 export class CollectionComponent {
+  errMessage: string = '';
 
   collections = new Array<Collection>();
-  
+  page = new Array<number>();
+  current_page: number = 1;
+
   constructor(private _service: CollectionService, private _title: Title, public _format: FormatService) {
     this._title.setTitle(this._format.vi.collection);
     this._service.getCollections().subscribe(
       (data: any) => {
         this.collections = data;
+        const total_page = Math.ceil(this.collections.length / 10);
+        for (let i = 1; i <= total_page; i++) {
+          this.page.push(i);
+        }
+        this.changePage(1);
       },
       (error) => {
         console.log(error);
@@ -53,5 +61,29 @@ export class CollectionComponent {
         console.log(error);
       }
     );
+  }
+
+  changePage(page: number) {
+    this._service.getCollectionsByPage(page).subscribe({
+      next: (data) => {
+        this.collections = data;
+        this.current_page = page;
+      },
+      error: (err) => { this.errMessage = err }
+    })
+  }
+
+  previousPage() {
+    if (this.current_page > 1) {
+      this.current_page--;
+      this.changePage(this.current_page);
+    }
+  }
+
+  nextPage() {
+    if (this.current_page < this.page.length) {
+      this.current_page++;
+      this.changePage(this.current_page);
+    }
   }
 }

@@ -14,11 +14,20 @@ export class AdminCouponComponent {
   coupon: Array<Coupon> = [];
   errMessage: string = '';
   newCoupon = new Coupon();
+  page = new Array<number>();
+  current_page: number = 1;
 
   constructor(private _service: CouponService, private _router: Router, public _format: FormatService, private _title: Title) {
     this._title.setTitle(this._format.vi.coupon);
     this._service.getCoupons().subscribe({
-      next: (data) => { this.coupon = data },
+      next: (data) => {
+        this.coupon = data;
+        const total_page = Math.ceil(this.coupon.length / 10);
+        for (let i = 1; i <= total_page; i++) {
+          this.page.push(i);
+        }
+        this.changePage(1);
+      },
       error: (err) => { this.errMessage = err }
     })
   }
@@ -37,5 +46,29 @@ export class AdminCouponComponent {
       },
       error: (err) => { this.errMessage = err }
     })
+  }
+
+  changePage(page: number) {
+    this._service.getCouponsByPage(page).subscribe({
+      next: (data) => {
+        this.coupon = data;
+        this.current_page = page;
+      },
+      error: (err) => { this.errMessage = err }
+    })
+  }
+
+  previousPage() {
+    if (this.current_page > 1) {
+      this.current_page--;
+      this.changePage(this.current_page);
+    }
+  }
+
+  nextPage() {
+    if (this.current_page < this.page.length) {
+      this.current_page++;
+      this.changePage(this.current_page);
+    }
   }
 }

@@ -23,6 +23,19 @@ export class CouponService {
       catchError(this.handleError))
   }
 
+  // get coupons by page
+  getCouponsByPage(page: number): Observable<any> {
+    const headers = new HttpHeaders().set("Content-Type", "text/plain;charset=utf-8")
+    const requestOptions: Object = {
+      headers: headers,
+      responseType: "text"
+    }
+    return this._http.get<any>(`/v1/coupon/?page=${page}`, requestOptions).pipe(
+      map(res => JSON.parse(res) as Coupon[]),
+      retry(3),
+      catchError(this.handleError))
+  }
+
   // get coupon by coupon object id
   getCouponById(id: string): Observable<any> {
     const headers = new HttpHeaders().set("Content-Type", "text/plain;charset=utf-8")
