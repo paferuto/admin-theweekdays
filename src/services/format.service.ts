@@ -56,6 +56,15 @@ export class FormatService {
     max_discount: 'Giảm tối đa',
     percentage: 'Phần trăm',
     list_coupon: 'Danh sách mã giảm giá',
+    order_date: 'Ngày đặt hàng',
+    order_id: 'Mã đơn hàng',
+    customer_id: 'Mã khách hàng',
+    total: 'Tổng tiền',
+    detail: 'Chi tiết',
+    payment_method: 'Phương thức thanh toán',
+    status: 'Trạng thái',
+    product_id: 'Mã sản phẩm',
+    sub_total: 'Tạm tính',
 
     // button
     add_category: 'Thêm danh mục',
@@ -69,6 +78,8 @@ export class FormatService {
     update_product: 'Cập nhật sản phẩm',
     add_coupon: 'Thêm mã giảm giá',
     update_coupon: 'Cập nhật mã giảm giá',
+    update_status:'Cập nhật trạng thái',
+    change: 'Thay đổi',
 
     // confirmation
     confirm_add_product: 'Bạn có chắc chắn muốn thêm sản phẩm này không?',
@@ -102,6 +113,7 @@ export class FormatService {
     fail_delete: 'Xóa thất bại',
     success_add: 'Thêm thành công',
     fail_add: 'Thêm thất bại',
+    success_update_status: 'Cập nhật trạng thái thành công',
 
     // placeholder
     enter_name: 'Nhập tên',

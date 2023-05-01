@@ -8,98 +8,103 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Order</h1>
+      <h1>{{_format.vi.order}}</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item" [routerLink]="['order']">Order</li>
-          <li class="breadcrumb-item active">Detail</li>
+          <li class="breadcrumb-item" style="cursor: pointer;"><a href="index.html">{{_format.vi.home}}</a></li>
+          <li class="breadcrumb-item" style="cursor: pointer;" [routerLink]="['/order/',order.status]">{{_format.vi.order}}</li>
+          <li class="breadcrumb-item active" style="cursor: pointer;">{{_format.vi.detail}}</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
-      <h3>Order ID1 details</h3>
+      <h3>{{_format.vi.order}} {{id}}</h3>
       <table>
         <tr>
-          <th style="width: 200px;">Customer ID </th>
-          <td>1</td>
+          <th style="width: 200px;">{{_format.vi.customer}}</th>
+          <td>{{order.customer_id}}</td>
         </tr>
         <tr>
-          <th>Order date </th>
-          <td>2021-05-05</td>
+          <th>{{_format.vi.order_date}}</th>
+          <td>{{order.date | date:"dd/MM/yyyy"}}</td>
         </tr>
         <tr>
-          <th>Total</th>
-          <td>1000000</td>
+          <th>{{_format.vi.total}}</th>
+          <td>{{order.total}} (VND)</td>
         </tr>
         <tr>
-          <th>Payment method</th>
-          <td>Momo <span class="badge text-bg-success">Paid</span></td>
+          <th>{{_format.vi.payment_method}}</th>
+          <td>{{order.payment.method}} <span class="badge {{payment_status}}">{{order.payment.status}}</span></td>
         </tr>
-        <tr>
-          <th>Status </th>
-          <td>
-            <div class="list-group"> <!-- Dùng để cập nhật trạng thái đơn hàng, thứ tự mới nhất từ trên xuống dưới -->
-              <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                <div class="d-flex w-100 justify-content-between">
-                  <p class="mb-1">Delivered</p>
-                  <small>3 days ago</small>
+        <tr class="position-relative">
+          <th class="position-absolute top-0 start-0">{{_format.vi.status}}</th>
+          <td style="width: fit-content;">
+            <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+              aria-expanded="false" aria-controls="collapseExample">
+              {{order.status}}
+            </button>
+            <button class="btn btn-outline-primary" style="margin-left: 10px;" data-bs-toggle="modal"
+              data-bs-target="#updateStatusModal">{{_format.vi.update_status}}</button>
+            <!-- Modal -->
+            <div class="modal fade" id="updateStatusModal" tabindex="-1" aria-labelledby="updateStatusModal"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="updateStatusModal">{{_format.vi.update_status}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="order.status">
+                      <option selected disabled>{{order.status}}</option>
+                      <option value="Bomhang">Bomhang</option>
+                      <option value="Buonkhongban">Buonkhongban</option>
+                    </select>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                      data-bs-dismiss="modal">{{_format.vi.close}}</button>
+                    <button type="button" class="btn btn-primary" (click)="updatePaymentStatus()">{{_format.vi.change}}</button>
+                  </div>
                 </div>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                  <p class="mb-1">Shipping</p>
-                  <small class="text-body-secondary">3 days ago</small>
+              </div>
+            </div>
+            <div class="collapse" id="collapseExample">
+              <div *ngFor="let status of order.progress" class="row">
+                <div class="col-3 col-sm-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                    <path
+                      d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
+                    <path
+                      d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
+                  </svg></div>
+                <div class="col-3 col-sm-4">
+                  <p>{{status.status}}</p>
                 </div>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                  <p class="mb-1">Processing</p>
-                  <small class="text-body-secondary">3 days ago</small>
+                <div class="col-4 col-sm-7">
+                  <p>{{status.date | date:"dd/MM/yyyy-hh:mm"}}</p>
                 </div>
-              </a>
-            </div></td>
+              </div>
+            </div>
+          </td>
         </tr>
       </table>
+      <br>
       <table class="table table-hover">
-        <thead>
+        <thead class="table-dark">
           <tr>
-            <th>Product ID</th>
-            <th>Product name</th>
-            <th>Quantity</th>
-            <th>Price (VND)</th>
+            <th>{{_format.vi.product_id}}</th>
+            <th>{{_format.vi.quantity}}</th>
+            <th>{{_format.vi.price}}</th>
+            <th>{{_format.vi.sub_total}}</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Product 1</td>
-            <td>1</td>
-            <td>1000000</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Product 1</td>
-            <td>1</td>
-            <td>1000000</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Product 1</td>
-            <td>1</td>
-            <td>1000000</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Product 1</td>
-            <td>1</td>
-            <td>1000000</td>
+          <tr *ngFor="let product of order.products">
+            <td>{{product.product_id}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.sub_total}}</td>
           </tr>
         </tbody>
       </table>
@@ -114,16 +119,16 @@
       class="bi bi-arrow-up-short"></i></a>
 
 </body>
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
-  </footer><!-- End Footer -->
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+  <div class="copyright">
+    &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+  </div>
+  <div class="credits">
+    <!-- All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+  </div>
+</footer><!-- End Footer -->
