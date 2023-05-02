@@ -106,7 +106,38 @@
             <td>{{product.price}}</td>
             <td>{{product.sub_total}}</td>
           </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td>{{_format.vi.total}}</td>
+            <td>
+              <div>{{total}}</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td>{{_format.vi.delivery_fee}}</td>
+            <td>
+              <div>{{order.delivery.price}}</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td>
+              <div>{{_format.vi.discount}}</div>
+              <p class="text-black-50">{{order.discount.code}}</p>
+            </td>
+            <td>
+              <div>- {{order.discount.value}}</div>
+            </td>
+          </tr>
         </tbody>
+        <tfoot class="table-dark">
+          <tr>
+            <td colspan="2"></td>
+            <td>{{_format.vi.order_value}}</td>
+            <td>{{total + order.delivery.price - order.discount.value}}</td>
+          </tr>
+        </tfoot>
       </table>
     </div>
 

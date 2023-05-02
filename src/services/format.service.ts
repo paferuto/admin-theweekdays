@@ -65,6 +65,8 @@ export class FormatService {
     status: 'Trạng thái',
     product_id: 'Mã sản phẩm',
     sub_total: 'Tạm tính',
+    order_value: 'Giá trị đơn hàng',
+    delivery_fee: 'Phí vận chuyển',
 
     // button
     add_category: 'Thêm danh mục',
