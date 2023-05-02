@@ -33,12 +33,21 @@
           <tr *ngFor="let c of collections" [routerLink]="['/collection/',c._id]">
             <td>{{c.name}}</td>
             <td>{{c.createdDate}}</td>
-            <td><img src="{{c.image}}"></td>
+            <td><img src="{{c.image}}" style="width: 100px;"></td>
             <td><button class="btn btn-danger" (click)="confirmDelete(c._id)"><i class="fas fa-times"></i></button></td>
           </tr>
         </tbody>
 
       </table>
+      <nav aria-label="Page navigation example" style="width: fit-content; margin: auto;">
+        <ul class="pagination">
+          <!-- create number of page equal to page -->
+          <li class="page-item"><a class="page-link" (click)="previousPage()"><<</a></li> <!-- Chuyển về trang trước-->
+          <li class="page-item" *ngFor="let p of page" [class.active]="p==current_page">
+            <a class="page-link" (click)="changePage(p)">{{p}}</a></li>
+            <li class="page-item"><a class="page-link" (click)="nextPage()">>></a></li> <!-- Chuyển về trang trước-->
+        </ul>
+      </nav>
     </div>
 
 
