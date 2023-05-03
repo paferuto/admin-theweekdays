@@ -25,6 +25,12 @@ import { UpdateCategoryComponent } from './update-category/update-category.compo
 import { NewCategoryComponent } from './new-category/new-category.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NewCouponComponent } from './new-coupon/new-coupon.component';
+import { CategoryService } from 'src/services/category.service';
+import { CollectionService } from 'src/services/collection.service';
+import { CouponService } from 'src/services/coupon.service';
+import { FormatService } from 'src/services/format.service';
+import { OrderService } from 'src/services/order.service';
+import { ProductService } from 'src/services/product.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +68,14 @@ import { NewCouponComponent } from './new-coupon/new-coupon.component';
       closeButton: true,
     })
   ],
-  providers: [],
+  providers: [
+    CategoryService,
+    CollectionService,
+    CouponService,
+    FormatService,
+    OrderService,
+    ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
