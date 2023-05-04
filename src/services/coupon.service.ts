@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, map, retry, throwError } from 'rxjs';
 import { Coupon } from 'src/app/coupon';
 import { ErrorHandlingService } from './error-handling.service';
+import { FormatService } from './format.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CouponService {
 
-  constructor(private _http: HttpClient, private errorHandlingService: ErrorHandlingService) { }
+  constructor(private _http: HttpClient, private errorHandlingService: ErrorHandlingService, private api: FormatService) { }
 
   // get all coupons
   getCoupons(): Observable<any> {
@@ -18,7 +19,7 @@ export class CouponService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>("/v1/coupon", requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + "/v1/coupon", requestOptions).pipe(
       map(res => JSON.parse(res) as Coupon[]),
       catchError((error) => {
         this.errorHandlingService.handleError(error);
@@ -33,7 +34,7 @@ export class CouponService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>(`/v1/coupon/?page=${page}`, requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + `/v1/coupon/?page=${page}`, requestOptions).pipe(
       map(res => JSON.parse(res) as Coupon[]),
       retry(3),
       catchError(this.handleError))
@@ -46,7 +47,7 @@ export class CouponService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>(`/v1/coupon/${id}`, requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + `/v1/coupon/${id}`, requestOptions).pipe(
       map(res => JSON.parse(res) as Coupon),
       retry(3),
       catchError(this.handleError))
@@ -59,7 +60,7 @@ export class CouponService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>(`/v1/coupon/code/${code}`, requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + `/v1/coupon/code/${code}`, requestOptions).pipe(
       map(res => JSON.parse(res) as Coupon),
       retry(3),
       catchError(this.handleError))
@@ -72,7 +73,7 @@ export class CouponService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.post<any>("/v1/coupon", JSON.stringify(coupon), requestOptions).pipe(
+    return this._http.post<any>(this.api.api_path + "/v1/coupon", JSON.stringify(coupon), requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError)
@@ -86,7 +87,7 @@ export class CouponService {
       headers: header,
       responseType: "text"
     }
-    return this._http.put<any>(`/v1/coupon/${id}`, JSON.stringify(coupon), requestOptions).pipe(
+    return this._http.put<any>(this.api.api_path + `/v1/coupon/${id}`, JSON.stringify(coupon), requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -99,7 +100,7 @@ export class CouponService {
       headers: header,
       responseType: "text"
     }
-    return this._http.delete<any>(`/v1/coupon/${id}`, requestOptions).pipe(
+    return this._http.delete<any>(this.api.api_path + `/v1/coupon/${id}`, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))

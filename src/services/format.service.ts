@@ -140,6 +140,8 @@ export class FormatService {
     product: 'Product',
   };
 
+  public api_path = 'https://api.theweekdays.live';
+
   // ========================  FOR ALL OBJECTS  =========================
   // style button for active status
   styleButtonActiveStatus(status: boolean) {

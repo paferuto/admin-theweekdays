@@ -1,13 +1,14 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, retry, throwError } from 'rxjs';
+import { FormatService } from './format.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CollectionService {
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, private api: FormatService) { }
 
   // get lookbook by id
   // getLookbookById(id: string): Observable<any> {
@@ -42,7 +43,7 @@ export class CollectionService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>("/v1/collection", requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + "/v1/collection", requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -55,7 +56,7 @@ export class CollectionService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>(`/v1/collection/?page=${page}`, requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + `/v1/collection/?page=${page}`, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -67,7 +68,7 @@ export class CollectionService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>(`/v1/collection/${id}`, requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + `/v1/collection/${id}`, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -93,7 +94,7 @@ export class CollectionService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.post<any>("/v1/collection", JSON.stringify(collection), requestOptions).pipe(
+    return this._http.post<any>(this.api.api_path + "/v1/collection", JSON.stringify(collection), requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -119,7 +120,7 @@ export class CollectionService {
       headers: header,
       responseType: "text"
     }
-    return this._http.put<any>(`/v1/collection/`, JSON.stringify(collection), requestOptions).pipe(
+    return this._http.put<any>(this.api.api_path + `/v1/collection/`, JSON.stringify(collection), requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -145,7 +146,7 @@ export class CollectionService {
       headers: header,
       responseType: "text"
     }
-    return this._http.delete<any>(`/v1/collection/${id}`, requestOptions).pipe(
+    return this._http.delete<any>(this.api.api_path + `/v1/collection/${id}`, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))

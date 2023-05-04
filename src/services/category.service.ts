@@ -1,13 +1,14 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, retry, throwError } from 'rxjs';
+import { FormatService } from './format.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, private api: FormatService) { }
 
   // get all categories
   getCategories(): Observable<any> {
@@ -16,7 +17,7 @@ export class CategoryService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>("/v1/category", requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + "/v1/category", requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -29,7 +30,7 @@ export class CategoryService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>(`/v1/category/${id}`, requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + `/v1/category/${id}`, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -42,7 +43,7 @@ export class CategoryService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.post<any>("/v1/category", JSON.stringify(category), requestOptions).pipe(
+    return this._http.post<any>(this.api.api_path + "/v1/category", JSON.stringify(category), requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -55,7 +56,7 @@ export class CategoryService {
       headers: header,
       responseType: "text"
     }
-    return this._http.put<any>(`/v1/category/${id}`, JSON.stringify(category), requestOptions).pipe(
+    return this._http.put<any>(this.api.api_path + `/v1/category/${id}`, JSON.stringify(category), requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -68,7 +69,7 @@ export class CategoryService {
       headers: header,
       responseType: "text"
     }
-    return this._http.put<any>(`/v1/category/updatecount/${id}`, null, requestOptions).pipe(
+    return this._http.put<any>(this.api.api_path + `/v1/category/updatecount/${id}`, null, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -81,7 +82,7 @@ export class CategoryService {
       headers: header,
       responseType: "text"
     }
-    return this._http.delete<any>(`/v1/category/${id}`, requestOptions).pipe(
+    return this._http.delete<any>(this.api.api_path + `/v1/category/${id}`, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))

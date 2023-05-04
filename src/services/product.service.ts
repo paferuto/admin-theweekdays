@@ -1,13 +1,14 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, retry, throwError } from 'rxjs';
+import { FormatService } from './format.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, private api: FormatService) { }
 
   // get all products
   getProducts(): Observable<any> {
@@ -16,7 +17,7 @@ export class ProductService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>("/v1/products", requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + "/v1/products", requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -29,7 +30,7 @@ export class ProductService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>(`/v1/products/${id}`, requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + `/v1/products/${id}`, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -51,7 +52,7 @@ export class ProductService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>(`/v1/products/?search=${name}`, requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + `/v1/products/?search=${name}`, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -64,7 +65,7 @@ export class ProductService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>(`/v1/products/?page=${page}`, requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + `/v1/products/?page=${page}`, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -77,7 +78,7 @@ export class ProductService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.post<any>("/v1/products", JSON.stringify(product), requestOptions).pipe(
+    return this._http.post<any>(this.api.api_path + "/v1/products", JSON.stringify(product), requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -90,7 +91,7 @@ export class ProductService {
       headers: header,
       responseType: "text"
     }
-    return this._http.put<any>(`/v1/products/${id}`, JSON.stringify(product), requestOptions).pipe(
+    return this._http.put<any>(this.api.api_path + `/v1/products/${id}`, JSON.stringify(product), requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -103,7 +104,7 @@ export class ProductService {
       headers: header,
       responseType: "text"
     }
-    return this._http.delete<any>(`/v1/products/${id}`, requestOptions).pipe(
+    return this._http.delete<any>(this.api.api_path + `/v1/products/${id}`, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))

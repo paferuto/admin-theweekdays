@@ -1,13 +1,14 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, retry, throwError } from 'rxjs';
+import { FormatService } from './format.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient, private api: FormatService) {}
 
   // get orders by status
   getOrdersByStatus(status: string): Observable<any> {
@@ -16,7 +17,7 @@ export class OrderService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>(`/v1/order/status/${status}`, requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + `/v1/order/status/${status}`, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -29,7 +30,7 @@ export class OrderService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>(`/v1/order/${id}`, requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + `/v1/order/${id}`, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -42,7 +43,7 @@ export class OrderService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>(`/v1/order/status/${status}/?page=${page}`, requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + `/v1/order/status/${status}/?page=${page}`, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -55,7 +56,7 @@ export class OrderService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.get<any>(`/v1/order/customer/${id}`, requestOptions).pipe(
+    return this._http.get<any>(this.api.api_path + `/v1/order/customer/${id}`, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -68,7 +69,7 @@ export class OrderService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.post<any>("/v1/order", order, requestOptions).pipe(
+    return this._http.post<any>(this.api.api_path + "/v1/order", order, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
@@ -81,7 +82,7 @@ export class OrderService {
       headers: headers,
       responseType: "text"
     }
-    return this._http.put<any>(`/v1/order/${order._id}`, order, requestOptions).pipe(
+    return this._http.put<any>(this.api.api_path + `/v1/order/${order._id}`, order, requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
       catchError(this.handleError))
