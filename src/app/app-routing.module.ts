@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: "order/:status", component: AdminOrderComponent },
   { path: "collection", component: CollectionComponent },
   { path: "product", component: AdminProductComponent },
-  { path: "logout", component: AdminLoginComponent },
+  { path: "login", component: AdminLoginComponent },
   { path: "product/add", component: AddProductComponent },
   { path: "customer", component: AdminCustomerComponent },
   { path: "order/detail/:id", component: OrderDetailComponent },

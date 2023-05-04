@@ -2,13 +2,14 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, retry, throwError } from 'rxjs';
 import { Coupon } from 'src/app/coupon';
+import { ErrorHandlingService } from './error-handling.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CouponService {
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, private errorHandlingService: ErrorHandlingService) { }
 
   // get all coupons
   getCoupons(): Observable<any> {
@@ -19,8 +20,10 @@ export class CouponService {
     }
     return this._http.get<any>("/v1/coupon", requestOptions).pipe(
       map(res => JSON.parse(res) as Coupon[]),
-      retry(3),
-      catchError(this.handleError))
+      catchError((error) => {
+        this.errorHandlingService.handleError(error);
+        return throwError(error);
+      }))
   }
 
   // get coupons by page
@@ -72,7 +75,8 @@ export class CouponService {
     return this._http.post<any>("/v1/coupon", JSON.stringify(coupon), requestOptions).pipe(
       map(res => JSON.parse(res)),
       retry(3),
-      catchError(this.handleError))
+      catchError(this.handleError)
+    )
   }
 
   // update a coupon by coupon object id
@@ -103,6 +107,6 @@ export class CouponService {
 
   // handle error
   handleError(error: HttpErrorResponse) {
-    return throwError(() => new Error(error.message))
+    return throwError(error)
   }
 }
