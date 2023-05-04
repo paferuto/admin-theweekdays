@@ -4,6 +4,7 @@ import { Collection } from '../collection';
 import { Location } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { FormatService } from 'src/services/format.service';
+import { AuthService } from 'src/services/auth.service';
 
 
 @Component({
@@ -18,7 +19,10 @@ export class CollectionComponent {
   page = new Array<number>();
   current_page: number = 1;
 
-  constructor(private _service: CollectionService, private _title: Title, public _format: FormatService) {
+  constructor(private _service: CollectionService, private _title: Title, public _format: FormatService, private _auth: AuthService) {
+    this._auth.auth().subscribe({
+      error: (err) => { }
+    });
     this._title.setTitle(this._format.vi.collection);
     this._service.getCollections().subscribe(
       (data: any) => {

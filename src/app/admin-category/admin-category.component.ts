@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/services/auth.service';
 import { CategoryService } from 'src/services/category.service';
 import { FormatService } from 'src/services/format.service';
 
@@ -15,7 +16,10 @@ export class AdminCategoryComponent {
   errMessage: string = '';
   type = ['Quần', 'Áo'];
 
-  constructor(private _service: CategoryService, private _router: Router, public _format: FormatService, private _title: Title) {
+  constructor(private _service: CategoryService, private _router: Router, public _format: FormatService, private _title: Title, private _auth: AuthService) {
+    this._auth.auth().subscribe({
+      error: (err) => { }
+    });
     this._title.setTitle(this._format.vi.category);
     this.getCategories();
   }
