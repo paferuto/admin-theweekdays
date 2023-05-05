@@ -5,6 +5,9 @@ import { CollectionService } from 'src/services/collection.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { FormatService } from 'src/services/format.service';
+import { ProductService } from 'src/services/product.service';
+import { ToastrService } from 'ngx-toastr';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-collection-detail',
@@ -17,17 +20,25 @@ export class CollectionDetailComponent {
   collection: Collection = new Collection();
   public Editor: any = ClassicEditor;
   lookbook = new Lookbook();
-  products: any;
-
-  constructor(private _service: CollectionService, private route: ActivatedRoute, private router: Router, private _title: Title, public _format: FormatService) {
+  products: any[] = [];
+  listProducts: any;
+  target: any = "";
+  videoURL:any;
+  constructor(private _service: CollectionService, private route: ActivatedRoute, private router: Router, private _title: Title, public _format: FormatService, private productService: ProductService, private toastr: ToastrService, private sanitizer: DomSanitizer) {
     this._title.setTitle(this._format.vi.detail_collection);
     this.id = this.route.snapshot.paramMap.get('id');
     this._service.getCollectionById(this.id).subscribe(
       (data: any) => {
         this.collection = data;
+        this.videoURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + data.videoId + '?rel=0?version=3&autoplay=1&controls=0&&showinfo=0&loop=1&disablekb=1&iv_load_policy=3');
       },
       (error) => {
         console.log(error);
+      }
+    );
+    this.productService.getProducts().subscribe(
+      (data: any) => {
+        this.listProducts = data.slice(0, 5);
       }
     );
   }
@@ -76,7 +87,15 @@ export class CollectionDetailComponent {
   }
 
   addLookbook() {
-    this.lookbook.products = this.products.split(',');
+    if (this.lookbook.image == null || this.lookbook.image == "") {
+      this.toastr.error(this._format.vi.require_fill_image);
+      return;
+    }
+    if (this.lookbook.products.length) {
+      this.toastr.error(this._format.vi.validate_fill_product);
+      return;
+    }
+    this.lookbook.products = this.products;
     if (confirm(this._format.vi.confirm_add)) {
       // nạp dữ liệu lookbook vào mảng lookbooks
       this.collection.lookbook.push(this.lookbook);
@@ -102,6 +121,43 @@ export class CollectionDetailComponent {
           console.log(error);
         }
       );
+    }
+  }
+
+  //get products
+  getProducts() {
+    this.productService.getProducts().subscribe(
+      (data: any) => {
+        this.listProducts = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  // search product by name
+  searchProductByName(name: string) {
+    this.productService.searchProductsByName(name).subscribe(
+      (data: any) => {
+        this.listProducts = data.slice(0, 5);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  // get product id
+  getProductId(id: string) {
+    // check if product is already in lookbook
+    if (this.products.includes(id)) {
+      this.toastr.error(this._format.vi.validate_add_product_id);
+      return;
+    }
+    else {
+      this.toastr.success(this._format.vi.success_add + " " + id);
+      this.products.push(id);
     }
   }
 }

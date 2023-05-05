@@ -98,9 +98,9 @@ export class ProductService {
 
   // delete a product by product object id
   deleteProduct(id: string): Observable<any> {
-    const header = new HttpHeaders().set("Content-Type", "application/json")
+    const headers = new HttpHeaders().set("Content-Type", "text/plain;charset=utf-8")
     const requestOptions: Object = {
-      headers: header,
+      headers: headers,
       responseType: "text"
     }
     return this._http.delete<any>(`/v1/products/${id}`, requestOptions).pipe(
@@ -108,6 +108,7 @@ export class ProductService {
       retry(3),
       catchError(this.handleError))
   }
+  
   // handle error
   handleError(error: HttpErrorResponse) {
     return throwError(() => new Error(error.message))

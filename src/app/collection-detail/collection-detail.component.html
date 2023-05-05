@@ -32,10 +32,12 @@
           <input class="form-control" type="text" placeholder="{{_format.vi.enter_id}}"
             aria-label="default input example" name="video" [(ngModel)]="collection.videoId"
             [value]="collection.videoId">
-          <iframe width="900" height="506" src="https://www.youtube.com/embed/qerVyrLKzA0"
-            title="【Vietsub】Yoru ni Kakeru「夜に駆ける」YOASOBI" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
+          <!-- video.component.html -->
+
+          <iframe width="956" height="538"
+            [src]="videoURL" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"></iframe>
+
         </div>
         <br>
         <div>
@@ -57,12 +59,20 @@
         </div>
         <br>
         <div class="row mb-3">
-          <div class="col-sm-2" *ngFor="let l of collection.lookbook, let index = index" name="lookbook">
+          <div class="col-sm-2" *ngFor="let lookbook of collection.lookbook, let index = index" name="lookbook"
+            data-bs-toggle="modal" data-bs-target="#lookbookModal">
             <div>
               <div class="row mb-3">
                 <button (click)="deleteLookbook(index)" class="position-absolute top-1 end-1 btn btn-danger"
                   style="width: fit-content; height: fit-content;"><i class="fas fa-times"></i></button>
-                <img src="{{l.image}}" class="col sm-2" alt="" width="100px" height="150px" style="object-fit: cover;">
+                <img src="{{lookbook.image}}" class="col sm-2" alt="" width="100px" height="150px"
+                  style="object-fit: cover;" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                  aria-expanded="false" aria-controls="collapseExample">
+                <div class="collapse" id="collapseExample">
+                  <div class="card card-body">
+                    {{lookbook.products}}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -84,8 +94,12 @@
                   <div class="mb-3">
                     <label for="message-text" class="col-form-label">{{_format.vi.product}}:</label>
                     <input class="form-control" id="message-text"
-                      placeholder="{{_format.vi.enter_id}} {{_format.vi.product_id_syntax}}" ngDefaultControl
-                      name="product" [(ngModel)]="products">
+                      placeholder="{{_format.vi.enter_id}} {{_format.vi.product_id_syntax}}" [(ngModel)]="target"
+                      name="target" ngDefaultControl (input)="searchProductByName(target)">
+                    <ul class="list-group list-group-flush" *ngFor="let p of listProducts">
+                      <li (click)="getProductId(p.product_id)" class="list-group-item list-group-item-action">{{p.name}}
+                      </li>
+                    </ul>
                   </div>
                 </form>
               </div>
@@ -97,7 +111,7 @@
           </div>
         </div>
         <div style="width: fit-content; margin: auto;"><button for="submit" class="btn btn-success"
-            style="margin: 10px;" (click)="updateCollection()">Submit</button></div>
+            style="margin: 10px;" (click)="updateCollection()">{{_format.vi.modify}}</button></div>
       </form>
     </div>
   </main><!-- End #main -->

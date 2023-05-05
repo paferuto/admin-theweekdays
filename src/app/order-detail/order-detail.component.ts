@@ -49,6 +49,17 @@ export class OrderDetailComponent {
     return this.total;
   }
 
+  // confirm update status
+  confirmUpdateStatus() {
+    if (this.order.status != this.order.progress[this.order.progress.length - 1].status) {
+      if (confirm(this._format.vi.confirm_update)) {
+        this.updatePaymentStatus();
+      }
+    } else {
+      alert(this._format.vi.status_repeat);
+    }
+  }
+
   // update payment status
   updatePaymentStatus() {
     // tạo một progress mới
@@ -67,4 +78,5 @@ export class OrderDetailComponent {
       }
     );
   }
+
 }
