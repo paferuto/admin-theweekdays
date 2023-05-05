@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: "category/update/:id", component: UpdateCategoryComponent },
   { path: "category/new", component: UpdateCategoryComponent },
   { path: "coupon", component: AdminCouponComponent },
-  { path: "order/:status", component: AdminOrderComponent },
+  { path: "order", component: AdminOrderComponent },
   { path: "collection", component: CollectionComponent },
   { path: "product", component: AdminProductComponent },
   { path: "logout", component: AdminLoginComponent },

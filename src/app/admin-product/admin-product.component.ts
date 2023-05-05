@@ -11,16 +11,23 @@ import { FormatService } from 'src/services/format.service';
   styleUrls: ['./admin-product.component.css']
 })
 export class AdminProductComponent {
+  errMessage: string = '';
   product_list: any;
   page = new Array<number>();
   current_page: number = 1;
+  searchedName: string = '';
+  total_page: any;
   constructor(private _service: ProductService, public _format: FormatService, private _title: Title) {
     this._title.setTitle(this._format.vi.product);
+    this.getProducts();
+  }
+
+  getProducts() {
     this._service.getProducts().subscribe(
       (data: any) => {
         this.product_list = data;
-        const total_page = Math.ceil(this.product_list.length / 10);
-        for (let i = 1; i <= total_page; i++) {
+        this.total_page = Math.ceil(this.product_list.length / 10);
+        for (let i = 1; i <= this.total_page; i++) {
           this.page.push(i);
         }
         this.changePage(1);
@@ -31,28 +38,17 @@ export class AdminProductComponent {
     );
   }
 
-  confirmDelete(id: any) {
-    if (confirm(this._format.vi.confirm_delete)) {
-      this.deleteProduct(id);
+  // delete a category by category object id
+  deleteProduct(id: string) {
+    if (!confirm(this._format.vi.confirm_delete)) {
+      return;
     }
-  }
-
-  deleteProduct(id: any) {
     this._service.deleteProduct(id).subscribe(
-      (data: any) => {
-        this._service.getProducts().subscribe(
-          (data: any) => {
-            this.product_list = data;
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-      },
-      (error) => {
-        console.log(error);
+      {
+        next: (data) => { this.getProducts(); alert(this._format.vi.success_delete) },
+        error: (err) => { this.errMessage = err; alert(this._format.vi.fail_delete) }
       }
-    );
+    )
   }
 
   changePage(page: number) {
@@ -76,6 +72,27 @@ export class AdminProductComponent {
   nextPage() {
     if (this.current_page < this.page.length) {
       this.changePage(this.current_page + 1);
+    }
+  }
+
+  searchProduct(search: string) {
+    if (search == '') {
+      this.getProducts();
+    }
+    else {
+      this._service.searchProductsByName(search).subscribe(
+        (data: any) => {
+          this.product_list = data;
+          this.total_page = Math.ceil(data.length / 10);
+          for (let i = 1; i <= this.total_page; i++) {
+            this.page=[];
+            this.page.push(i);
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     }
   }
 }

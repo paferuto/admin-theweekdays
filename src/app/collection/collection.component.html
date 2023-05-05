@@ -8,24 +8,24 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Collection</h1>
+      <h1>{{_format.vi.collection}}</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Collection</li>
+          <li class="breadcrumb-item"><a href="index.html">{{_format.vi.home}}</a></li>
+          <li class="breadcrumb-item active">{{_format.vi.collection}}</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
     <div>
-      <button type="button" class="btn btn-success" [routerLink]="['/collection/new-collection']">Collection name</button>
+      <button type="button" class="btn btn-success" [routerLink]="['/collection/new-collection']">{{_format.vi.add}} {{_format.vi.collection}}</button>
     </div>
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Created date</th>
-            <th>Image</th>
+            <th>{{_format.vi.name}}</th>
+            <th>{{_format.vi.created_date}}</th>
+            <th>{{_format.vi.image}}</th>
             <th></th>
           </tr>
         </thead>

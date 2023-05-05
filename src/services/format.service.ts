@@ -67,6 +67,13 @@ export class FormatService {
     sub_total: 'Tạm tính',
     order_value: 'Giá trị đơn hàng',
     delivery_fee: 'Phí vận chuyển',
+    ordered: 'Đã đặt',
+    delivered: 'Đã giao',
+    cancelled: 'Đã hủy',
+    processing: 'Đang xử lý',
+    completed: 'Đã hoàn thành',
+    created_date: 'Ngày tạo',
+
 
     // button
     add_category: 'Thêm danh mục',
@@ -90,6 +97,7 @@ export class FormatService {
     confirm_delete: 'Bạn có chắc chắn muốn xóa không?',
     confirm_add: 'Bạn có chắc chắn muốn thêm không?',
     confirm_update: 'Bạn có chắc chắn muốn cập nhật không?',
+    error_update_status: 'Bạn không thể cập nhật trạng thái đơn hàng này',
 
     // message
     require_fill_all: 'Vui lòng nhập đầy đủ thông tin',
@@ -116,11 +124,15 @@ export class FormatService {
     success_add: 'Thêm thành công',
     fail_add: 'Thêm thất bại',
     success_update_status: 'Cập nhật trạng thái thành công',
+    status_repeat: 'Trạng thái đã tồn tại',
+    selected: 'Đã chọn',
+    validate_fill_product: 'Vui lòng chọn sản phẩm',
 
     // placeholder
     enter_name: 'Nhập tên',
     enter_id: 'Nhập ID sản phẩm.',
     product_id_syntax: 'Cú pháp: "ID1, ID2, ID3, ..."',
+    enter_product_name: "Nhập tên sản phẩm",
 
     // others
     default: 'Mặc định',

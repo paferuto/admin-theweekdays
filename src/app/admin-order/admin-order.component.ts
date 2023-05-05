@@ -21,7 +21,7 @@ export class AdminOrderComponent {
     const url_split = url.split("/");
     this.status = url_split[url_split.length - 1];
     // get order list
-    this.changePage(this.status,1);
+    this.changePage("ordered",1);
   }
   changePage(status:string,page: number) {
     this._service.getOrdersByStatusAndPage(status,page).subscribe(

@@ -11,13 +11,23 @@
       <h1>{{_format.vi.product}}</h1>
       <nav>
         <ol class="breadcrumb">
-          <li style="cursor: pointer" class="breadcrumb-item" [routerLink]="['/']" ><u>{{_format.vi.home}}</u></li>
+          <li style="cursor: pointer" class="breadcrumb-item" [routerLink]="['/']"><u>{{_format.vi.home}}</u></li>
           <li class="breadcrumb-item active">{{_format.vi.product}}</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+        aria-describedby="basic-addon1" placeholder="{{_format.vi.enter_product_name}}" [(ngModel)]="searchedName"  (change)="searchProduct(searchedName)">
+        <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="16"
+          fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+          <path
+            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+        </svg></span>
+    </div>
     <div style="width: fit-content; margin: auto;">
-      <button class="btn btn-primary" style="margin: 5px;" [routerLink]="['/product/add']">{{_format.vi.add_product}}</button>
+      <button class="btn btn-primary" style="margin: 5px;"
+        [routerLink]="['/product/add']">{{_format.vi.add_product}}</button>
     </div>
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
       <table class="table table-hover" style="width: 100%;">
@@ -37,8 +47,7 @@
             <td><img src="{{p.image}}" alt="" style="width: 100px;"></td>
             <td>{{_format.formatCurrency(p.price)}}</td>
             <td>
-              <button class="btn btn-success" [routerLink]="['/product/',p._id]">{{_format.vi.modify}}</button>
-              <button class="btn btn-danger m-2" (click)="confirmDelete(p._id)">{{_format.vi.delete}}</button>
+              <button class="btn btn-danger m-2" (click)="deleteProduct(p._id)">{{_format.vi.delete}}</button>
             </td>
           </tr>
         </tbody>
@@ -46,10 +55,13 @@
       <nav aria-label="Page navigation example" style="width: fit-content; margin: auto;">
         <ul class="pagination">
           <!-- create number of page equal to page -->
-          <li class="page-item"><a class="page-link" (click)="previousPage()"><<</a></li> <!-- Chuyển về trang trước-->
+          <li class="page-item"><a class="page-link" (click)="previousPage()">
+              << </a>
+          </li> <!-- Chuyển về trang trước-->
           <li class="page-item" *ngFor="let p of page" [class.active]="p==current_page">
-            <a class="page-link" (click)="changePage(p)">{{p}}</a></li>
-            <li class="page-item"><a class="page-link" (click)="nextPage()">>></a></li> <!-- Chuyển về trang trước-->
+            <a class="page-link" (click)="changePage(p)">{{p}}</a>
+          </li>
+          <li class="page-item"><a class="page-link" (click)="nextPage()">>></a></li> <!-- Chuyển về trang trước-->
         </ul>
       </nav>
     </div>

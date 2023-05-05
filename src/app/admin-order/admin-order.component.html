@@ -17,11 +17,16 @@
       </nav>
     </div><!-- End Page Title -->
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-      <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" (click)="changePage('Delivered',1)">
-      <label class="btn btn-outline-primary" for="btnradio1">Delivered</label>
-
-      <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" (click)="changePage('Nghi',1)">
-      <label class="btn btn-outline-primary" for="btnradio2">Nghỉ</label>
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" (click)="changePage('ordered',1)">
+      <label class="btn btn-outline-primary" for="btnradio1">{{_format.vi.ordered}}</label>
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" (click)="changePage('processing',1)">
+      <label class="btn btn-outline-primary" for="btnradio2">{{_format.vi.processing}}</label>
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" (click)="changePage('delivered',1)">
+      <label class="btn btn-outline-primary" for="btnradio3">{{_format.vi.delivered}}</label>
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" (click)="changePage('completed',1)">
+      <label class="btn btn-outline-primary" for="btnradio4">{{_format.vi.completed}}</label>
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" (click)="changePage('cancelled',1)">
+      <label class="btn btn-outline-primary" for="btnradio5">{{_format.vi.cancelled}}</label>
     </div>
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
 
