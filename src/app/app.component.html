@@ -57,7 +57,7 @@
         </a>
       </li>
 
-      <li class="nav-item" [routerLink]="['/logout']">
+      <li class="nav-item" (click)="logout()">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span style="color: red;">{{_format.vi.logout}}</span><i
             class="bi bi-chevron-down ms-auto"></i>

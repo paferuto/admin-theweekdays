@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from 'src/services/auth.service';
 import { FormatService } from 'src/services/format.service';
 import { OrderService } from 'src/services/order.service';
 
@@ -14,7 +15,10 @@ export class AdminOrderComponent {
   current_page: number = 1;
   status: string = "";
   status_list: any;
-  constructor(private _title: Title, public _format: FormatService, private _service: OrderService) {
+  constructor(private _title: Title, public _format: FormatService, private _service: OrderService, private _auth: AuthService) {
+    this._auth.auth().subscribe({
+      error: (err) => { }
+    });
     this._title.setTitle(this._format.vi.order);
     // get status from url
     const url = window.location.href;

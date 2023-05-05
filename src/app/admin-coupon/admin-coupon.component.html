@@ -38,20 +38,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let c of coupon" [routerLink]="['/coupon/update/', c._id]" style="cursor: pointer;" class="text-center">
+          <tr *ngFor="let c of coupon" class="text-center">
             <!-- <td class="col-md-1">{{_format.shortenObjectId(c._id)}}</td> -->
-            <td class="col-md-2">{{c.coupon_code}}</td>
-            <td class="col-md-2">{{c.title}}</td>
-            <td class="col-md-2 text-center">
+            <td class="col-md-2" [routerLink]="['/coupon/update/', c._id]" style="cursor: pointer;">{{c.coupon_code}}</td>
+            <td class="col-md-2" [routerLink]="['/coupon/update/', c._id]" style="cursor: pointer;">{{c.title}}</td>
+            <td class="col-md-2 text-center" [routerLink]="['/coupon/update/', c._id]" style="cursor: pointer;">
               <button [class]="_format.styleButtonActiveStatus(c.is_active)">{{_format.couponActiveStatus(c.is_active)}}</button>
               </td>
-            <td class="col-md-2 text-center">{{c.quantity.used}}</td>
-            <td class="col-md-0">{{c.quantity.all}}</td>
-            <td class="col-md-1">{{_format.couponTypeFormat(c.is_percentage, c.value)}}</td>
-            <td class="col-md-1">{{_format.formatDate(c.valid_from)}}</td>
-            <td class="col-md-1">{{_format.formatDate(c.valid_to)}}</td>
+            <td class="col-md-2 text-center" [routerLink]="['/coupon/update/', c._id]" style="cursor: pointer;">{{c.quantity.used}}</td>
+            <td class="col-md-0" [routerLink]="['/coupon/update/', c._id]" style="cursor: pointer;">{{c.quantity.all}}</td>
+            <td class="col-md-1" [routerLink]="['/coupon/update/', c._id]" style="cursor: pointer;">{{_format.couponTypeFormat(c.is_percentage, c.value)}}</td>
+            <td class="col-md-1" [routerLink]="['/coupon/update/', c._id]" style="cursor: pointer;">{{_format.formatDate(c.valid_from)}}</td>
+            <td class="col-md-1" [routerLink]="['/coupon/update/', c._id]" style="cursor: pointer;">{{_format.formatDate(c.valid_to)}}</td>
             <td class="col-md-2 container">
-              <button type="button" class="btn btn-danger">{{_format.vi.delete}}</button>
+              <button type="button" class="btn btn-danger" (click)="deleteCoupon(c._id)">{{_format.vi.delete}}</button>
             </td>
           </tr>
         </tbody>

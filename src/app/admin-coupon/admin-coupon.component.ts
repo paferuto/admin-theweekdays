@@ -4,6 +4,8 @@ import { CouponService } from 'src/services/coupon.service';
 import { FormatService } from 'src/services/format.service';
 import { Coupon } from '../coupon';
 import { Title } from '@angular/platform-browser';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-admin-coupon',
@@ -17,8 +19,11 @@ export class AdminCouponComponent {
   page = new Array<number>();
   current_page: number = 1;
 
-  constructor(private _service: CouponService, private _router: Router, public _format: FormatService, private _title: Title) {
+  constructor(private _service: CouponService, private _router: Router, public _format: FormatService, private _title: Title, public _toastr: ToastrService, private _auth: AuthService) {
     this._title.setTitle(this._format.vi.coupon);
+    this._auth.auth().subscribe({
+      error: (err) => { }
+    });
     this._service.getCoupons().subscribe({
       next: (data) => {
         this.coupon = data;
@@ -28,12 +33,10 @@ export class AdminCouponComponent {
         }
         this.changePage(1);
       },
-      error: (err) => { this.errMessage = err }
+      error: (err) => {
+        this.errMessage = err;
+      }
     })
-  }
-
-  routeToUpdateCoupon(id: string) {
-    this._router.navigate(['edit', id])
   }
 
   addCoupon() {
@@ -69,6 +72,18 @@ export class AdminCouponComponent {
     if (this.current_page < this.page.length) {
       this.current_page++;
       this.changePage(this.current_page);
+    }
+  }
+
+  deleteCoupon(id: string) {
+    if (confirm(this._format.vi.confirm_delete)) {
+      this._service.deleteCoupon(id).subscribe({
+        next: (data) => {
+          this.coupon = this.coupon.filter(coupon => coupon._id != id);
+          this._toastr.success(this._format.vi.success_delete);
+        },
+        error: (err) => { this.errMessage = err }
+      })
     }
   }
 }

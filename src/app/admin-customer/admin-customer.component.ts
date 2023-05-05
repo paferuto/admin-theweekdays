@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from 'src/services/auth.service';
 import { FormatService } from 'src/services/format.service';
 
 @Component({
@@ -9,8 +10,11 @@ import { FormatService } from 'src/services/format.service';
 })
 export class AdminCustomerComponent {
 
-  constructor(private _title: Title, public _format: FormatService) {
-    this._title.setTitle(this._format.vi.customer);;
+  constructor(private _title: Title, public _format: FormatService, private _auth: AuthService) {
+    this._auth.auth().subscribe({
+      error: (err) => { }
+    });
+    this._title.setTitle(this._format.vi.customer);
   }
 
 }

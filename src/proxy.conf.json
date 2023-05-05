@@ -2,7 +2,7 @@
   {
     "context": ["/v1"],
     "target": "https://api.theweekdays.live",
-    "secure": true,
+    "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
   }

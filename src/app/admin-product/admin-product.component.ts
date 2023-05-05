@@ -3,6 +3,7 @@ import { Product } from '../product';
 import { ProductService } from 'src/services/product.service';
 import { Title } from '@angular/platform-browser';
 import { FormatService } from 'src/services/format.service';
+import { AuthService } from 'src/services/auth.service';
 
 
 @Component({
@@ -17,7 +18,11 @@ export class AdminProductComponent {
   current_page: number = 1;
   searchedName: string = '';
   total_page: any;
-  constructor(private _service: ProductService, public _format: FormatService, private _title: Title) {
+
+  constructor(private _service: ProductService, public _format: FormatService, private _title: Title, private _auth: AuthService) {
+    this._auth.auth().subscribe({
+      error: (err) => { }
+    });
     this._title.setTitle(this._format.vi.product);
     this.getProducts();
   }

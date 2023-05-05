@@ -17,6 +17,7 @@ export class FormatService {
     collection: 'Bộ sưu tập',
     coupon: 'Mã giảm giá',
     logout: 'Đăng xuất',
+    login: 'Đăng nhập',
     detail_product: 'Chi tiết sản phẩm',
     detail_order: 'Chi tiết đơn hàng',
     detail_customer: 'Chi tiết khách hàng',
@@ -98,6 +99,7 @@ export class FormatService {
     confirm_add: 'Bạn có chắc chắn muốn thêm không?',
     confirm_update: 'Bạn có chắc chắn muốn cập nhật không?',
     error_update_status: 'Bạn không thể cập nhật trạng thái đơn hàng này',
+    confirm_logout: 'Bạn có chắc chắn muốn đăng xuất không?',
 
     // message
     require_fill_all: 'Vui lòng nhập đầy đủ thông tin',
@@ -127,6 +129,12 @@ export class FormatService {
     status_repeat: 'Trạng thái đã tồn tại',
     selected: 'Đã chọn',
     validate_fill_product: 'Vui lòng chọn sản phẩm',
+    fail_login: 'Đăng nhập thất bại',
+    fail_login_message: "Tên đăng nhập hoặc mật khẩu chưa đúng!",
+    success_logout: 'Đăng xuất thành công',
+    success_logout_message: 'Hẹn gặp lại bạn!',
+    fail_logout: 'Đăng xuất thất bại',
+    fail_logout_message: 'Bạn chưa đăng nhập!',
 
     // placeholder
     enter_name: 'Nhập tên',
