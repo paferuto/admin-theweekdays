@@ -57,8 +57,11 @@
                   <div class="modal-body">
                     <select class="form-select" aria-label="Default select example" [(ngModel)]="order.status">
                       <option selected disabled>{{order.status}}</option>
-                      <option value="Bomhang">Bomhang</option>
-                      <option value="Buonkhongban">Buonkhongban</option>
+                      <option value="ordered">{{_format.vi.ordered}}</option>
+                      <option value="processing">{{_format.vi.processing}}</option>
+                      <option value="delivered">{{_format.vi.delivered}}</option>
+                      <option value="completed">{{_format.vi.completed}}</option>
+                      <option value="processing">{{_format.vi.cancelled}}</option>
                     </select>
                   </div>
                   <div class="modal-footer">
