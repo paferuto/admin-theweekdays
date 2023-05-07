@@ -7,81 +7,80 @@
 
   <main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1>Coupon</h1>
+    <div class="pagetitle" style="cursor: pointer;">
+      <h1>{{_format.vi.customer}}</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item" [routerLink]="['/customer']">Customer</li>
-          <li class="breadcrumb-item active">ID</li>
+          <li class="breadcrumb-item"><a href="index.html">{{_format.vi.home}}</a></li>
+          <li class="breadcrumb-item" [routerLink]="['/customer']">{{_format.vi.customer}}</li>
+          <li class="breadcrumb-item active">{{customer._id}}</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
-      <h3>Customer ID</h3>
+      <h3>{{_format.vi.customer}} ID</h3>
       <form>
-        <div  class="mb-3 row">
-          <label for="name" class="col-form-label col-sm-2">Name</label>
+        <div class="mb-3 row">
+          <label for="name" class="col-form-label col-sm-2">{{_format.vi.name}}</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" placeholder="Customer name" aria-label="default input example"
-            value="Customer">
+            <input class="form-control" name="name" type="text" placeholder="Customer name"
+              aria-label="default input example" value="{{customer.name}}" [(ngModel)]="customer.name">
           </div>
         </div>
-        <div  class="mb-3 row">
-          <label for="name" class="col-form-label col-sm-2">DoB</label>
+        <div class="mb-3 row">
+          <label for="name" class="col-form-label col-sm-2">{{_format.vi.dob}}</label>
           <div class="col-sm-10">
-            <input class="form-control" type="date" aria-label="default input example">
+            <input class="form-control" name="date" type="date" aria-label="default input example" value="{{date}}"
+              [(ngModel)]="date" (change)="changeDate()">
           </div>
         </div>
-        <div  class="mb-3 row">
-          <label for="name" class="col-form-label col-sm-2">Gender</label>
+        <div class="mb-3 row">
+          <label for="name" class="col-form-label col-sm-2">{{_format.vi.gender}}</label>
           <div class="col-sm-10">
             <select class="form-control" id="type" name="type">
-              <option value="quần">Nam</option>
-              <option value="áo">Nữ</option>
-              <option value="áo">Không xác định</option>
+              <option value="male">{{_format.vi.male}}</option>
+              <option value="female">{{_format.vi.female}}</option>
+              <option value="áo">{{_format.vi.undefined}}</option>
             </select>
           </div>
-
         </div>
-        <div  class="mb-3 row">
-          <label for="name" class="col-form-label col-sm-2">Membership</label>
+        <div class="mb-3 row">
+          <label for="name" class="col-form-label col-sm-2">{{_format.vi.membership}}</label>
           <div class="col-sm-10">
-            <input class="form-control" type="number" aria-label="default input example"
-            value=150>
+            <input class="form-control" type="number" aria-label="default input example" value=150>
           </div>
         </div>
-        <div  class="mb-3 row">
-          <label for="name" class="col-form-label col-sm-2">Image</label>
+        <div class="mb-3 row">
+          <label for="name" class="col-form-label col-sm-2">{{_format.vi.image}}</label>
           <div class="col-sm-10">
-            <input class="form-control" type="file" id="image" name="image">
+            <input class="form-control" type="file" id="image" name="image" (change)="onFileSelected($event)">
+            <img [src]="customer.image" style="width: 300px; margin: auto;">
           </div>
         </div>
-        <div style="width: fit-content; margin: auto;"><button for="submit" class="btn btn-success"
-            style="margin: 10px;">Change detail</button><button for="submit" class="btn btn-success"
-            style="margin: 10px;">Clear changes</button></div>
+        <div style="width: fit-content; margin: auto;">
+          <button for="submit" class="btn btn-success" style="margin: 10px;" (click)="updateCustomer()">{{_format.vi.change}}</button>
+          <button for="submit" class="btn btn-light" style="margin: 10px;" (click)="cancelChange()">{{_format.vi.cancel}}</button>
+        </div>
       </form>
     </div>
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
-      <h3>Order history</h3>
+      <h3>{{_format.vi.order_history}}</h3>
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>Order ID</th>
-            <th>Invoice amount (VND)</th>
-            <th>Order date</th>
-            <th>Status</th>
-            <th>Detail</th>
+            <th>{{_format.vi.order_id}}</th>
+            <th>{{_format.vi.total}}</th>
+            <th>{{_format.vi.order_date}}</th>
+            <th>{{_format.vi.status}}</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>1000000</td>
-            <td>30-02-2024</td>
-            <td>Approved</td>
-            <td [routerLink]="['/order/detail']">Order detail</td>
+          <tr *ngFor="let o of orders" [routerLink]="['/order/detail/',o._id]">
+            <td>{{o._id}}</td>
+            <td>{{o.total}}</td>
+            <td>{{o.date | date: "dd/MM/yyyy"}}</td>
+            <td>{{o.status}}</td>
           </tr>
         </tbody>
 
@@ -94,16 +93,16 @@
   <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i>
   </a> -->
 </body>
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
-  </footer><!-- End Footer -->
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+  <div class="copyright">
+    &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+  </div>
+  <div class="credits">
+    <!-- All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+  </div>
+</footer><!-- End Footer -->
