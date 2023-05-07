@@ -7,12 +7,12 @@
 
   <main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1>Customer</h1>
+    <div class="pagetitle"  style="cursor: pointer;">
+      <h1 >{{_format.vi.customer}}</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Customer</li>
+          <li class="breadcrumb-item"><a href="index.html">{{_format.vi.home}}</a></li>
+          <li class="breadcrumb-item active">{{_format.vi.customer}}</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -21,45 +21,32 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th></th>
+            <th>{{_format.vi.name}}</th>
+            <th>DOB</th>
+            <th>{{_format.vi.membership}}</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Ô Lạp Na Lạp thị</td>
-            <td>olnl@gmail.com</td>
-            <td><button class="btn btn-light" [routerLink]="['/customer/id']">Detail</button></td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Ô Lạp Na Lạp thị</td>
-            <td>olnl@gmail.com</td>
-            <td><button class="btn btn-light" [routerLink]="['/customer/id']">Detail</button></td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Ô Lạp Na Lạp thị</td>
-            <td>olnl@gmail.com</td>
-            <td><button class="btn btn-light" [routerLink]="['/customer/id']">Detail</button></td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Ô Lạp Na Lạp thị</td>
-            <td>olnl@gmail.com</td>
-            <td><button class="btn btn-light" [routerLink]="['/customer/id']">Detail</button></td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Ô Lạp Na Lạp thị</td>
-            <td>olnl@gmail.com</td>
-            <td><button class="btn btn-light" [routerLink]="['/customer/id']">Detail</button></td>
+          <tr *ngFor="let cus of customers" [routerLink]="['/customer/',cus._id]" style="cursor: pointer;">
+            <td>{{cus._id}}</td>
+            <td>{{cus.name}}</td>
+            <td>{{cus.dob}}</td>
+            <td>{{cus.membership}}</td>
           </tr>
         </tbody>
-
       </table>
+      <nav aria-label="Page navigation example" style="width: fit-content; margin: auto;" >
+        <ul class="pagination">
+          <!-- create number of page equal to page -->
+          <li class="page-item"><a class="page-link" (click)="previousPage()" style="cursor: pointer;">
+              << </a>
+          </li> <!-- Chuyển về trang trước-->
+          <li class="page-item" *ngFor="let p of page" [class.active]="p==current_page" style="cursor: pointer;">
+            <a class="page-link" (click)="changePage(p)">{{p}}</a>
+          </li>
+          <li class="page-item"><a class="page-link" (click)="nextPage()" style="cursor: pointer;">>></a></li> <!-- Chuyển về trang trước-->
+        </ul>
+      </nav>
     </div>
 
 

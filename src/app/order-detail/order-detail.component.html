@@ -22,7 +22,7 @@
       <table>
         <tr>
           <th style="width: 200px;">{{_format.vi.customer}}</th>
-          <td>{{order.customer_id}}</td>
+          <td [routerLink]="['/customer/',order.customer_id]" style="color: blue; cursor: pointer;">{{order.customer_id}}</td>
         </tr>
         <tr>
           <th>{{_format.vi.order_date}}</th>

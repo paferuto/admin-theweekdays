@@ -34,7 +34,7 @@ const routes: Routes = [
   // { path: "coupon/update/:id", component: NewCouponComponent },
   { path: "collection/new-collection", component: CreateCollectionComponent },
   { path: "collection/:id", component: CollectionDetailComponent },
-  { path: "customer/id", component: CustomerDetailComponent },
+  { path: "customer/:id", component: CustomerDetailComponent },
   { path: "product/:id", component: ProductDetailComponent },
   { path: "coupon/new", component: NewCouponComponent }
 ];

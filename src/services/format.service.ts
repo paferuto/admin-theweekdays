@@ -74,6 +74,12 @@ export class FormatService {
     processing: 'Đang xử lý',
     completed: 'Đã hoàn thành',
     created_date: 'Ngày tạo',
+    gender: 'Giới tính',
+    male: 'Nam',
+    female: 'Nữ',
+    undefined: 'Không xác định',
+    dob: 'Ngày sinh',
+    order_history: 'Lịch sử đơn hàng',
 
 
     // button
@@ -135,6 +141,7 @@ export class FormatService {
     success_logout_message: 'Hẹn gặp lại bạn!',
     fail_logout: 'Đăng xuất thất bại',
     fail_logout_message: 'Bạn chưa đăng nhập!',
+    confirm_cancel: 'Bạn có chắc chắn muốn hủy không?',
 
     // placeholder
     enter_name: 'Nhập tên',
