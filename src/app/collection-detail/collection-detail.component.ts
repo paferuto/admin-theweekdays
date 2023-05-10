@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Collection, Lookbook } from '../collection';
 import { CollectionService } from 'src/services/collection.service';
@@ -14,7 +14,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   templateUrl: './collection-detail.component.html',
   styleUrls: ['./collection-detail.component.css']
 })
-export class CollectionDetailComponent {
+export class CollectionDetailComponent{
 
   id: any;
   collection: Collection = new Collection();
@@ -30,7 +30,7 @@ export class CollectionDetailComponent {
     this._service.getCollectionById(this.id).subscribe(
       (data: any) => {
         this.collection = data;
-        this.videoURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + data.videoId + '?rel=0?version=3&autoplay=1&controls=0&&showinfo=0&loop=1&disablekb=1&iv_load_policy=3');
+        this.videoURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + data.videoId + '?rel=0&playlist='+data.videoId+'&loop=1&version=3&autoplay=1&controls=0&&showinfo=0&disablekb=1&iv_load_policy=3&loop=1&modestbranding=1&mute=1');
       },
       (error) => {
         console.log(error);
@@ -41,6 +41,8 @@ export class CollectionDetailComponent {
         this.listProducts = data.slice(0, 5);
       }
     );
+
+    this.muteVideo();
   }
 
   getCollectionById(id: string) {
@@ -158,6 +160,15 @@ export class CollectionDetailComponent {
     else {
       this.toastr.success(this._format.vi.success_add + " " + id);
       this.products.push(id);
+    }
+  }
+
+  @ViewChild('myIframe', { static: false }) myIframe!: ElementRef;
+
+  muteVideo() {
+    if (this.myIframe && this.myIframe.nativeElement) {
+      const video = this.myIframe.nativeElement as HTMLVideoElement;
+      video.muted = true;
     }
   }
 }

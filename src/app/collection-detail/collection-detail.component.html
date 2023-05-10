@@ -34,11 +34,10 @@
             [value]="collection.videoId">
           <!-- video.component.html -->
 
-          <iframe width="956" height="538"
+          <iframe #myIframe style="pointer-events: none;" width="956" height="538"
             [src]="videoURL" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"></iframe>
-
-        </div>
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" aria-disabled="true"></iframe>
+          </div>
         <br>
         <div>
           <label for="name" class="form-label">{{_format.vi.image}}</label>
