@@ -24,6 +24,7 @@ export class FormatService {
     create_collection: 'Thêm sưu tập',
     detail_collection: 'Chi tiết sưu tập',
     create_product: 'Thêm sản phẩm',
+    new_collection: 'Bộ sưu tập mới',
 
     // attribute
     id: 'ID',
@@ -117,12 +118,16 @@ export class FormatService {
     validate_title: 'Vui lòng nhập tên Mã sản phẩm',
     validate_code: 'Vui lòng nhập Mã sản phẩm',
     validate_coupon_value: 'Vui lòng nhập giá trị Giảm giá của mã',
+    validate_description: 'Vui lòng nhập mô tả',
+    validate_lookbook: 'Vui lòng nhập lookbook',
     validate_quantity: 'Vui lòng nhập số lượng Mã giảm giá',
     validate_membership: 'Vui lòng chọn điểm thành viên',
     validate_min_order: 'Vui lòng nhập đơn hàng tối thiểu',
     validate_max_discount: 'Vui lòng nhập giá trị giảm giá tối đa',
+    validate_name: 'Vui lòng nhập tên',
     validate_valid_from: 'Vui lòng chọn ngày bắt đầu',
     validate_valid_to: 'Vui lòng chọn ngày kết thúc',
+    validate_videoID: 'Vui lòng nhập ID video',
     validate_coupon_code_exist: 'Mã giảm giá đã tồn tại',
     validate_valid_from_greater_than_valid_to: 'Ngày bắt đầu phải nhỏ hơn ngày kết thúc',
     success_modify: 'Sửa thành công',
@@ -142,6 +147,7 @@ export class FormatService {
     fail_logout: 'Đăng xuất thất bại',
     fail_logout_message: 'Bạn chưa đăng nhập!',
     confirm_cancel: 'Bạn có chắc chắn muốn hủy không?',
+    success_add_collection: 'Thêm bộ sưu tập thành công',
 
     // placeholder
     enter_name: 'Nhập tên',
