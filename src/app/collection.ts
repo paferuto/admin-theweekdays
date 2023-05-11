@@ -5,16 +5,11 @@ export class Collection {
     public _id: any = null,
     public name: string = "",
     public description: string = " ",
-    public videoId: string = "RJyMJlU2PL0",
+    public videoId: string = "",
     public image: string = "",
     public createdDate: Date = new Date(),
     public modifiedDate: Date = new Date(),
-    public lookbook: Array<Lookbook> = [
-      {
-        "image": "",
-        "products": []
-      }
-    ],
+    public lookbook: Array<Lookbook> = [],
   ) { }
 }
 
