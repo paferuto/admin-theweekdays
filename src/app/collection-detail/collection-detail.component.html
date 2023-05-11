@@ -67,11 +67,6 @@
                 <img src="{{lookbook.image}}" class="col sm-2" alt="" width="100px" height="150px"
                   style="object-fit: cover;" data-bs-toggle="collapse" href="#collapseExample" role="button"
                   aria-expanded="false" aria-controls="collapseExample">
-                <div class="collapse" id="collapseExample">
-                  <div class="card card-body">
-                    {{lookbook.products}}
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -96,7 +91,7 @@
                       placeholder="{{_format.vi.enter_id}} {{_format.vi.product_id_syntax}}" [(ngModel)]="target"
                       name="target" ngDefaultControl (input)="searchProductByName(target)">
                     <ul class="list-group list-group-flush" *ngFor="let p of listProducts">
-                      <li (click)="getProductId(p.product_id)" class="list-group-item list-group-item-action">{{p.name}}
+                      <li (click)="getProductId(p._id)" class="list-group-item list-group-item-action">{{p.name}}
                       </li>
                     </ul>
                   </div>
